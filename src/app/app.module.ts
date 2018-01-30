@@ -7,12 +7,16 @@ import { AppComponent } from './app.component';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { HomeNavbarComponent } from './home-navbar/home-navbar.component';
+import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeNavbarComponent,
+    AppNavbarComponent
   ],
   imports: [
     BrowserModule,
