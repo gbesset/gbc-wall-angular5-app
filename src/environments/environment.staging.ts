@@ -2,10 +2,10 @@ export const environment = {
   production: true,
   home : {
   	title: 'Guillaume Besset',
-  	description: 'Wall Demo'
+	description: 'Wall Demo'
   },
   apiURL: {
-  	key: 'aSecretKey',
-  	url: 'http://myCoreApp.fr'
+	key: 'aSecretKey',
+	url: 'http://qualif.myCoreApp.fr'
   }
 };
