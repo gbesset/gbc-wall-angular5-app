@@ -17,6 +17,10 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { WallComponent } from './wall/wall.component';
 
+//Serevices
+import { DataService } from './services/data.service';
+
+import { CarouselModule } from 'ngx-bootstrap';
 
 
 @NgModule({
@@ -33,9 +37,13 @@ import { WallComponent } from './wall/wall.component';
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    CarouselModule.forRoot()
+
   ],
-  providers: [],
+  providers: [
+    DataService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

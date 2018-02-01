@@ -3,10 +3,122 @@
 <home-navbar></home-navbar>
 
  <main role="main" class="container">
- 	  {{siteTitle}} -- {{siteDescription}}
-      <div class="starter-template">
-        <h1>Bootstrap starter template</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
+    
+    <section id="wallHeader" class="homeContainer">
+    	<header>
+	        <h1> {{siteTitle}} <span class="intro">{{siteDescription}}</span></h1>
+	    </header>
+   		
+   		<article id="wallCarousel">
+			<carousel>
+		   	  <slide *ngFor = "let picture of carousel">
+		     	<img src="{{picture.path}}{{picture.img}}" alt="{{picture.img}}" style="display: block; width: 100%;">
+		     	<div class="carousel-caption d-none d-md-block">
+		     	</div>
+		  	  </slide>
+			</carousel>
+		</article>
+
+		<footer>
+			<a href="#wallNews" role= "button" class="btn btn-primary btn-wall">Voir les nouveautés</a>
+		</footer>
+	</section>
+
+ 	<section id="wallNews" class="homeContainer homeContainer-withBG">
+ 		<header>
+ 			<h2>Les nouveautés</h2>
+ 			<span>Regardez si vous avez vu les derniers ajouts ci dessous</span>
+ 		</header>
+
+        <div class="row">
+       		<article class="col-lg-4 wallBox">
+      			<header>
+      		    	<h2>Photos</h2>
+            		<p>Derniers clichés</p>
+            	</header>
+            	
+            	<ul *ngFor="let p of pictures">
+            		<li>{{p.name}}</li>
+            	</ul>
+          	</article>
+
+          	<article class="col-lg-4 wallBox">
+      			<header>
+      		    	<h2>Videos</h2>
+            		<p>Dernières vidéos.</p>
+            	</header>
+            	
+            	<ul *ngFor="let v of videos">
+            		<li>{{v.name}}</li>
+            	</ul>
+          	</article>
+
+          	<article class="col-lg-4 wallBox">
+      			<header>
+      		    	<h2>Commentaires</h2>
+            		<p>Derniers commentaires.</p>
+            	</header>
+            	
+            	<ul *ngFor="let c of comments">
+            		<li>{{c.author}}: {{c.comment}}</li>
+            	</ul>
+          	</article>
+         </div>
+
+        <footer>
+            <p>Déjà tout vu, mais envie de se rendre sur l'un des sites?</p>
+            <a href="#wallPortfolio" role= "button" class="btn btn-primary btn-wall">Voir les différents sites</a>
+        </footer>
+
+	</section>
+
+	 <section id="wallPortfolio" class="homeContainer">
+        <header class="lowBottom">
+            <h2>Nos sites</h2>
+            <span>Pour accéder à nos différents sites de partage</span>
+        </header>
+           
+        <div class="row">
+            <article class="col-lg-4 box box-style2">
+	            <a href="http://www.userName.wordpress.com" class="image image-full">
+	               <img src="/bundles/gbcreationhome/images/article_blog.jpg" alt="Blog"/>
+	             </a>
+	            <h3><a href="http://www.userName.wordpress.com">Blog</a></h3>
+	            <p>Récits de nos voyages, vacances,...</p>
+	        </article>
+           	<article class="col-lg-4 box box-style2">
+                <a href="/wall/" class="image image-full">
+                 <img src="/bundles/gbcreationhome/images/article_portfolio.png" alt="Photos"/>
+                 </a>
+                <h3><a href="/wall/">Photos</a></h3>
+                <p>Notre mur de photos.</p>
+            </article>
+	        <article class="col-lg-4 box box-style2">
+                <a href="/wall/#video" class="image image-full">
+                 <img src="/bundles/gbcreationhome/images/article_video.jpg" alt="Vidéos"/>
+                 </a>
+                <h3><a href="/wall/#video">Vidéos</a></h3>
+                <p>Nos montages vidéos.</p>
+            </article>
+         </div>
+    
+        <div class="row">
+            <article class="col-lg-4 box box-style2">
+                <a href="http://monSiteDePartage.fr" class="image image-full">
+                <img src="/bundles/gbcreationhome/images/article_nas.png" alt="Partage de fichiers"/>
+                </a>
+                <h3><a href="http://monSiteDePartage.fr">Partage de fichiers</a></h3>
+                <p>Pour partager des fichiers.</p>
+        	   </article>
+         </div>
+     </section>
+
+     <footer id="wallFooter" class="homeContainer">
+      	 <p>
+            <img src="/assets/images/resources/GibeeCreationLogo.png">
+            <span>&copy; 2018 GBCreation</span><span class="version">V 5.1</span>
+         </p>
+        <p class="float-right"><a href="#">Retour en haut</a></p>
+     </footer>
 
 </main>
