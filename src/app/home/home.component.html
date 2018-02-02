@@ -2,9 +2,9 @@
 <!-- <app-navbar></app-navbar> -->
 <home-navbar></home-navbar>
 
- <main role="main" class="container">
+ <main role="main" class="container-fluid">
     
-    <section id="wallHeader" class="homeContainer">
+    <section id="wallHeader" class="container-fluid homeContainer">
     	<header>
 	        <h1> {{siteTitle}} <span class="intro">{{siteDescription}}</span></h1>
 	    </header>
@@ -24,46 +24,55 @@
 		</footer>
 	</section>
 
- 	<section id="wallNews" class="homeContainer homeContainer-withBG">
+ 	<section id="wallNews" class="container-fluid homeContainer homeContainer-withBG">
  		<header>
  			<h2>Les nouveautés</h2>
  			<span>Regardez si vous avez vu les derniers ajouts ci dessous</span>
  		</header>
 
-        <div class="row">
-       		<article class="col-lg-4 wallBox">
-      			<header>
-      		    	<h2>Photos</h2>
-            		<p>Derniers clichés</p>
-            	</header>
-            	
-            	<ul *ngFor="let p of pictures">
-            		<li>{{p.name}}</li>
-            	</ul>
-          	</article>
+    <div class="container center row">
+   		 <article class="col-12 col-md-6 col-lg-4">
+          <div class="card wallBox">
+            <header>
+              <h3 class="card-title">Photos</h3>
+            </header>
+            <div class="card-body">
+              <p class="card-text">Derniers clichés</p>
+              <ul *ngFor="let p of pictures">
+                <li>{{p.name}}</li>
+              </ul>
+            </div>
+          </div>
+      </article>
 
-          	<article class="col-lg-4 wallBox">
-      			<header>
-      		    	<h2>Videos</h2>
-            		<p>Dernières vidéos.</p>
-            	</header>
-            	
-            	<ul *ngFor="let v of videos">
-            		<li>{{v.name}}</li>
-            	</ul>
-          	</article>
+       <article class="col-12 col-md-6 col-lg-4">
+          <div class="card wallBox">
+            <header>
+              <h3 class="card-title">Videos</h3>
+            </header>
+            <div class="card-body">
+              <p class="card-text">Dernières vidéos.</p>
+             <ul *ngFor="let v of videos">
+              <li>{{v.name}}</li>
+            </ul>
+            </div>
+          </div>
+      </article>
 
-          	<article class="col-lg-4 wallBox">
-      			<header>
-      		    	<h2>Commentaires</h2>
-            		<p>Derniers commentaires.</p>
-            	</header>
-            	
-            	<ul *ngFor="let c of comments">
-            		<li>{{c.author}}: {{c.comment}}</li>
-            	</ul>
-          	</article>
-         </div>
+       <article class="col-12 col-md-6 col-lg-4">
+          <div class="card wallBox">
+            <header>
+              <h3 class="card-title">Commentaires</h3>
+            </header>
+            <div class="card-body">
+              <p class="card-text">Derniers commentaires.</p>
+              <ul *ngFor="let c of comments">
+              <li>{{c.author}}: {{c.comment}}</li>
+            </ul>
+            </div>
+          </div>
+      </article>
+    </div>
 
         <footer>
             <p>Déjà tout vu, mais envie de se rendre sur l'un des sites?</p>
@@ -78,39 +87,67 @@
             <span>Pour accéder à nos différents sites de partage</span>
         </header>
            
-        <div class="row">
-            <article class="col-lg-4 box box-style2">
-	            <a href="http://www.userName.wordpress.com" class="image image-full">
-	               <img src="/bundles/gbcreationhome/images/article_blog.jpg" alt="Blog"/>
-	             </a>
-	            <h3><a href="http://www.userName.wordpress.com">Blog</a></h3>
-	            <p>Récits de nos voyages, vacances,...</p>
-	        </article>
-           	<article class="col-lg-4 box box-style2">
-                <a href="/wall/" class="image image-full">
-                 <img src="/bundles/gbcreationhome/images/article_portfolio.png" alt="Photos"/>
-                 </a>
-                <h3><a href="/wall/">Photos</a></h3>
+
+       <div class="container center row">
+         <article class="col-12 col-md-6 col-lg-4">
+            <div class="card wallBox">
+              <header>
+                <h3 class="card-title"><a href="http://www.userName.wordpress.com">Blog</a></h3>
+                <p>Récits de nos voyages, vacances,...</p>
+              </header>
+              <div class="card-body">
+                <a href="http://www.userName.wordpress.com" class="image image-full">
+                 <img src="/assets/images/resources/article_blog.jpg" alt="Blog" class="img-fluid"/>
+               </a>
+              </div>
+            </div>
+        </article>
+
+        <article class="col-12 col-md-6 col-lg-4">
+            <div class="card wallBox">
+              <header>
+                <h3 class="card-title"><a href="/wall/">Photos</a></h3>
                 <p>Notre mur de photos.</p>
-            </article>
-	        <article class="col-lg-4 box box-style2">
-                <a href="/wall/#video" class="image image-full">
-                 <img src="/bundles/gbcreationhome/images/article_video.jpg" alt="Vidéos"/>
-                 </a>
-                <h3><a href="/wall/#video">Vidéos</a></h3>
-                <p>Nos montages vidéos.</p>
-            </article>
-         </div>
-    
-        <div class="row">
-            <article class="col-lg-4 box box-style2">
-                <a href="http://monSiteDePartage.fr" class="image image-full">
-                <img src="/bundles/gbcreationhome/images/article_nas.png" alt="Partage de fichiers"/>
+              </header>
+              <div class="card-body">
+               <a href="/wall/" class="image image-full">
+                 <img src="/assets/images/resources/article_portfolio.png" alt="Photos" class="img-fluid"/>
                 </a>
-                <h3><a href="http://monSiteDePartage.fr">Partage de fichiers</a></h3>
+              </div>
+            </div>
+        </article>
+
+        <article class="col-12 col-md-6 col-lg-4">
+            <div class="card wallBox">
+              <header>
+                <h3 class="card-title"><a href="/wall/#video">Vidéos</a></h3>
+                <p>Nos montages vidéos.</p>
+              </header>
+              <div class="card-body">
+                <a href="/wall/#video" class="image image-full">
+                 <img src="/assets/images/resources/article_video.jpg" alt="Vidéos" class="img-fluid"/>
+                </a>
+              </div>
+            </div>
+        </article>
+
+        <article class="col-12 col-md-6 col-lg-4">
+            <div class="card wallBox">
+              <header>
+                <h3 class="card-title"><a href="http://monSiteDePartage.fr">Partage de fichiers</a></h3>
                 <p>Pour partager des fichiers.</p>
-        	   </article>
-         </div>
+              </header>
+              <div class="card-body">
+                <a href="http://monSiteDePartage.fr" class="image image-full">
+                  <img src="/assets/images/resources/article_nas.png" alt="Partage de fichiers" class="img-fluid"/>
+                </a>
+              </div>
+            </div>
+        </article>
+      </div>
+
+mettre un max-width...?
+
      </section>
 
      <footer id="wallFooter" class="homeContainer">
