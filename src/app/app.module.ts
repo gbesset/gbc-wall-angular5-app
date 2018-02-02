@@ -11,8 +11,9 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
 
 //Components
-import { HomeNavbarComponent } from './home-navbar/home-navbar.component';
-import { AppNavbarComponent } from './app-navbar/app-navbar.component';
+import { HomeNavbarComponent } from './navbar/home-navbar/home-navbar.component';
+import { AppNavbarComponent } from './navbar/app-navbar/app-navbar.component';
+import { AdminNavbarComponent } from './navbar/admin-navbar/admin-navbar.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { WallComponent } from './wall/wall.component';
@@ -30,7 +31,8 @@ import { CarouselModule } from 'ngx-bootstrap';
     AppNavbarComponent,
     AdminComponent,
     HomeComponent,
-    WallComponent
+    WallComponent,
+    AdminNavbarComponent
   ],
   imports: [
     BrowserModule,
