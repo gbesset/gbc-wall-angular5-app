@@ -48,7 +48,40 @@
 	</tab>
 
 	<tab heading="Vidéos" id="tabVideo">
-		TODO
+		<div [hidden]="submitted">
+			<form (ngSubmit)="onSubmit()" #itemForm="ngForm">
+		    	
+		    	  <div class="form-group">
+			        <label for="name">Vidéo sur....</label><br>
+			       		<input type="radio" name="videoType" value="Youtube" (click)="onSelect('youtube')"> Youtube<br>
+						<input type="radio" name="videoType" value="Vimeo" (click)="onSelect('vimeo')"> Vimeo<br>
+			      </div>
+
+			      <div class="form-group">
+			        <label for="name">Nom</label>
+			        <input type="text" class="form-control" id="name" required [(ngModel)]="item.name" name="name" #name="ngModel">
+			        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+				  		Le nom est requis
+					</div>
+			      </div>
+
+			      <div class="form-group">
+			        <label for="path">Chemin</label>
+			        <input type="text" class="form-control" id="path"  [(ngModel)]="item.path" name="path">
+			      </div>
+
+				  <div class="form-group">
+				    <label for="power">Liste déroulante</label>
+				    <select class="form-control" id="power" required>
+				      <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+				    </select>
+				 </div>
+			
+				<div class="row justify-content-md-center">
+						<button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Sauvegarder</button>
+				</div>
+			 </form>
+		</div>
 	</tab>
 </tabset>
 

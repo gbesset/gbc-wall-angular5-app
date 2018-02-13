@@ -11,6 +11,11 @@ import { Item } from '../../contract/item';
 
 export class ItemFormComponent {
 
+  type = {
+  	"youtube": "http://youtube....",
+  	"vimeo" : "http://vimeo....."
+  };
+
   submitted = false;
 
   @Input() item: Item;
@@ -26,6 +31,10 @@ export class ItemFormComponent {
   onSubmit() {
   	this.submitted = true;
   }
+
+  onSelect(type: string): void {
+  	this.item.path = this.type[type];
+}
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.item); }
