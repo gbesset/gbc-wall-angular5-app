@@ -1,0 +1,21 @@
+<app-admin-navbar></app-admin-navbar>
+
+<main role="main" class="container-fluid">
+  
+  <div class="row">
+    
+    <app-admin-submenu-navbar></app-admin-submenu-navbar>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+		<section id="WallItemDetailled">
+			<div>
+				{{item.id}} - {{item.name}}
+			</div>
+			<div>{{item.path}}</div>
+
+			<button (click)="goBack()">go back</button>
+		</section>
+	</main>
+  </div>
+</main>

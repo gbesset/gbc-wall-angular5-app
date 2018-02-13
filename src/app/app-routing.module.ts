@@ -3,6 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { WallComponent } from './wall/wall.component';
 import { AdminComponent } from './admin/admin.component';
+import { ItemEditComponent } from './admin/item-edit/item-edit.component';
+import { ItemListComponent } from './admin/item-list/item-list.component';
 
 const routes: Routes = [
 	{
@@ -21,6 +23,14 @@ const routes: Routes = [
 	{
 		path: 'admin',
 		component: AdminComponent
+	},
+	{
+		path: 'admin/items',
+		component: ItemListComponent
+	},
+	{
+		path: 'admin/item/:id',
+		component: ItemEditComponent
 	}
 ];
 
