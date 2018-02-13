@@ -5,10 +5,16 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 
+//Forms
+import { FormsModule }   from '@angular/forms';
+
 //Module Bootstrap de ngx-bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { ModalModule } from 'ngx-bootstrap/modal';
+
+//Tabs from ngx-bootstrap
+import { TabsModule } from 'ngx-bootstrap';
 
 //Components
 import { HomeNavbarComponent } from './navbar/home-navbar/home-navbar.component';
@@ -26,7 +32,7 @@ import { AdminDataService } from './services/admin-data.service';
 import { CarouselModule } from 'ngx-bootstrap';
 import { ItemListComponent } from './admin/item-list/item-list.component';
 import { ItemEditComponent } from './admin/item-edit/item-edit.component';
-import { ItemAddComponent } from './admin/item-add/item-add.component';
+import { ItemFormComponent } from './admin/item-form/item-form.component';
 
 
 
@@ -42,15 +48,17 @@ import { ItemAddComponent } from './admin/item-add/item-add.component';
     AdminSubmenuNavbarComponent,
     ItemListComponent,
     ItemEditComponent,
-    ItemAddComponent
+    ItemFormComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    TabsModule.forRoot(),
 
   ],
   providers: [

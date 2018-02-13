@@ -1,0 +1,76 @@
+<div class="container">
+    <h2>Ajout / Modification Item</h2>
+
+	<br>
+	<button type="button" class="btn btn-default" (click)="newItem(); itemForm.reset()">Nouvel Item</button>
+	<br>
+
+<div>
+  <tabset>
+    <tab heading="Photos" id="tabPicture">
+	    <!-- Formulaire disparait une fois valid et soumis -->
+		<div [hidden]="submitted">
+			<form (ngSubmit)="onSubmit()" #itemForm="ngForm">
+		    	<div class="row">
+			    	<div class="col-4">
+			    		 <img src="http://via.placeholder.com/350x250"/>
+			    	</div>
+			    	<div class="col-6">
+			    		
+					      <div class="form-group">
+					        <label for="name">Nom</label>
+					        <input type="text" class="form-control" id="name" required [(ngModel)]="item.name" name="name" #name="ngModel">
+					        <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+						  		Le nom est requis
+							</div>
+					      </div>
+
+					      <div class="form-group">
+					        <label for="path">Chemin</label>
+					        <input type="text" class="form-control" id="path"  [(ngModel)]="item.path" name="path">
+					      </div>
+
+						  <div class="form-group">
+						    <label for="power">Liste déroulante</label>
+						    <select class="form-control" id="power" required>
+						      <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+						    </select>
+						  </div>
+
+					</div>
+				</div>
+			
+				<div class="row justify-content-md-center">
+						<button type="submit" class="btn btn-success" [disabled]="!itemForm.form.valid">Sauvegarder</button>
+				</div>
+			 </form>
+		</div>
+	</tab>
+
+	<tab heading="Vidéos" id="tabVideo">
+		TODO
+	</tab>
+</tabset>
+
+{{diagnostic}}
+
+<!-- Si le est formulaire soumis, affiche des infos récapitulaives-->
+	<div [hidden]="!submitted">
+		  <h2>Nouvel Item ajouté</h2>
+		  <div class="row">
+		    <div class="col-xs-3">Nom: </div>
+		    <div class="col-xs-9  pull-left">{{ item.name }}</div>
+		  </div>
+		  <div class="row">
+		    <div class="col-xs-3">Path: </div>
+		    <div class="col-xs-9 pull-left">{{ item.path }}</div>
+		  </div>
+		  <div class="row">
+		    <div class="col-xs-3">Power: </div>
+		    <div class="col-xs-9 pull-left">{{ item.power }}</div>
+		  </div>
+		  <br>
+		  <button class="btn btn-primary" (click)="submitted=false">Edit</button> 
+		  <a routerLink="/admin/items"><button class="btn btn-primary" (click)="submitted=false">Items</button></a>
+		</div>
+</div>

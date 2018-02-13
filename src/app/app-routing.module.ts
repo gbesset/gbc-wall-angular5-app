@@ -31,6 +31,10 @@ const routes: Routes = [
 	{
 		path: 'admin/item/:id',
 		component: ItemEditComponent
+	},
+	{
+		path: 'admin/item/add',
+		component: ItemEditComponent
 	}
 ];
 
