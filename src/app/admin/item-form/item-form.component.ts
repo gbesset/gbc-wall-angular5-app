@@ -25,7 +25,7 @@ export class ItemFormComponent {
   constructor() { }
 
   newItem() {
-  this.item = new Item('','','','');
+  this.item = new Item();
 }
 
   onSubmit() {

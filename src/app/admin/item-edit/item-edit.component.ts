@@ -23,7 +23,7 @@ export class ItemEditComponent implements OnInit {
   ngOnInit() {
   	this.getItem();
   	if(typeof this.item == "undefined"){
-  		this.item = new Item('','','','');
+  		this.item = new Item();
   	}
 
   }

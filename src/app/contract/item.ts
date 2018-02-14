@@ -1,9 +1,8 @@
 export class Item {
-
-  constructor(
-	  public id?: number,
-	  public path: string,
-	  public name: string,
-	  public nbLike?: number
-	  ) {}
+  
+   id?: number;
+   path: string;
+   name: string;
+   nbLike?: number;
+	 
 }
