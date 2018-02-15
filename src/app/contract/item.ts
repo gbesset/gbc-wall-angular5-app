@@ -4,7 +4,7 @@ export class Item {
    file: string;
    path: string;
    description: string;
-   createdAt: string;
+   createdAt: Date;
    ratio?: number
    nbLike?: number;
    type: string;

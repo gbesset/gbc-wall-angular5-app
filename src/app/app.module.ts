@@ -35,6 +35,10 @@ import { CarouselModule } from 'ngx-bootstrap';
 import { ItemListComponent } from './admin/item-list/item-list.component';
 import { ItemEditComponent } from './admin/item-edit/item-edit.component';
 import { ItemFormComponent } from './admin/item-form/item-form.component';
+import { CommentListComponent } from './admin/comment-list/comment-list.component';
+import { CommentFormComponent } from './admin/comment-form/comment-form.component';
+import { CommentEditorComponent } from './admin/comment-editor/comment-editor.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
 
@@ -50,7 +54,11 @@ import { ItemFormComponent } from './admin/item-form/item-form.component';
     AdminSubmenuNavbarComponent,
     ItemListComponent,
     ItemEditComponent,
-    ItemFormComponent
+    ItemFormComponent,
+    CommentListComponent,
+    CommentFormComponent,
+    CommentEditorComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

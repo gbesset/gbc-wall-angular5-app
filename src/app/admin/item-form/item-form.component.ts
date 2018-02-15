@@ -32,7 +32,7 @@ export class ItemFormComponent {
     this.item.type="PICTURE";
     this.submitted = false;
     //this.item.createdAt = new Date();
-    this.itemDate = new Date();
+
     console.log(this.item.createdAt);
 }
 

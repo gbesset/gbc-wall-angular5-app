@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { AdminDataService } from '../../services/admin-data.service';
 import { Item } from '../../contract/item';
-import { Comment } from '../../contract/comment';
 
 @Component({
   selector: 'app-item-list',

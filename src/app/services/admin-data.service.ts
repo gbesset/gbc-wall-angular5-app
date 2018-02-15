@@ -9,6 +9,7 @@ import { MOCK_ITEMS } from '../mock/mock-items';
 import { MOCK_COMMENTS } from '../mock/mock-comments';
 
 import { Item } from '../contract/item';
+import { Comment } from '../contract/comment';
 
 @Injectable()
 export class AdminDataService {
@@ -32,6 +33,10 @@ export class AdminDataService {
 
    getItemId(id: number): Observable<Item>{
   	return of(MOCK_ITEMS.find(item=>item.id === id)); 	
+  }
+
+   getCommentId(id: number): Observable<Comment>{
+    return of(MOCK_COMMENTS.find(comment=>comment.id === id));   
   }
 
 }
