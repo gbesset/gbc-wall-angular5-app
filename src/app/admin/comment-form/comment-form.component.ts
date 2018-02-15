@@ -23,7 +23,7 @@ constructor(private _adminService: AdminDataService,
   // La méthode appelée lorsque le formulaire est soumis.
   onSubmit(): void {
     console.log("Submit form !");
-    let link = ['/admin/comment', this.comment.id];
+    let link = ['/admin/comments']//);, this.comment.id];
     this.router.navigate(link);
   }
 
