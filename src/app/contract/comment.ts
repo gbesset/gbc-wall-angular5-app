@@ -1,5 +1,8 @@
 export class Comment{
-	id: number;
+	id?: number;
 	author: string;
 	comment: string;
+	isApproved: boolean;
+	createdAt: string;
+	itemId: number;
 }

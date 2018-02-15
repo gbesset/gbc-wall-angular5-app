@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 //Forms
 import { FormsModule }   from '@angular/forms';
+//DatePicker
+import { BsDatepickerModule } from 'ngx-bootstrap';
 
 //Module Bootstrap de ngx-bootstrap
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
@@ -59,7 +61,7 @@ import { ItemFormComponent } from './admin/item-form/item-form.component';
     ModalModule.forRoot(),
     CarouselModule.forRoot(),
     TabsModule.forRoot(),
-
+    BsDatepickerModule.forRoot()
   ],
   providers: [
     DataService,
