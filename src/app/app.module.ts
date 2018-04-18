@@ -5,8 +5,8 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 //HTTP
-import { HttpModule } from '@angular/http';
-//import { HttpClientModule } from '@Angular/common/http';
+//import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 //Forms
 import { FormsModule }   from '@angular/forms';
@@ -45,6 +45,7 @@ import { CommentEditorComponent } from './admin/comment-editor/comment-editor.co
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { StatsComponent } from './admin/stats/stats.component';
+import { WallDataService } from './services/wall-data.service';
 
 
 
@@ -71,7 +72,7 @@ import { StatsComponent } from './admin/stats/stats.component';
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule,
+    HttpClientModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
@@ -83,7 +84,8 @@ import { StatsComponent } from './admin/stats/stats.component';
   providers: [
     MessageService,
     DataService,
-    AdminDataService
+    AdminDataService,
+    WallDataService
   ],
   bootstrap: [AppComponent]
 })

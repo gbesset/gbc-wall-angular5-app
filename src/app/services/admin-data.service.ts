@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Http, Response, RequestOptions, Headers , URLSearchParams } from '@angular/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
@@ -27,7 +27,7 @@ export class AdminDataService {
   results: Object[];
   loading: boolean;
 
-  constructor(private http: Http) { 
+  constructor(private http: HttpClient) { 
       this.results=[];
       this.loading = false;
   }
@@ -58,21 +58,16 @@ Problème : fonction ne retourne rien. pas ossible accéder élément. utiliser 
   */
 
   getStats(): Observable<Stats>{
-   
 
-     console.log("[AdminDAtaService] GET Stats as a observable");
      let url = `${this.ADMIN_API}/count`;
     
       //res est une Response object. 
       return this.http.get(url).map( res => {
              console.log('admin json');
-             console.log(res.json());
-              let results = res.json();
+             console.log(res);
+              let results = <Stats>res;
               return results;
-          });
- 
-      //faire un results.map( item =< new StatsObject.....)
-       
+          });       
   }
 
 

@@ -1,9 +1,8 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+<nav class="navbar navbar-expand-md navbar-light bg-wall fixed-top">
     <div class="navbar-header"> <!-- ????-->
-      <a class="navbar-brand" href="">
-        <img src="assets/images/GibeeCreationLogo.png" class="logo">
+      <a class="navbar-brand" routerLink="/home">
+        <img src="assets/images/resources/GibeeCreationLogo.png" class="logo"> Karen.guiom
       </a>
-      <span class="navbar-brand">karen.guiom</span>
     </div>  
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -12,28 +11,28 @@
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-link" routerLink="/wall">Wall</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Link</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
-          </li>
           <li class="nav-item dropdown" dropdown>
-            <a dropdownToggle  class="nav-link dropdown-toggle">Dropdown <span class="caret"></span></a>
+            <a dropdownToggle  class="nav-link dropdown-toggle">Filtrer <span class="caret"></span></a>
             <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <li role="menuitem"><a class="dropdown-item" href="#">Action</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Another action</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Something else here</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Photos</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Vidéos</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">...</a></li>
               <li class="divider dropdown-divider"></li>
               <li role="menuitem"><a class="dropdown-item" href="#">Another one</a></li>
             </ul>
           </li>
+           <li class="nav-item active">
+            <a class="nav-link" routerLink="/admin">Admin</a>
+          </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <input class="form-control mr-sm-2" type="text" placeholder="rechercher" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
         </form>
 	</div>
 </nav>
