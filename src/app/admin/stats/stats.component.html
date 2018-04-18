@@ -1,0 +1,39 @@
+<app-admin-navbar></app-admin-navbar>
+
+<main role="main" class="container-fluid">
+  
+  <div class="row">
+    
+    <app-admin-submenu-navbar></app-admin-submenu-navbar>
+
+    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+
+		<section id="stats">
+			<h2>Stats</h2>
+
+			<div class="text-center">
+				<p class="lead" *ngIf="loading">Loading......</p>
+			</div>
+
+			<div>
+				<h3>Nombre Total d'éléments : <span *ngIf="results">{{results.all}}</span></h3>
+			</div>
+
+			<div>
+				<h3>Nombre de Photos : <span *ngIf="results">{{results.pictures}}</span></h3>		
+			</div>
+
+			<div>
+				<h3>Nombre de Vidéos : <span *ngIf="results">{{results.videos}}</span></h3>
+			</div>
+
+			<div>
+				<h3>Nombre de Commentaires : <span *ngIf="results">{{results.comments}}</span></h3>
+			</div>
+	</section>
+
+
+
+</main>
+</div>
+</main>

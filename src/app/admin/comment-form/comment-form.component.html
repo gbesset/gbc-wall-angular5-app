@@ -46,9 +46,10 @@
 
         <div class="form-group">
           <label for="createdAt">Date</label>
+          todo pipe? date:"dd/MM/yyyy hh:mm:ss"
           <input type="text" class="form-control" id="createdAt" 
               required
-              [(ngModel)]="comment.createdAt | date:"dd/MM/yyyy hh:mm:ss"" name="createdAt" #createdAt="ngModel">
+              [(ngModel)]="comment.createdAt " name="createdAt" #createdAt="ngModel">
           <!-- error -->
            <div [hidden]="createdAt.valid || createdAt.pristine"
                class="card-panel red accent-1">

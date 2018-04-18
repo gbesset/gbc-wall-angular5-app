@@ -19,6 +19,7 @@ export class ItemListComponent implements OnInit {
   }
 
   getItems(): void{
+    //Mock
     this._adminService.getAllItems().subscribe(items => this.items = items);
   }
 }

@@ -8,6 +8,7 @@ import { ItemListComponent } from './admin/item-list/item-list.component';
 import { CommentListComponent } from './admin/comment-list/comment-list.component';
 import { CommentEditorComponent } from './admin/comment-editor/comment-editor.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { StatsComponent } from './admin/stats/stats.component';
 
 const routes: Routes = [
 	{
@@ -46,6 +47,10 @@ const routes: Routes = [
 	{
 		path: 'admin/comment/edit/:id',
 		component: CommentEditorComponent
+	},
+	{
+		path: 'admin/stats',
+		component: StatsComponent
 	},
 	{
 		path: '**',
