@@ -4,6 +4,9 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
+//HTTP
+import { HttpModule } from '@angular/http';
+//import { HttpClientModule } from '@Angular/common/http';
 
 //Forms
 import { FormsModule }   from '@angular/forms';
@@ -27,7 +30,8 @@ import { AdminComponent } from './admin/admin.component';
 import { HomeComponent } from './home/home.component';
 import { WallComponent } from './wall/wall.component';
 
-//Serevices
+//Services
+import { MessageService } from './services/message.service';
 import { DataService } from './services/data.service';
 import { AdminDataService } from './services/admin-data.service';
 
@@ -39,6 +43,8 @@ import { CommentListComponent } from './admin/comment-list/comment-list.componen
 import { CommentFormComponent } from './admin/comment-form/comment-form.component';
 import { CommentEditorComponent } from './admin/comment-editor/comment-editor.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { MessagesComponent } from './pages/messages/messages.component';
+import { StatsComponent } from './admin/stats/stats.component';
 
 
 
@@ -58,11 +64,14 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     CommentListComponent,
     CommentFormComponent,
     CommentEditorComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MessagesComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    HttpModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TooltipModule.forRoot(),
@@ -72,6 +81,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
     BsDatepickerModule.forRoot()
   ],
   providers: [
+    MessageService,
     DataService,
     AdminDataService
   ],
