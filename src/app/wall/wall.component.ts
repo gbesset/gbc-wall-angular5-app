@@ -10,7 +10,7 @@ export class WallComponent implements OnInit {
 
   private page: number=0;
   private items: Array<any>;
-  private pages:Array<number>;
+  private pages: Array<number>;
 
 
   constructor(private _wallService: WallDataService) { }
@@ -32,12 +32,8 @@ export class WallComponent implements OnInit {
   	);
   }
 
-  setPage(i, event:any){
-  	this.page=i;
-
-  	//prevent the default event action
-  	event.preventDefault();
-
+  setPage(p:number){
+  	this.page=p;
   	this.getItems();
   }
 

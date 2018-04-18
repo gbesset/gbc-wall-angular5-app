@@ -46,6 +46,8 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { MessagesComponent } from './pages/messages/messages.component';
 import { StatsComponent } from './admin/stats/stats.component';
 import { WallDataService } from './services/wall-data.service';
+import { WallListItemComponent } from './wall/wall-list-item/wall-list-item.component';
+import { WallListComponent } from './wall/wall-list/wall-list.component';
 
 
 
@@ -67,7 +69,9 @@ import { WallDataService } from './services/wall-data.service';
     CommentEditorComponent,
     PageNotFoundComponent,
     MessagesComponent,
-    StatsComponent
+    StatsComponent,
+    WallListComponent,
+    WallListItemComponent
   ],
   imports: [
     BrowserModule,

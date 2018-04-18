@@ -1,35 +1,8 @@
  
 <app-navbar></app-navbar> 
 
-
- <main role="main" class="container-fluid">
-
+<main role="main" class="container-fluid">
 	
-	  <div class="container">
-	  	<h1>hello</h1>
-
-	  	<div class="row" *ngFor="let i of items">
-	  		<div class="col col-lg-4 col-md-6 col-sm-12">
-				<div class="card"> 
-	  			 	<img class="card-img-top" src="http://via.placeholder.com/350x250" alt="Card image cap">
-	  			 	<div class="card-body">
-	  					<h5>{{i.description}}</h5>
-	  					<p class="card-text">{{i.id}} {{i.createdAt}}</p>
-	  				</div>
-	  			</div>
-	  		</div>	
-  		</div>
-
-  		<hr/>
-  		
-  		<ul class="nav nav-pills">
-  			<li class="nav-item" *ngFor="let p of pages; let i=index">
-  				<a class="nav-link" href="#"
-  					(click)="setPage(i,$event)"
-  					 [ngClass]="{'active':i==page}">{{i}}</a>
-  			</li>
-  		</ul>	
-  	
-	  </div>
+	<app-wall-list [page]="page" [items]="items" [pages]="pages" (pageClick)="setPage($event)"></app-wall-list>
 
 </main>

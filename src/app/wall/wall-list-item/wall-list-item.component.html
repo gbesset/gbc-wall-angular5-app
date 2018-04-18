@@ -1,0 +1,8 @@
+<img *ngIf="item.id!=856 && item.id!=865"class="card-img-top img-fluid" src="http://via.placeholder.com/350x250" alt="Card image cap">
+<img *ngIf="item.id===856" class="card-img-top img-fluid" src="http://via.placeholder.com/250x380" alt="Card image cap">
+<img *ngIf="item.id===865" class="card-img-top img-fluid" src="http://via.placeholder.com/200x420" alt="Card image cap">
+
+<div class="card-block">
+	<h4 class="card-title">{{item.description}}</h4>
+	<p class="card-text">{{item.id}} {{item.createdAt}}</p>
+</div>
