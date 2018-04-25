@@ -3,8 +3,9 @@
 
 <main role="main" class="container-fluid wall-container">
 	
-	<app-wall-list [page]="page" [items]="items" [pages]="pages" (pageClick)="setPage($event)"></app-wall-list>
+	<app-wall-list [page]="page" [items]="items" [pages]="pages" (pageMore)="more($event)"></app-wall-list>
 	
 	<div [innerHTML]="errorApi"></div>
+	<div [innerHTML]="noMoreItem"></div>
 
 </main>

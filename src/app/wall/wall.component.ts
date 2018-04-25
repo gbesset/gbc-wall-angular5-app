@@ -9,10 +9,12 @@ import { WallDataService } from '../services/wall-data.service';
 export class WallComponent implements OnInit {
 
   private page: number=0;
+  private totalPages: number=0;
   private items: Array<any>;
   private pages: Array<number>;
  
   errorApi: string = '';
+  noMoreitems: string = '';
 
   constructor(private _wallService: WallDataService) { }
 
@@ -23,8 +25,15 @@ export class WallComponent implements OnInit {
   getItems(){
   	this._wallService.getItems(this.page).subscribe(
   		(data) => {
-  			this.items = data['content'];
-  			this.pages = new Array(data['totalPages']);
+        if(this.items == undefined){
+  			  this.items = data['content'];
+        }
+        else{
+         this.items = this.items.concat(data['content']);
+         //this.items.push.apply(this.items, data['content']); 
+        }
+        this.totalPages = data['totalPages'];
+  			this.pages = new Array(this.totalPages);
   		},
   		(error) => {
   			console.log(error.error.message);
@@ -41,9 +50,17 @@ export class WallComponent implements OnInit {
   	);
   }
 
-  setPage(p:number){
-  	this.page=p;
-  	this.getItems();
+ more(p:number){
+    if(p < this.totalPages){
+      this.page=p+1;
+      this.getItems();
+    }
+    else{
+      this.noMoreitems = `<div>
+                            <p>Il n'y a plus d'item à récupérer.....</p>
+                          </div>
+                        `;
+    }
   }
 
 }

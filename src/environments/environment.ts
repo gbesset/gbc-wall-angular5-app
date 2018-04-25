@@ -12,5 +12,8 @@ export const environment = {
   apiURL: {
   	key: 'aSecretKey',
   	url: 'http://myCoreApp.fr'
+  },
+  Wall: {
+  	imgPath: 'assets/__img_wall'
   }
 };

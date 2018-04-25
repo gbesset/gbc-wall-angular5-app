@@ -9,22 +9,21 @@ import { Item } from '../../contract/item';
 export class WallListComponent implements OnInit {
 
   @Input() page: number;
-  @Input()  items : Item[];
+  @Input() items : Item[];
   @Input() pages: Array<number>;
 
-  @Output() pageClick: EventEmitter<number> = new EventEmitter<number>();
+  @Output() pageMore: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
- onPageChange(i, event:any){
- 	//On annule le comportement par defaut
- 	event.preventDefault();
+ onPageMore(i, event:any){
+     //On annule le comportement par defaut
+     event.preventDefault();
 
- 	//on emet un evenement pour qu'il soit capté par wall.component
- 	this.pageClick.emit(i)
+     //on emet un evenement pour qu'il soit capté par wall.component
+     this.pageMore.emit(i)
   }
-
 }
