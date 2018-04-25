@@ -28,7 +28,7 @@ export class StatsComponent implements OnInit {
   	this.adminSubscription = this._adminService.getStats().subscribe( 
         (data) => {
   					this.loading = false;
-  					this.results = data;
+  					this.results = <Stats>data;
   				}
        );
   }

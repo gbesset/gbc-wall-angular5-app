@@ -3,8 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { AdminDataService } from '../../services/admin-data.service';
-import { Item } from '../../contract/item';
+import { AdminDataService } from '../../../services/admin-data.service';
+import { Item } from '../../../contract/item';
 
 @Component({
   selector: 'app-item-edit',

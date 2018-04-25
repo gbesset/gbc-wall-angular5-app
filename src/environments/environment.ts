@@ -11,7 +11,9 @@ export const environment = {
   },
   apiURL: {
   	key: 'aSecretKey',
-  	url: 'http://myCoreApp.fr'
+  	url: 'http://localhost:8080',
+    wall:'/api/wall',
+    admin:'/api/admin'
   },
   Wall: {
   	imgPath: 'assets/__img_wall'

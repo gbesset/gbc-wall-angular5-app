@@ -40,6 +40,17 @@
 		    </tbody>
 		  </table>
 		</div>
+
+		<div [innerHTML]="errorApi"></div>
+		
+		<ul class="nav nav-pills">
+			<li class="nav-item" *ngFor="let p of pages; let i=index">
+				<a class="nav-link" href="#"
+					(click)="onPageChange(i,$event)"
+					 [ngClass]="{'active':i==page}">{{i}}</a>
+			</li>
+		</ul>	
+
 		</section>
 
 </main>

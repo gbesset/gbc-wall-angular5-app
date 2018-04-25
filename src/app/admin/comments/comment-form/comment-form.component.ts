@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
-import { AdminDataService } from '../../services/admin-data.service';
-import { Comment } from '../../contract/comment';
+import { AdminDataService } from '../../../services/admin-data.service';
+import { Comment } from '../../../contract/comment';
 
 @Component({
   selector: 'app-comment-form',

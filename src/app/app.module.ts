@@ -36,12 +36,12 @@ import { DataService } from './services/data.service';
 import { AdminDataService } from './services/admin-data.service';
 
 import { CarouselModule } from 'ngx-bootstrap';
-import { ItemListComponent } from './admin/item-list/item-list.component';
-import { ItemEditComponent } from './admin/item-edit/item-edit.component';
-import { ItemFormComponent } from './admin/item-form/item-form.component';
-import { CommentListComponent } from './admin/comment-list/comment-list.component';
-import { CommentFormComponent } from './admin/comment-form/comment-form.component';
-import { CommentEditorComponent } from './admin/comment-editor/comment-editor.component';
+import { ItemListComponent } from './admin/items/item-list/item-list.component';
+import { ItemEditComponent } from './admin/items/item-edit/item-edit.component';
+import { ItemFormComponent } from './admin/items//item-form/item-form.component';
+import { CommentListComponent } from './admin/comments/comment-list/comment-list.component';
+import { CommentFormComponent } from './admin/comments/comment-form/comment-form.component';
+import { CommentEditorComponent } from './admin/comments/comment-editor/comment-editor.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { StatsComponent } from './admin/stats/stats.component';

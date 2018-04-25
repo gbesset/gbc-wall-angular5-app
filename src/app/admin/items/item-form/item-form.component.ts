@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-import { Item } from '../../contract/item';
+import { Item } from '../../../contract/item';
 
 
 @Component({

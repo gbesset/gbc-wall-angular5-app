@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
-import { AdminDataService } from '../../services/admin-data.service';
-import { Comment } from '../../contract/comment';
+import { AdminDataService } from '../../../services/admin-data.service';
+import { Comment } from '../../../contract/comment';
 
 @Component({
   selector: 'app-comment-editor',
@@ -22,7 +22,11 @@ export class CommentEditorComponent implements OnInit {
   ngOnInit() {
   	let id = +this.route.snapshot.params['id'];
   	//const id = +this.route.snapshot.paramMap.get('id');
-  	this._adminService.getCommentId(id).subscribe(comment => this.comment = comment);
+  	this._adminService.getCommentId(id).subscribe(
+      (data) => {
+        this.comment = <Comment>data;
+      }
+      );
   }
 
   
