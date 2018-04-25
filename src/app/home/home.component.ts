@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment } from '../../environments/environment';
-import { DataService } from '../services/data.service';
+import { WallDataService } from '../services/wall-data.service';
 
 import { Item } from '../contract/item';
 import { Comment } from '../contract/comment';
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   videos: Item[];
   comments: Comment[];
 
-  constructor(private _dataService: DataService) { }
+  constructor(private _dataService: WallDataService) { }
 
   ngOnInit() {
   	this.getCarousel();
@@ -33,17 +33,31 @@ export class HomeComponent implements OnInit {
   }
 
   getCarousel(): void{
-	  this._dataService.getCarousel().subscribe(headerPict => this.carousel = headerPict);
+	  this._dataService.getCarousel().subscribe(
+        headerPict => this.carousel = headerPict
+        );
   }
 
   getLastPictures(): void{
-    this._dataService.getLastPictures().subscribe(items => this.pictures = items);
+    this._dataService.getLastPictures().subscribe(
+        (json) => {
+          this.pictures = json['content'];
+        }
+      );
   }
   getLastVideos(): void{
-    this._dataService.getLastVideos().subscribe(items => this.videos = items);
+    this._dataService.getLastVideos().subscribe(
+      (json) => {
+              this.videos = json['content'];
+            }
+      );
   }
   getLastComments(): void{
-    this._dataService.getLastComments().subscribe(comments => this.comments = comments);
+    this._dataService.getLastComments().subscribe(
+       (json) => {
+              this.comments = json['content'];
+            }
+      );
   }
 
 }

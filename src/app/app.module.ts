@@ -32,7 +32,6 @@ import { WallComponent } from './wall/wall.component';
 
 //Services
 import { MessageService } from './services/message.service';
-import { DataService } from './services/data.service';
 import { AdminDataService } from './services/admin-data.service';
 
 import { CarouselModule } from 'ngx-bootstrap';
@@ -87,7 +86,6 @@ import { WallListComponent } from './wall/wall-list/wall-list.component';
   ],
   providers: [
     MessageService,
-    DataService,
     AdminDataService,
     WallDataService
   ],
