@@ -11,7 +11,8 @@ export class WallComponent implements OnInit {
   private page: number=0;
   private items: Array<any>;
   private pages: Array<number>;
-
+ 
+  errorApi: string = '';
 
   constructor(private _wallService: WallDataService) { }
 
@@ -27,7 +28,15 @@ export class WallComponent implements OnInit {
   		},
   		(error) => {
   			console.log(error.error.message);
-  		}
+        this.errorApi=`<div id="errorApi" class="row">
+                          <div class="col-4">
+                            <img src="../assets/images/resources/error-connection.gif" class="rounded float-left">
+                          </div>
+                          <div class="col-6">
+                            <p class>Erreur de récupération des items sur le serveur.</p>
+                          </div>
+                        </div>`;
+   		}
 
   	);
   }

@@ -1,0 +1,14 @@
+.wall-container{
+	margin-top:20px;
+}
+
+::ng-deep #errorApi{
+}
+
+::ng-deep #errorApi p{
+	position:relative;;
+	top:40%;
+}
+::ng-deep #errorApi img{
+	max-width:400px;
+}
