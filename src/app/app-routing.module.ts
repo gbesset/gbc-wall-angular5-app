@@ -11,6 +11,8 @@ import { CommentEditorComponent } from './admin/comments/comment-editor/comment-
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { StatsComponent } from './admin/stats/stats.component';
 
+import { AuthGuardService } from './services/auth-guard.service';
+
 const routes: Routes = [
 	{
 		path: '',
@@ -30,31 +32,38 @@ const routes: Routes = [
 	},
 	{
 		path: 'admin',
-		component: AdminComponent
+		component: AdminComponent,
+		canActivate: [AuthGuardService]
 	},
 	{
 		path: 'admin/items',
-		component: ItemListComponent
+		component: ItemListComponent,
+		canActivate: [AuthGuardService]
 	},
 	{
 		path: 'admin/item/:id',
-		component: ItemEditComponent
+		component: ItemEditComponent,
+		canActivate: [AuthGuardService]
 	},
 	{
 		path: 'admin/item/add',
-		component: ItemEditComponent
+		component: ItemEditComponent,
+		canActivate: [AuthGuardService]
 	},
 	{
 		path: 'admin/comments',
-		component: CommentListComponent
+		component: CommentListComponent,
+		canActivate: [AuthGuardService]
 	},
 	{
 		path: 'admin/comment/edit/:id',
-		component: CommentEditorComponent
+		component: CommentEditorComponent,
+		canActivate: [AuthGuardService]
 	},
 	{
 		path: 'admin/stats',
-		component: StatsComponent
+		component: StatsComponent,
+		canActivate: [AuthGuardService]
 	},
 	{
 		path: '**',

@@ -35,6 +35,7 @@ import { WallDataService } from './services/wall-data.service';
 import { MessageService } from './services/message.service';
 import { AdminDataService } from './services/admin-data.service';
 import { AuthService } from './services/auth.service';
+import { AuthGuardService } from './services/auth-guard.service';
 
 
 import { CarouselModule } from 'ngx-bootstrap';
@@ -93,7 +94,8 @@ import { LoginComponent } from './admin/login/login.component';
     MessageService,
     AuthService,
     AdminDataService,
-    WallDataService
+    WallDataService,
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })
