@@ -1,3 +1,17 @@
-<h1>Login</h1>
-<button class="btn btn-success" (click)="onSignIn()" *ngIf="!authStatus">Login</button>
-<button class="btn btn-danger" (click)="onSignOut()" *ngIf="authStatus">Logout</button>
+<div class="row">
+	<div class="col-5">
+		<img class= "card-logo" src="assets/images/resources/gbc-wall-demo.png">
+	</div>
+	<div class="col-6">
+		<div class="card card-container">
+			<img id="profile-img" class="profile-img-card" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+			<p id="profile-name" class="profile-name-card"></p>
+			<form id="login" class="form-signin">
+			    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+			    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+			   
+			    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" (click)="onSignIn()" *ngIf="!authStatus">Connexion</button>
+			</form>
+		</div>
+	`</div>
+</div>
