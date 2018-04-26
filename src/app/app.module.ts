@@ -31,8 +31,11 @@ import { HomeComponent } from './home/home.component';
 import { WallComponent } from './wall/wall.component';
 
 //Services
+import { WallDataService } from './services/wall-data.service';
 import { MessageService } from './services/message.service';
 import { AdminDataService } from './services/admin-data.service';
+import { AuthService } from './services/auth.service';
+
 
 import { CarouselModule } from 'ngx-bootstrap';
 import { ItemListComponent } from './admin/items/item-list/item-list.component';
@@ -44,9 +47,10 @@ import { CommentEditorComponent } from './admin/comments/comment-editor/comment-
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { MessagesComponent } from './pages/messages/messages.component';
 import { StatsComponent } from './admin/stats/stats.component';
-import { WallDataService } from './services/wall-data.service';
+
 import { WallListItemComponent } from './wall/wall-list-item/wall-list-item.component';
 import { WallListComponent } from './wall/wall-list/wall-list.component';
+import { LoginComponent } from './admin/login/login.component';
 
 
 
@@ -70,7 +74,8 @@ import { WallListComponent } from './wall/wall-list/wall-list.component';
     MessagesComponent,
     StatsComponent,
     WallListComponent,
-    WallListItemComponent
+    WallListItemComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -86,6 +91,7 @@ import { WallListComponent } from './wall/wall-list/wall-list.component';
   ],
   providers: [
     MessageService,
+    AuthService,
     AdminDataService,
     WallDataService
   ],
