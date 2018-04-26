@@ -55,4 +55,12 @@ export class WallDataService {
     return this._http.get(this.apiWall+'/comments?page='+page)
   }
 
+  signIn(){
+    return this._http.get(this.apiWall+'/login');
+  }
+
+  signOut(){
+    return this._http.get(this.apiWall+'/logout');
+  }
+
 }
