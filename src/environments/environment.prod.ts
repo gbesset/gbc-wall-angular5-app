@@ -1,11 +1,16 @@
 export const environment = {
   production: true,
   home : {
-  	title: 'Guillaume Besset',
-  	description: 'Wall Demo'
+  	title: 'Karen.Guiom',
+  	description: 'Alice & Daphné'
   },
   apiURL: {
   	key: 'aSecretKey',
-  	url: 'http://myCoreApp.fr'
+  	url: 'http://localhost:8080',
+    wall:'/api/wall',
+    admin:'/api/admin'
+  },
+  Wall: {
+  	imgPath: 'TODO'
   }
 };

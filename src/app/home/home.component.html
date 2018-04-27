@@ -1,7 +1,7 @@
  
 <home-navbar></home-navbar>
 
- <main role="main" class="container-fluid">
+ <main id="home" role="main" class="container-fluid">
     
     <section id="wallHeader" class="container-fluid homeContainer">
     	<header>
@@ -26,17 +26,17 @@
  	<section id="wallNews" class="container-fluid homeContainer homeContainer-withBG">
  		<header>
  			<h2>Les nouveautés</h2>
- 			<span>Regardez si vous avez vu les derniers ajouts ci dessous</span>
+ 			<p class="msgNextSection">Regardez si vous avez vu les derniers ajouts ci dessous</p>
  		</header>
 
-    <div class="container center row">
+    <div class="center row">
    		 <article class="col-12 col-md-6 col-lg-4">
           <div class="card wallBox">
             <header>
               <h3 class="card-title">Photos</h3>
             </header>
             <div class="card-body">
-              <p class="card-text">derniers clichés</p>
+              <p class="card-text">Derniers clichés</p>
               <ul *ngFor="let p of pictures">
                 <li>{{p.description}}</li>
               </ul>
@@ -50,7 +50,7 @@
               <h3 class="card-title">Videos</h3>
             </header>
             <div class="card-body">
-              <p class="card-text">derniers montages</p>
+              <p class="card-text">Derniers montages</p>
              <ul *ngFor="let v of videos">
               <li>{{v.description}}</li>
             </ul>
@@ -64,7 +64,7 @@
               <h3 class="card-title">Commentaires</h3>
             </header>
             <div class="card-body">
-              <p class="card-text">derniers commentaires</p>
+              <p class="card-text">Derniers commentaires</p>
               <ul *ngFor="let c of comments">
               <li>{{c.author}}: {{c.comment}}</li>
             </ul>
@@ -74,7 +74,7 @@
     </div>
 
         <footer>
-            <p>Déjà tout vu, mais envie de se rendre sur l'un des sites?</p>
+            <p class="msgNextSection">Déjà tout vu, mais envie de se rendre sur l'un des sites?</p>
             <a href="#wallPortfolio" role= "button" class="btn btn-primary btn-wall">Voir les différents sites</a>
         </footer>
 
@@ -83,7 +83,7 @@
 	 <section id="wallPortfolio" class="homeContainer">
         <header class="lowBottom">
             <h2>Nos sites</h2>
-            <span>Pour accéder à nos différents sites de partage</span>
+           <p class="msgNextSection">Pour accéder à nos différents sites de partage</p>
         </header>
            
 

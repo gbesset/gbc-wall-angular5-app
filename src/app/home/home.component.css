@@ -1,14 +1,95 @@
+@charset 'UTF-8';
+@font-face 
+{
+  font-family: 'Irish Grover';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Irish Grover'), local('IrishGrover'), url('/assets/fonts/IrishGrover.woff') format('woff');
+}
+@font-face 
+{
+  font-family: 'La Belle Aurore';
+  font-style: normal;
+  font-weight: 400;
+  src: local('La Belle Aurore'), local('LaBelleAurore'), url('/assets/fonts/LaBelleAurore.woff') format('woff');
+}
+
+#home{
+	margin-top:20px;
+	font-family: 'Open Sans', sans-serif;
+	line-height: 1.85em;
+	color: #888888;
+	font-weight: 300;
+}
+
+a {
+	color: #3B95C6;
+	text-decoration: underline;
+	-moz-transition: color .2s ease-in-out;
+	-webkit-transition: color .2s ease-in-out;
+	-o-transition: color .2s ease-in-out;
+	-ms-transition: color .2s ease-in-out;
+	transition: color .2s ease-in-out;
+}
+
+a:hover {
+	#color: #1B75A6;
+}
+
+a img{
+	border: 0;
+}
+strong, b {
+	font-weight: 600;
+	color: #3e3e3e;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #0193A3;
+	font-family: 'Irish Grover',cursive;
+}
+h1 {
+	font-weight: 300;
+	font-family: 'Irish Grover',cursive;
+	text-align: center;
+} 
+h2, h3, h4, h5, h6{
+	font-weight: 700;
+}
+
+h1 span{
+	font-weight: 700;
+	font-size: 0.8em;
+	margin-left:15px;
+
+}
+.msgNextSection{
+	font-size:1.25em;
+}
+
+.intro{
+	    color: #266BB2;
+		font-size: 0.5em;
+        #font-weight: 300;
+		font-family: 'La Belle Aurore',cursive;
+		#text-align: center;
+  }
+
+
 
 .center {
     margin: auto;
-    border: 3px solid green;
-    padding: 10px;
+    #border: 3px solid green;
+    padding-top: 15px;
+    width:80%;
 }
 
 .homeContainer{
 	background-color:#fafafa;
 	text-align: center;
 	padding: 2em 0 5em 0;
+
+	margin-top: 10px;;
 
 	
 	-webkit-box-shadow: 0px 0px 8px rgba(0,0,0,0.3);
@@ -31,7 +112,6 @@
  	margin: 100px auto;
 }
 
-
 #wallNews{
 
 
@@ -53,9 +133,12 @@
 	text-decoration: none;
 	border: 0;
 	outline: 0;
-
-
 }
+a:hover {
+	text-decoration: none;
+	background: #266BB2;
+}
+
 .wallBox{
 	background: #fff;
     border-radius: 5px 5px 5px 5px;

@@ -1,3 +1,25 @@
 #wallNavBar{
-	background-color: #266BB2 !important;
+	font-family: 'La Belle Aurore',cursive;
+	font-weight: 600;
+	font-size: 1.5em;
+	background-color: #266BB2;
+	cursor: default;
+}
+
+#wallNavBar a{	
+	color: #fff;
+	text-decoration: none;
+}
+
+.navbar-nav {
+    float:none;
+    margin:0 auto;
+    display: block;
+    text-align: center;
+}
+
+.navbar-nav > li {
+    display: inline-block;
+    float:none;
+    margin-left: 20px;
 }
