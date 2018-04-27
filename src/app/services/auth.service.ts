@@ -10,10 +10,10 @@ export class AuthService {
 
   constructor(private _wallService : WallDataService) { }
 
-  signIn(){
+  signIn(email: string, pwd: string){
     return new Promise(
         (resolve, reject) => {
-          this._wallService.signIn().subscribe(
+          this._wallService.signIn(email, pwd).subscribe(
               (data) => {
                 if(data['status'] === "connected"){
                     this.isAuth = true;

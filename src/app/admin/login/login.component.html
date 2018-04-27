@@ -6,11 +6,11 @@
 		<div class="card card-container">
 			<img id="profile-img" class="profile-img-card" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png" />
 			<p id="profile-name" class="profile-name-card"></p>
-			<form id="login" class="form-signin">
-			    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-			    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+			<form id="login" class="form-signin" (ngSubmit)="onSubmit(formLogin)" #formLogin="ngForm">
+			    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" name="inputEmail" ngModel required autofocus>
+			    <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="inputPassword" ngModel required>
 			   
-			    <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit" (click)="onSignIn()" *ngIf="!authStatus">Connexion</button>
+			    <button class="btn btn-lg btn-primary btn-block btn-signin" [disabled]="formLogin.invalid">Connexion</button>
 			</form>
 		</div>
 	`</div>

@@ -55,7 +55,7 @@ export class WallDataService {
     return this._http.get(this.apiWall+'/comments?page='+page)
   }
 
-  signIn(){
+  signIn(email: string, pwd: string){
     return this._http.get(this.apiWall+'/login');
   }
 
