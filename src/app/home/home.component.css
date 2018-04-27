@@ -63,6 +63,11 @@ h1 span{
 	margin-left:15px;
 
 }
+
+h6.card-subtitle{
+	font-family: 'Open Sans', sans-serif;
+}
+
 .msgNextSection{
 	font-size:1.25em;
 }
@@ -117,6 +122,20 @@ h1 span{
 
 }
 
+#wallNews .rss{
+	text-align: left;
+}
+
+#wallNews .rss li{
+	 text-align: left;
+	 list-style-type: none;
+	 display : list-item;
+}
+
+#wallNews .author{
+	text-decoration: underline;
+}
+
 .btn-wall{
 	font-size: 1.5em;
 	letter-spacing: -0.025em;
@@ -134,9 +153,13 @@ h1 span{
 	border: 0;
 	outline: 0;
 }
-a:hover {
+a:hover.btn-wall {
 	text-decoration: none;
 	background: #266BB2;
+}
+
+.rowAbove{
+	margin-top:20px;
 }
 
 .wallBox{
@@ -144,4 +167,24 @@ a:hover {
     border-radius: 5px 5px 5px 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.7);
     padding:2em 2em 2.5em 2em;
+}
+
+#wallFooter { border-top: 1px solid #ccc; clear: both; text-align: center; padding: 10px; color: #aaa; }
+#wallFooter .copyright { 
+	font-family: 'La Belle Aurore', cursive; 
+	font-size: 24px; 
+	font-weight: normal; 
+	color: #266BB2;
+	vertical-align: bottom;
+}
+#wallFooter .version{ 
+	margin-left:30px;
+	font-family: 'Irish Grover'; 
+	color: #266BB2;
+	vertical-align: bottom;
+}
+
+#backOnTop{
+  width:38px;
+  height: 38px;
 }

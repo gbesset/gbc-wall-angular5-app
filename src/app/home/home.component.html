@@ -32,43 +32,31 @@
     <div class="center row">
    		 <article class="col-12 col-md-6 col-lg-4">
           <div class="card wallBox">
-            <header>
               <h3 class="card-title">Photos</h3>
-            </header>
-            <div class="card-body">
-              <p class="card-text">Derniers clichés</p>
-              <ul *ngFor="let p of pictures">
-                <li>{{p.description}}</li>
+              <h6 class="card-subtitle mb-2 text-muted">Derniers clichés</h6>
+              <ul class="rss" *ngFor="let p of pictures">
+                  <li><span class="item"><a href="">{{p.description}}</a></span></li>
               </ul>
-            </div>
           </div>
       </article>
 
        <article class="col-12 col-md-6 col-lg-4">
           <div class="card wallBox">
-            <header>
               <h3 class="card-title">Videos</h3>
-            </header>
-            <div class="card-body">
-              <p class="card-text">Derniers montages</p>
-             <ul *ngFor="let v of videos">
-              <li>{{v.description}}</li>
-            </ul>
-            </div>
+                 <h6 class="card-subtitle mb-2 text-muted">Derniers montages</h6>
+                 <ul class="rss" *ngFor="let v of videos">
+                      <li><span class="item"><a href="">{{v.description}}</a></span></li>
+                </ul>
           </div>
       </article>
 
        <article class="col-12 col-md-6 col-lg-4">
           <div class="card wallBox">
-            <header>
               <h3 class="card-title">Commentaires</h3>
-            </header>
-            <div class="card-body">
-              <p class="card-text">Derniers commentaires</p>
-              <ul *ngFor="let c of comments">
-              <li>{{c.author}}: {{c.comment}}</li>
-            </ul>
-            </div>
+                <h6 class="card-subtitle mb-2 text-muted">Derniers commentaires</h6>
+                <ul class="rss" *ngFor="let c of comments">
+                    <li><span class="author">{{c.author}}</span>: <span class="item"><a href="">{{c.comment}}</a></span></li>
+              </ul>
           </div>
       </article>
     </div>
@@ -87,74 +75,73 @@
         </header>
            
 
-       <div class="container center row">
-         <article class="col-12 col-md-6 col-lg-4">
-            <div class="card wallBox">
-              <header>
-                <h3 class="card-title"><a href="http://www.userName.wordpress.com">Blog</a></h3>
-                <p>Récits de nos voyages, vacances,...</p>
-              </header>
-              <div class="card-body">
-                <a href="http://www.userName.wordpress.com" class="image image-full">
-                 <img src="/assets/images/resources/article_blog.jpg" alt="Blog" class="img-fluid"/>
-               </a>
+       <div class="container center">
+          <div class="row">
+           <article class="col-12 col-md-6 col-lg-4">
+              <div class="card wallBox">
+                <header>
+                  <h3 class="card-title"><a href="http://www.userName.wordpress.com">Blog</a></h3>
+                  <p>Récits de nos voyages, vacances,...</p>
+                </header>
+                <div class="card-body">
+                  <a href="http://www.userName.wordpress.com" class="image image-full">
+                   <img src="/assets/images/resources/article_blog.jpg" alt="Blog" class="img-fluid"/>
+                 </a>
+                </div>
               </div>
-            </div>
-        </article>
+          </article>
 
-        <article class="col-12 col-md-6 col-lg-4">
-            <div class="card wallBox">
-              <header>
-                <h3 class="card-title"><a href="/wall/">Photos</a></h3>
-                <p>Notre mur de photos.</p>
-              </header>
-              <div class="card-body">
-               <a href="/wall/" class="image image-full">
-                 <img src="/assets/images/resources/article_portfolio.png" alt="Photos" class="img-fluid"/>
-                </a>
+          <article class="col-12 col-md-6 col-lg-4">
+              <div class="card wallBox">
+                <header>
+                  <h3 class="card-title"><a href="/wall/">Photos</a></h3>
+                  <p>Notre mur de photos.</p>
+                </header>
+                <div class="card-body">
+                 <a href="/wall/" class="image image-full">
+                   <img src="/assets/images/resources/article_portfolio.png" alt="Photos" class="img-fluid"/>
+                  </a>
+                </div>
               </div>
-            </div>
-        </article>
+          </article>
 
-        <article class="col-12 col-md-6 col-lg-4">
-            <div class="card wallBox">
-              <header>
-                <h3 class="card-title"><a href="/wall/#video">Vidéos</a></h3>
-                <p>Nos montages vidéos.</p>
-              </header>
-              <div class="card-body">
-                <a href="/wall/#video" class="image image-full">
-                 <img src="/assets/images/resources/article_video.jpg" alt="Vidéos" class="img-fluid"/>
-                </a>
+          <article class="col-12 col-md-6 col-lg-4">
+              <div class="card wallBox">
+                <header>
+                  <h3 class="card-title"><a href="/wall/#video">Vidéos</a></h3>
+                  <p>Nos montages vidéos.</p>
+                </header>
+                <div class="card-body">
+                  <a href="/wall/#video" class="image image-full">
+                   <img src="/assets/images/resources/article_video.jpg" alt="Vidéos" class="img-fluid"/>
+                  </a>
+                </div>
               </div>
-            </div>
-        </article>
+          </article>
 
-        <article class="col-12 col-md-6 col-lg-4">
-            <div class="card wallBox">
-              <header>
-                <h3 class="card-title"><a href="http://monSiteDePartage.fr">Partage de fichiers</a></h3>
-                <p>Pour partager des fichiers.</p>
-              </header>
-              <div class="card-body">
-                <a href="http://monSiteDePartage.fr" class="image image-full">
-                  <img src="/assets/images/resources/article_nas.png" alt="Partage de fichiers" class="img-fluid"/>
-                </a>
+        </div>
+        <div class="row rowAbove">
+          <article class="col-12 col-md-6 col-lg-4">
+              <div class="card wallBox">
+                <header>
+                  <h3 class="card-title"><a href="http://monSiteDePartage.fr">Partage de fichiers</a></h3>
+                  <p>Pour partager des fichiers.</p>
+                </header>
+                <div class="card-body">
+                  <a href="http://monSiteDePartage.fr" class="image image-full">
+                    <img src="/assets/images/resources/article_nas.png" alt="Partage de fichiers" class="img-fluid"/>
+                  </a>
+                </div>
               </div>
-            </div>
-        </article>
-      </div>
-
-mettre un max-width...?
+          </article>
+        </div>
+    </div>
 
      </section>
 
      <footer id="wallFooter" class="homeContainer">
-      	 <p>
-            <img src="/assets/images/resources/GibeeCreationLogo.png">
-            <span>&copy; 2018 GBCreation</span><span class="version">V 5.1</span>
-         </p>
-        <p class="float-right"><a href="#">Retour en haut</a></p>
+        <h3><img src="/assets/images/resources/GibeeCreationLogo.png"> <span class="copyright">&copy; 2018</span><span class="version">V 0.1</span></h3>
+        <p id="backOnTop" class="float-right"><a href="#"><img src="/assets/images/resources/top.png"></a></p>
      </footer>
 
 </main>
