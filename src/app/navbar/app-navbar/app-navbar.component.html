@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md navbar-light bg-wall fixed-top">
     <div class="navbar-header"> <!-- ????-->
       <a class="navbar-brand" routerLink="/home">
-        <img src="assets/images/resources/GibeeCreationLogo.png" class="logo"> Karen.guiom
+        Karen.guiom
       </a>
     </div>  
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,25 +14,34 @@
             <a class="nav-link" routerLink="/wall">Wall</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
+            <a class="nav-link" routerLink="/contact">Contact</a>
           </li>
+        
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
           <li class="nav-item dropdown" dropdown>
-            <a dropdownToggle  class="nav-link dropdown-toggle">Filtrer <span class="caret"></span></a>
+            <a dropdownToggle  class="nav-link dropdown-toggle">Critère<span class="caret"></span></a>
             <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <li role="menuitem"><a class="dropdown-item" href="#">Photos</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Vidéos</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">...</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Photos/vidéos</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Commentaires</a></li>
+              <li role="menuitem"><a class="dropdown-item" href="#">Auteur</a></li>
               <li class="divider dropdown-divider"></li>
               <li role="menuitem"><a class="dropdown-item" href="#">Another one</a></li>
             </ul>
           </li>
-           <li class="nav-item active">
+          <li>
+            <form class="form-inline my-2 my-lg-0">
+              <input class="form-control mr-sm-2" type="text" placeholder="rechercher..." aria-label="Search">
+              <span class="input-group-btn">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
+                </span>
+              
+            </form>
+          </li>
+          <li></li>
+          <li class="admin nav-item active">
             <a class="nav-link" routerLink="/admin">Admin</a>
           </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-          <input class="form-control mr-sm-2" type="text" placeholder="rechercher" aria-label="Search">
-          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Rechercher</button>
-        </form>
+      </ul>
 	</div>
 </nav>

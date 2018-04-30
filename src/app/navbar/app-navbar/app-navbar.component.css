@@ -1,7 +1,36 @@
-.logo{
-	max-width: 80px;
+.navbar-brand{
+	font-family: 'Irish Grover',cursive;
+	font-weight: 400 !important;
+    color: #266BB2 ;
+}
+
+.bg-wall{
+	box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+}
+.navbar-light .navbar-nav .nav-link{
+    color: #555555;
 }
 .bg-wall{
-    color: #777777;
-	background-color: #d4d4d4;
+	background-color: #FAFAFA;
+}
+.navbar-nav .active{
+	background-color: #e5e5e5;
+	box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.125);
+}
+
+.admin{
+	margin-left:15px;
+	margin-right:10px;
+}
+
+.btn-outline-primary {
+	border-bottom-color:#266BB2 ;
+	border-left-color:#266BB2 ;
+	border-right-color:#266BB2 ;
+	border-top-color: #266BB2 ;
+	color: #266BB2 ;
+}
+.btn-outline-primary:hover {
+	background-color: #266BB2 ;
+	color:white;
 }
