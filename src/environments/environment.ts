@@ -5,6 +5,10 @@
 
 export const environment = {
   production: false,
+  versions:{
+    angular:'v 0.1',
+    java:'v 0.1'
+  },
   home : {
   	title: 'Guillaume Besset',
   	description: 'Wall Demo'

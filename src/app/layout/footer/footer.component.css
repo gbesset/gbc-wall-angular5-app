@@ -1,0 +1,35 @@
+#wallFooter {
+	clear: both;
+	text-align: center;
+	padding: 10px;
+	color: #aaa;
+}
+#wallFooter .copyright { 
+	margin-left:15px;
+	font-family: 'La Belle Aurore', cursive; 
+	font-size: 24px; 
+	font-weight: normal; 
+	color: #266BB2;
+	vertical-align: bottom;
+}
+
+#wallFooter .github{
+	margin-left:15px;
+	max-width: 30px;
+}
+
+#wallFooter .appVersions{ 
+	float: right;
+}
+
+#wallFooter .img-icon{
+	max-width: 30px;
+}
+
+#wallFooter .version{ 
+	margin-left:20px;
+	margin-right: 50px;
+	font-family: 'Irish Grover'; 
+	color: #266BB2;
+	vertical-align: bottom;
+}

@@ -52,6 +52,8 @@ import { StatsComponent } from './admin/stats/stats.component';
 import { WallListItemComponent } from './wall/wall-list-item/wall-list-item.component';
 import { WallListComponent } from './wall/wall-list/wall-list.component';
 import { LoginComponent } from './admin/login/login.component';
+import { FooterComponent } from './layout/footer/footer.component';
+import { HeaderComponent } from './layout/header/header.component';
 
 
 
@@ -76,7 +78,9 @@ import { LoginComponent } from './admin/login/login.component';
     StatsComponent,
     WallListComponent,
     WallListItemComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

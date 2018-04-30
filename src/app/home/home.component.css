@@ -169,22 +169,8 @@ a:hover.btn-wall {
     padding:2em 2em 2.5em 2em;
 }
 
-#wallFooter { border-top: 1px solid #ccc; clear: both; text-align: center; padding: 10px; color: #aaa; }
-#wallFooter .copyright { 
-	font-family: 'La Belle Aurore', cursive; 
-	font-size: 24px; 
-	font-weight: normal; 
-	color: #266BB2;
-	vertical-align: bottom;
-}
-#wallFooter .version{ 
-	margin-left:30px;
-	font-family: 'Irish Grover'; 
-	color: #266BB2;
-	vertical-align: bottom;
-}
-
 #backOnTop{
   width:38px;
   height: 38px;
+  padding-right: 100px;
 }
