@@ -1,6 +1,8 @@
-<img class="card-img-top img-fluid" src="{{ path }}/{{item.file }}" alt="{{ item.description }}">
-
-<div class="card-block"><h1>{{indexOfPost}}</h1>
-	<h4 class="card-title">{{item.description}}</h4>
-	<p class="card-text">{{item.id}} {{item.createdAt}}</p>
-</div>
+<article id="{{item.id}}" class="myItem">
+	<a href="/wall/{{item.id}}">
+		<img class="card-img-top img-fluid" src="{{ path }}/{{item.file }}" alt="{{ item.description }}">		
+	</a>
+	<span class="date">{{item.createdAt | date:"dd/MM/yyyy" }}</span>
+	<span class="description">{{item.description}}</span>
+	<span class="nb-comments"> xx <i class="icon-comment icon-white"></i></span>
+</article>
