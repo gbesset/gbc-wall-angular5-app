@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
 //Forms
-import { FormsModule }   from '@angular/forms';
+import { FormsModule, ReactiveFormsModule }   from '@angular/forms';
 //DatePicker
 import { BsDatepickerModule } from 'ngx-bootstrap';
 
@@ -85,6 +85,7 @@ import { HeaderComponent } from './layout/header/header.component';
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),

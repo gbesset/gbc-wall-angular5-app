@@ -10,36 +10,37 @@
 
       <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/wall">Wall</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/contact">Contact</a>
           </li>
         
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li class="nav-item dropdown" dropdown>
-            <a dropdownToggle  class="nav-link dropdown-toggle">Critère<span class="caret"></span></a>
-            <ul *dropdownMenu class="dropdown-menu" role="menu">
-              <li role="menuitem"><a class="dropdown-item" href="#">Photos/vidéos</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Commentaires</a></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Auteur</a></li>
-              <li class="divider dropdown-divider"></li>
-              <li role="menuitem"><a class="dropdown-item" href="#">Another one</a></li>
-            </ul>
-          </li>
-          <li>
-            <form class="form-inline my-2 my-lg-0">
-              <input class="form-control mr-sm-2" type="text" placeholder="rechercher..." aria-label="Search">
-              <span class="input-group-btn">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
-                </span>
-              
-            </form>
-          </li>
+          <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm" (ngSubmit)="onSubmitForm()">
+            <li class="nav-item dropdown" dropdown>
+              <a dropdownToggle  class="nav-link dropdown-toggle">Critère<span class="caret"></span></a>
+              <ul *dropdownMenu class="dropdown-menu" role="menu">
+                <li role="menuitem"><a class="dropdown-item" href="#">Photos/vidéos</a></li>
+                <li role="menuitem"><a class="dropdown-item" href="#">Commentaires</a></li>
+                <li role="menuitem"><a class="dropdown-item" href="#">Auteur</a></li>
+                <li class="divider dropdown-divider"></li>
+                <li role="menuitem"><a class="dropdown-item" href="#">Another one</a></li>
+              </ul>
+            </li>
+            
+            <li>  
+                <input class="form-control mr-sm-2" type="text" placeholder="rechercher..." aria-label="Search" formControlName="searchElement">
+                <span class="input-group-btn">
+                      <button class="btn btn-outline-primary my-2 my-sm-0" [disabled]="searchForm.invalid">Rechercher</button>
+                </span>              
+            </li>
+          </form>
+
           <li></li>
-          <li class="admin nav-item active">
+          <li class="admin nav-item" routerLinkActive="active">
             <a class="nav-link" routerLink="/admin">Admin</a>
           </li>
       </ul>

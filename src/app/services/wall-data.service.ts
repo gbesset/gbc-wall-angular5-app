@@ -19,10 +19,30 @@ export class WallDataService {
   ///https://developer.okta.com/blog/2017/12/04/basic-crud-angular-and-spring-boot
   private apiWall : string = environment.apiURL.url + environment.apiURL.wall;
 
+  private isModeSearch = false;
+  private searchUrl = '/description';
+
   constructor(private _http: HttpClient, private messageService: MessageService) { }
 
 	private log(message: string) {
     this.messageService.add('WallDataService: ' + message);
+  }
+
+
+  setDefaultSearch(){
+    this.setDescriptionSearch();
+  }
+
+  setDescriptionSearch(){
+    this.searchUrl = '/desciption';
+  }
+
+  setCommentSearch(){
+    this.searchUrl = '/comment';
+  }
+
+  setAuthorSearch(){
+    this.searchUrl = '/author';
   }
 
 
@@ -51,8 +71,12 @@ export class WallDataService {
   }
 
   getComments(page:number){
-    this.log(new Date()+ ' : call /commennts?page='+page);
+    this.log(new Date()+ ' : call /comments?page='+page);
     return this._http.get(this.apiWall+'/comments?page='+page)
+  }
+
+  search(page: number, searchElem: string){
+    return this._http.get(this.apiWall+'/search'+this.searchUrl+'/'+searchElem+'?page='+page) 
   }
 
   signIn(email: string, pwd: string){
