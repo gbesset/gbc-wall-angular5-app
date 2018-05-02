@@ -80,7 +80,7 @@ export class WallDataService {
   }
 
   signIn(email: string, pwd: string){
-    return this._http.get(this.apiWall+'/login');
+    return this._http.post(this.apiWall+'/login',email);
   }
 
   signOut(){
