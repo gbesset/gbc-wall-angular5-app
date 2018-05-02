@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 //HTTP
-//import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 
 //Forms
@@ -54,6 +53,7 @@ import { WallListComponent } from './wall/wall-list/wall-list.component';
 import { LoginComponent } from './admin/login/login.component';
 import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
+import { WallListItemViewComponent } from './wall/wall-list-item-view/wall-list-item-view.component';
 
 
 
@@ -80,7 +80,8 @@ import { HeaderComponent } from './layout/header/header.component';
     WallListItemComponent,
     LoginComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    WallListItemViewComponent
   ],
   imports: [
     BrowserModule,

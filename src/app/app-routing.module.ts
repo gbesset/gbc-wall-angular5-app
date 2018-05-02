@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { WallComponent } from './wall/wall.component';
+import { WallListItemViewComponent } from './wall/wall-list-item-view/wall-list-item-view.component';;
 import { AdminComponent } from './admin/admin.component';
 import { LoginComponent } from './admin/login/login.component';
 import { ItemEditComponent } from './admin/items/item-edit/item-edit.component';
@@ -25,6 +26,10 @@ const routes: Routes = [
 	{
 		path: 'wall',
 		component: WallComponent
+	},
+	{
+		path: 'wall/:id',
+		component: WallListItemViewComponent
 	},
 	{
 		path: 'login',

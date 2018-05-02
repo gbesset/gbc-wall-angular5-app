@@ -1,0 +1,15 @@
+
+<div class="container">
+	<div class="card" >
+		<span >Le {{item.createdAt | date:"dd/MM/yyyy" }}: {{item.description}}</span>
+	   <img class="card-img-top" src="{{ path }}/{{item.file }}" alt="{{ item.description }}">	
+	  <div class="card-body">
+	    <p class="card-text">{{item.description}}</p>
+	  </div>
+	</div>
+
+
+	<h3>Commentaires<span class="badge badge-secondary">{{item.nbLike}}</span></h3>
+
+	<button (click)="goBack()">go back</button>
+</div>

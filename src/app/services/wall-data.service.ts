@@ -66,12 +66,15 @@ export class WallDataService {
 
 /****************************     Wall    ******************************/
   getItems(page:number){
-  	this.log(new Date()+ ' : call /items?page='+page);
+  	//this.log(new Date()+ ' : call /items?page='+page);
   	return this._http.get(this.apiWall+'/items?page='+page)
   }
 
+  getItemId(id: number){
+     return this._http.get(this.apiWall+'/item/'+id)
+  }
+
   getComments(page:number){
-    this.log(new Date()+ ' : call /comments?page='+page);
     return this._http.get(this.apiWall+'/comments?page='+page)
   }
 
@@ -80,7 +83,7 @@ export class WallDataService {
   }
 
   signIn(email: string, pwd: string){
-    return this._http.post(this.apiWall+'/login',email);
+    return this._http.post(this.apiWall+'/login', email);
   }
 
   signOut(){
