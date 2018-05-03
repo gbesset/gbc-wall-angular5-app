@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WallDataService } from '../../services/wall-data.service';
 import { Item } from '../../contract/item';
+import { Comment } from '../../contract/comment';
 
 import { environment } from '../../../environments/environment';
 
@@ -17,7 +18,8 @@ export class WallListItemViewComponent implements OnInit {
   path: string = environment.Wall.imgPath;
 
   private item: Item;
-  private comments: Array<any>;
+  private comments: Array<Comment>;
+  private nbComment:number = 0;
   errorApi: string = '';
 
   constructor(private route: ActivatedRoute, 
@@ -35,7 +37,9 @@ export class WallListItemViewComponent implements OnInit {
   	const id = +this.route.snapshot.paramMap.get('id');
   	this._wallService.getItemId(id).subscribe(
   		(data) => {
-		  this.item = <Item>data['item'];
+          this.item = data['item'];
+          this.comments = data['item']['comments'];
+          this.nbComment = this.comments.length;
         },
    		(error) => {
   			console.log(error.error.message);
@@ -51,6 +55,7 @@ export class WallListItemViewComponent implements OnInit {
 
   	);
   }
+
 
 goBack(): void {
   this.location.back();

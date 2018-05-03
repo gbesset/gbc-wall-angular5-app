@@ -1,15 +1,25 @@
 
-<div class="container">
-	<div class="card" >
-		<span >Le {{item.createdAt | date:"dd/MM/yyyy" }}: {{item.description}}</span>
-	   <img class="card-img-top" src="{{ path }}/{{item.file }}" alt="{{ item.description }}">	
-	  <div class="card-body">
-	    <p class="card-text">{{item.description}}</p>
-	  </div>
+<app-navbar></app-navbar> 
+<div class="container-fluid commentView">
+	<div class="row">
+		<div class="col-lg-9 col-md-12 pictureBar">
+			<div class="card" >
+			   <img class="card-img-top img-rounded" src="{{ path }}/{{item.file }}" alt="{{ item.description }}">	
+			  <div class="card-body">
+			  		<button (click)="goBack()" class="center">Retour</button>
+			    	<span class="card-text">Le {{item.createdAt | date:"dd/MM/yyyy" }}: {{item.description}}</span>
+			  </div>
+			</div>
+		</div>
+		<div class ="col-lg-3 col-md-12 commentBar">
+			<h3>Commentaires<span class="badge badge-secondary">{{nbComment}}</span></h3>
+			<div *ngFor="let c of comments" class="comments">
+				<div id="{{c.id}}" class="comment">
+					<span class="author">{{c.author}}</span><span class="date">{{c.createdAt | date:"dd/MM/yyyy"}}</span>
+					<p class="">{{c.comment}}</p>
+
+			</div>
+		</div>
 	</div>
-
-
-	<h3>Commentaires<span class="badge badge-secondary">{{item.nbLike}}</span></h3>
-
-	<button (click)="goBack()">go back</button>
+	
 </div>

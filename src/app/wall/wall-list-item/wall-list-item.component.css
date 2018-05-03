@@ -30,10 +30,6 @@ img {
     vertical-align: middle;
 }
 
-.myItem span:hover{
-	color:red;
-}
-
 .myItem .date, .myItem .description, .myItem .nb-comments {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
     bottom: 0;

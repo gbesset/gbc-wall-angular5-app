@@ -1,0 +1,65 @@
+.commentView{
+    margin-top:15px;
+}
+
+.pictureBar img{
+    cursor: pointer;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067)
+}
+.commentBar{
+    background-color: #FAFAFA;
+    background-image: linear-gradient(to bottom, #FFFFFF, #F2F2F2);
+    background-repeat: repeat-x;
+    border: 1px solid #D4D4D4;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+}
+.commentBar h3{
+    font-family: 'Irish Grover',cursive, Arial, Helvetica, sans-serif ;
+    font-size: 1.3em;
+    text-align: center;
+    margin: 0 auto;
+    color: #0193A3;
+    font-weight: 700;
+}
+.badge-secondary{
+    background-color: #266BB2;
+    margin-left: 20px;
+}
+
+.comments{
+    text-align: left;
+    padding: 6px;
+    text-align: left;
+}
+.comment{
+    border: 1px solid #D4D4D4;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.067);
+    border-radius: 4px 4px 4px 4px;
+    width:100%;
+    margin: 0 auto 10px;
+    overflow: hidden;
+
+}
+.comment .author{
+    margin-left: 2px;
+    color:#777777;
+    border-bottom: 2px solid #777777;
+    font-size: large;
+    font-weight: bold;
+    width: 100%;
+}
+
+.comment .date {
+    float: right;
+    font-size: x-small;
+    font-weight: normal;
+    line-height: 15px;
+    padding-bottom: 10px;
+}
+
+.comment p{
+    margin-left: 5px;
+    padding-top:5px;
+}
