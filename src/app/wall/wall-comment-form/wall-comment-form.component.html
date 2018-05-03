@@ -1,0 +1,11 @@
+<form [formGroup]="commentForm" (ngSubmit)="onSubmitForm()">
+	<div class="form-group">
+		<input id="author" type="text" placeholder="Auteur" formControlName="author" class="inputAuthor">
+	</div>
+	<div class="form-group">
+		<textarea id="comment" type="text" formControlName="comment" class="inputComment"></textarea>
+	</div>
+	<span class="input-group-btn">
+       <button class="btn btn-outline-primary my-2 my-sm-0" [disabled]="commentForm.invalid">Ajouter</button>
+    </span>          
+</form>

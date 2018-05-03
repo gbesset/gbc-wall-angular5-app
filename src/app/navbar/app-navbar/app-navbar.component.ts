@@ -38,5 +38,6 @@ export class AppNavbarComponent implements OnInit {
   	 		//ou remonter la liste dans le service comme dans oc-blog.... et pas dans wall.component
   	 	}
   	 	);
+       console.log("netoyer le formulaire et rafrachir les comments");
   }
 }

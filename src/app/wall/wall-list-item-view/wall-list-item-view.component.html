@@ -12,6 +12,11 @@
 			</div>
 		</div>
 		<div class ="col-lg-3 col-md-12 commentBar">
+			<h3>Ajouter un Commentaire</h3>
+			<div class="commentForm">
+				<app-wall-comment-form [itemId]="item.id"></app-wall-comment-form>
+			</div>
+
 			<h3>Commentaires<span class="badge badge-secondary">{{nbComment}}</span></h3>
 			<div *ngFor="let c of comments" class="comments">
 				<div id="{{c.id}}" class="comment">

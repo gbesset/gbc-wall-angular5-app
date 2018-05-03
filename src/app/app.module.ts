@@ -57,6 +57,7 @@ import { WallListItemViewComponent } from './wall/wall-list-item-view/wall-list-
 
 //VIRER
 import { TestComponent } from './pages/test/test.component';
+import { WallCommentFormComponent } from './wall/wall-comment-form/wall-comment-form.component';
 
 
 @NgModule({
@@ -84,7 +85,8 @@ import { TestComponent } from './pages/test/test.component';
     FooterComponent,
     HeaderComponent,
     WallListItemViewComponent,
-    TestComponent
+    TestComponent,
+    WallCommentFormComponent
   ],
   imports: [
     BrowserModule,

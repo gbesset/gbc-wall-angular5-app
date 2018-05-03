@@ -90,4 +90,19 @@ export class WallDataService {
     return this._http.get(this.apiWall+'/logout');
   }
 
+  addComment(id:number, author:string, comment:string){
+     //TODO
+     console.log("ajout sur le item id "+id+ " par "+author+ " du comment: "+comment);
+     return new Promise(
+      (resolve, reject)=> {
+        setTimeout(
+          () => {
+            
+            resolve(true);
+          },2000  
+        );
+      }
+    );
+  }
+
 }
