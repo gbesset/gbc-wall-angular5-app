@@ -1,0 +1,12 @@
+h3 a{
+	font-family: 'Irish Grover',cursive, Arial, Helvetica, sans-serif;
+	color: #0088cc;
+    text-decoration: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+h2{
+	font-family: 'Irish Grover',cursive, Arial, Helvetica, sans-serif;
+    color: #0193A3;
+    font-weight: 700;
+}
