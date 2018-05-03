@@ -6,7 +6,7 @@
 export const environment = {
   production: false,
   versions:{
-    angular:'v 0.1',
+    angular:'v 0.1.2',
     java:'v 0.1'
   },
   home : {

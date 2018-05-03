@@ -55,6 +55,8 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { WallListItemViewComponent } from './wall/wall-list-item-view/wall-list-item-view.component';
 
+//VIRER
+import { TestComponent } from './pages/test/test.component';
 
 
 @NgModule({
@@ -81,7 +83,8 @@ import { WallListItemViewComponent } from './wall/wall-list-item-view/wall-list-
     LoginComponent,
     FooterComponent,
     HeaderComponent,
-    WallListItemViewComponent
+    WallListItemViewComponent,
+    TestComponent
   ],
   imports: [
     BrowserModule,

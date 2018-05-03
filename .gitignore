@@ -2,6 +2,7 @@
 
 _mesNotes.md
 src/assets/__img_wall/
+src/environments/environment.prod.ts
 
 # compiled output
 /dist
@@ -44,3 +45,4 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
+src/environments/environment.prod.ts
