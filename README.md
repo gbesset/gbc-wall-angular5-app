@@ -9,3 +9,10 @@ Todo...
 * Generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
 * [Boostrap 4.0.0](https://getbootstrap.com/docs/4.0/getting-started/introduction/)
 * [ngx-boostrap 2.0.2](https://valor-software.com/ngx-bootstrap/#/getting-started)
+
+
+## Livraison
+Tag la version en fonction milestone
+ng build --prod --aot=false
+Livraison sur server Unix
+Modifier la version java et angular dans environment.ts et environent.prod.ts
