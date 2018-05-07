@@ -1,12 +1,16 @@
-<div class="grid">
-	<div class="row-fluid">
-		<div id="column" class="column">
-			<div  *ngFor="let it of items; let i =index">
-	 			<app-wall-list-item  [indexOfPost]="i" [item]="it"></app-wall-list-item>
-	 		</div>
-	 	</div>
-	</div>
-</div>
+ <ng-masonry-grid 
+                    [masonryOptions]="{ transitionDuration: '0.8s', gutter: 5 }" 
+                    [useAnimation]="true"
+                    [useImagesLoaded]="true"
+                    [scrollAnimationOptions]="{ animationEffect: 'effect-4', minDuration : 0.4, maxDuration : 0.7 }">
+
+		      <!-- Masonry Grid Item -->
+		      <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let it of items; let i = index;"> 
+		       		<!-- Grid Content  -->
+		        	<app-wall-list-item  [indexOfPost]="i" [item]="it"></app-wall-list-item>
+		      </ng-masonry-grid-item>
+</ng-masonry-grid>
+
 <button type="button" class="btn  btn-lg btn-block btn-secondary" (click)="onPageMore(page,$event)">Plus...</button>
 
 

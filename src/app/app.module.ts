@@ -20,6 +20,9 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 //Tabs from ngx-bootstrap
 import { TabsModule } from 'ngx-bootstrap';
 
+// Import NgMasonryGridModule       https://www.npmjs.com/package/ng-masonry-grid
+import { NgMasonryGridModule } from 'ng-masonry-grid';
+
 //Components
 import { HomeNavbarComponent } from './navbar/home-navbar/home-navbar.component';
 import { AppNavbarComponent } from './navbar/app-navbar/app-navbar.component';
@@ -99,7 +102,8 @@ import { WallCommentFormComponent } from './wall/wall-comment-form/wall-comment-
     ModalModule.forRoot(),
     CarouselModule.forRoot(),
     TabsModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    NgMasonryGridModule
   ],
   providers: [
     MessageService,

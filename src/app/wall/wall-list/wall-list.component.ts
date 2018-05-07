@@ -4,7 +4,8 @@ import { Item } from '../../contract/item';
 @Component({
   selector: 'app-wall-list',
   templateUrl: './wall-list.component.html',
-  styleUrls: ['./wall-list.component.css']
+  styleUrls: ['./wall-list.component.css',
+              '../../../../node_modules/ng-masonry-grid/ng-masonry-grid.css']
 })
 export class WallListComponent implements OnInit {
 
