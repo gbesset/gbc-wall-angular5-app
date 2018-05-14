@@ -6,39 +6,39 @@ import { Stats } from '../../contract/stats';
 
 
 @Component({
-  selector: 'app-stats',
-  templateUrl: './stats.component.html',
-  styleUrls: ['./stats.component.css']
+    selector: 'app-stats',
+    templateUrl: './stats.component.html',
+    styleUrls: ['./stats.component.css']
 })
 export class StatsComponent implements OnInit {
 
-  adminSubscription: Subscription;
+    adminSubscription: Subscription;
 
-  private loading: boolean = false;
-  private results: Stats;
+    private loading: boolean = false;
+    private results: Stats;
 
-  constructor(private _adminService: AdminDataService) { }
+    constructor(private _adminService: AdminDataService) { }
 
-  ngOnInit() {
-  	this.getStats();
-  }
+    ngOnInit() {
+        this.getStats();
+    }
 
-  getStats(){
-  	this.loading = true;
-  	this.adminSubscription = this._adminService.getStats().subscribe( 
-        (data) => {
-  					this.loading = false;
-  					this.results = <Stats>data;
-  				}
-       );
-  }
+    getStats(){
+        this.loading = true;
+        this.adminSubscription = this._adminService.getStats().subscribe(
+            (data) => {
+                this.loading = false;
+                this.results = <Stats>data;
+            }
+        );
+    }
 
-  ngOnDestroy() {
-    //this.adminSubscription.unsubscribe();
-  }
+    ngOnDestroy() {
+        //this.adminSubscription.unsubscribe();
+    }
 
-  getNbPicture(): string{
-    return 'youhou';
-  }
+    getNbPicture(): string{
+        return 'youhou';
+    }
 
 }

@@ -6,51 +6,51 @@ import { AuthService } from '../../services/auth.service';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup;
-  authStatus: boolean;
-  
-  constructor(private formBuilder:FormBuilder, private _authService: AuthService, private _router:Router) { }
+    loginForm: FormGroup;
+    authStatus: boolean;
 
-  ngOnInit() {
-  	this.authStatus = this._authService.isAuth;
-    this.initForms();
-  }
+    constructor(private formBuilder:FormBuilder, private _authService: AuthService, private _router:Router) { }
 
-  initForms(){
-    this.loginForm = this.formBuilder.group(
-        {
-          email: ['', [Validators.required,  Validators.email]],
-          password: ['', Validators.required]
-        }
-      );
-  }
+    ngOnInit() {
+        this.authStatus = this._authService.isAuth;
+        this.initForms();
+    }
 
-
-   onSubmitForm(){
-      const formValue = this.loginForm.value;
-      const email = formValue['email'];
-      const pwd = formValue['password'];
-      this._authService.signIn(email, pwd).then(
-        () => {
-          this.authStatus = this._authService.isAuth;
-          this._router.navigate(['admin']);
-        },
-        (error)=>{
-          console.log('erreur onSubmitForm')
-        }
-      );
-  }
+    initForms(){
+        this.loginForm = this.formBuilder.group(
+            {
+                email: ['', [Validators.required,  Validators.email]],
+                password: ['', Validators.required]
+            }
+        );
+    }
 
 
-  onSignOut(){
-  	this._authService.signOut();
-  	this.authStatus = this._authService.isAuth;
-  }
+    onSubmitForm(){
+        const formValue = this.loginForm.value;
+        const email = formValue['email'];
+        const pwd = formValue['password'];
+        this._authService.signIn(email, pwd).then(
+            () => {
+                this.authStatus = this._authService.isAuth;
+                this._router.navigate(['admin']);
+            },
+            (error)=>{
+                console.log('erreur onSubmitForm')
+            }
+        );
+    }
+
+
+    onSignOut(){
+        this._authService.signOut();
+        this.authStatus = this._authService.isAuth;
+    }
 
 }

@@ -4,62 +4,62 @@ import { Item } from '../../../contract/item';
 
 
 @Component({
-  selector: 'app-item-form',
-  templateUrl: './item-form.component.html',
-  styleUrls: ['./item-form.component.css']
+    selector: 'app-item-form',
+    templateUrl: './item-form.component.html',
+    styleUrls: ['./item-form.component.css']
 })
 
 export class ItemFormComponent {
 
-  type = {
-  	"PICTURE": "",
-    "VIDEO": "http://",
-    "VIDEO_YOUTUBE": "http://www.youtube.com/embed/",
-  	"VIDEO_VIMEO" : "http://player.vimeo.com/video/"
-  };
+    type = {
+        "PICTURE": "",
+        "VIDEO": "http://",
+        "VIDEO_YOUTUBE": "http://www.youtube.com/embed/",
+        "VIDEO_VIMEO" : "http://player.vimeo.com/video/"
+    };
 
-  submitted = false;
-  datepickerModel: Date;
+    submitted = false;
+    datepickerModel: Date;
 
-  @Input() item: Item;
-  
-  powers = ['Une liste', 'Deroulant', 'je sais pas', 'A definir?'];
+    @Input() item: Item;
 
-  constructor() { }
+    powers = ['Une liste', 'Deroulant', 'je sais pas', 'A definir?'];
 
-  newItem() {
-    this.item = new Item();
-    this.item.type="PICTURE";
-    this.submitted = false;
-    //this.item.createdAt = new Date();
+    constructor() { }
 
-    console.log(this.item.createdAt);
-}
+    newItem() {
+        this.item = new Item();
+        this.item.type="PICTURE";
+        this.submitted = false;
+        //this.item.createdAt = new Date();
 
-   setPicture(): void{
-    
-    if(typeof this.item.id == 'undefined'){
-      console.log("new id donc on change le type");
-      this.item.type="PICTURE";
-    }
-  }
-
-  setVideo(): void{
-     if(typeof this.item.id == 'undefined'){
-        console.log("new id donc on change le type");
-        this.item.type="VIDEO";
+        console.log(this.item.createdAt);
     }
 
-  }
-  onSubmit() {
-  	this.submitted = true;
-  }
+    setPicture(): void{
 
-  onSelect(type: string): void {
-  	this.item.path = this.type[type];
-}
+        if(typeof this.item.id == 'undefined'){
+            console.log("new id donc on change le type");
+            this.item.type="PICTURE";
+        }
+    }
 
-  // TODO: Remove this when we're done
-  get diagnostic() { return JSON.stringify(this.item); }
+    setVideo(): void{
+        if(typeof this.item.id == 'undefined'){
+            console.log("new id donc on change le type");
+            this.item.type="VIDEO";
+        }
+
+    }
+    onSubmit() {
+        this.submitted = true;
+    }
+
+    onSelect(type: string): void {
+        this.item.path = this.type[type];
+    }
+
+    // TODO: Remove this when we're done
+    get diagnostic() { return JSON.stringify(this.item); }
 
 }

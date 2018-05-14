@@ -8,56 +8,56 @@ import { Comment } from '../contract/comment';
 
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
- 
-  siteTitle: string = environment.home.title;
-  siteDescription: string = environment.home.description;
 
-  carousel: any[];
+    siteTitle: string = environment.home.title;
+    siteDescription: string = environment.home.description;
 
-  pictures: Item[];
-  videos: Item[];
-  comments: Comment[];
+    carousel: any[];
 
-  constructor(private _dataService: WallDataService) { }
+    pictures: Item[];
+    videos: Item[];
+    comments: Comment[];
 
-  ngOnInit() {
-  	this.getCarousel();
-    this.getLastPictures();
-    this.getLastVideos();
-    this.getLastComments();
-  }
+    constructor(private _dataService: WallDataService) { }
 
-  getCarousel(): void{
-	  this._dataService.getCarousel().subscribe(
-        headerPict => this.carousel = headerPict
+    ngOnInit() {
+        this.getCarousel();
+        this.getLastPictures();
+        this.getLastVideos();
+        this.getLastComments();
+    }
+
+    getCarousel(): void{
+        this._dataService.getCarousel().subscribe(
+            headerPict => this.carousel = headerPict
         );
-  }
+    }
 
-  getLastPictures(): void{
-    this._dataService.getLastPictures().subscribe(
-        (json) => {
-          this.pictures = json['content'];
-        }
-      );
-  }
-  getLastVideos(): void{
-    this._dataService.getLastVideos().subscribe(
-      (json) => {
-              this.videos = json['content'];
+    getLastPictures(): void{
+        this._dataService.getLastPictures().subscribe(
+            (json) => {
+                this.pictures = json['content'];
             }
-      );
-  }
-  getLastComments(): void{
-    this._dataService.getLastComments().subscribe(
-       (json) => {
-              this.comments = json['content'];
+        );
+    }
+    getLastVideos(): void{
+        this._dataService.getLastVideos().subscribe(
+            (json) => {
+                this.videos = json['content'];
             }
-      );
-  }
+        );
+    }
+    getLastComments(): void{
+        this._dataService.getLastComments().subscribe(
+            (json) => {
+                this.comments = json['content'];
+            }
+        );
+    }
 
 }

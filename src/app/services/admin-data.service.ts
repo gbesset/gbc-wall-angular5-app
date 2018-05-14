@@ -20,37 +20,37 @@ import { Stats } from '../contract/stats';
 @Injectable()
 export class AdminDataService {
 
-  private apiWall : string = environment.apiURL.url + environment.apiURL.wall;
-  private apiAdminWall : string = environment.apiURL.url + environment.apiURL.admin;
+    private apiWall : string = environment.apiURL.url + environment.apiURL.wall;
+    private apiAdminWall : string = environment.apiURL.url + environment.apiURL.admin;
 
 
-  constructor(private _http: HttpClient) { 
+    constructor(private _http: HttpClient) {
 
-  }
-
-
-  /* Retrieve information */
-   getItems(page:number){
-    return this._http.get(this.apiWall+'/items?page='+page)
-  }
-
-  getStats(){
-     return this._http.get(this.apiWall+'/count')
-  }
-
-  getComments(page: number){
-    return this._http.get(this.apiWall+'/comments?page='+page)
-  }
-
-   getItemId(id: number){
-  	 return this._http.get(this.apiWall+'/item/'+id)
-  }
-
-   getCommentId(id: number){
-     return this._http.get(this.apiWall+'/comment/'+id) 
-  }
+    }
 
 
-  /* Update Information */
+    /* Retrieve information */
+    getItems(page:number){
+        return this._http.get(this.apiWall+'/items?page='+page)
+    }
+
+    getStats(){
+        return this._http.get(this.apiWall+'/count')
+    }
+
+    getComments(page: number){
+        return this._http.get(this.apiWall+'/comments?page='+page)
+    }
+
+    getItemId(id: number){
+        return this._http.get(this.apiWall+'/item/'+id)
+    }
+
+    getCommentId(id: number){
+        return this._http.get(this.apiWall+'/comment/'+id)
+    }
+
+
+    /* Update Information */
 
 }
