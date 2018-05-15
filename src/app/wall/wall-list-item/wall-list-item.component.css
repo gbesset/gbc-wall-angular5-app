@@ -10,29 +10,29 @@
 }
 
 .myItem img {
-    /*box-shadow: 1px 1px 5px #999999;*/
+    box-shadow: 1px 1px 5px #999999;
 }
 
 .myItem img, .myItem video {
-    /*cursor: pointer;
+    cursor: pointer;
     position: relative;
-    width: 100%;*/
+    width: 100%;
 }
 .myItem img:hover, .myItem video:hover {
-   /* -moz-box-shadow: 2px 2px 6px #FFFFBC;
+    -moz-box-shadow: 2px 2px 6px #FFFFBC;
     -webkit-box-shadow: 2px 2px 6px #FFFFBC;
-    box-shadow: 2px 2px 6px #FFFFBC;*/
+    box-shadow: 2px 2px 6px #FFFFBC;
 }
 
 img {
-  /*  border: 0 none;
+    border: 0 none;
     height: auto;
     max-width: 100%;
-    vertical-align: middle;*/
+    vertical-align: middle;
 }
 
 .myItem .date, .myItem .description, .myItem .nb-comments {
-   /* background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.5);
     bottom: 0;
     color: #FFFFFF;
     font-size: large;
@@ -41,26 +41,26 @@ img {
     position: absolute;
     text-align: center;
     width: 100%;
-    visibility: hidden;*/
+    visibility: hidden;
 }
 
 .myItem:hover .date, .myItem:hover .description,.myItem:hover .nb-comments {
-   /* visibility: visible;*/
+   visibility: visible;
 }
 
 .myItem .date {
-  /*  bottom: auto;
+    bottom: auto;
     font-size: medium;
     left: 0;
     padding: 4px 5px;
     text-align: center;
     top: 0;
     width: auto;
-    z-index: 2;*/
+    z-index: 2;
 }
 
 .myItem .nb-comments {
-   /* background-position: right;
+   background-position: right;
     background-repeat: no-repeat;
     bottom: auto;
     font-size: medium;
@@ -68,7 +68,7 @@ img {
     right: 0;
     top: 0;
     width: auto;
-    z-index: 2;*/
+    z-index: 2;
 }
 
 .loading{

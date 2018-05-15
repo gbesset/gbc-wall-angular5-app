@@ -2,10 +2,10 @@
                     [masonryOptions]="{ transitionDuration: '0.8s', gutter: 5 }" 
                     [useAnimation]="true"
                     [useImagesLoaded]="true"
-                    [scrollAnimationOptions]="{ animationEffect: 'effect-4', minDuration : 0.4, maxDuration : 0.7 }">
+                    [scrollAnimationOptions]="{ animationEffect: 'effect-3', minDuration : 0.4, maxDuration : 0.7 }">
 
 		      <!-- Masonry Grid Item -->
-		      <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let it of items; let i = index;"> 
+		      <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let it of items; let i = index;" class="myItemWall">
 		       		<!-- Grid Content  -->
 		        	<app-wall-list-item  [indexOfPost]="i" [item]="it"></app-wall-list-item>
 		      </ng-masonry-grid-item>
