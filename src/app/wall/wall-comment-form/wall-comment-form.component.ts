@@ -46,6 +46,7 @@ export class WallCommentFormComponent implements OnInit {
                 this.errorMessage = error;
             });
         ;
+        this.initForms();
     }
 
 //Dans un service qui va appeler une api

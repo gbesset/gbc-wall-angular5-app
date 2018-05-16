@@ -91,6 +91,16 @@ export class WallDataService {
     }
 
     addComment(id:number, author:string, comment:string){
+        //this._http.post(this.apiWall+/comment);
+
+        /*
+        Comment c = Comment{
+            "author": author,
+            "comment": comment
+        }*/
+
+        //this._http.post(this.apiWall+"/item/"+id+"/comment/add",c);
+
         //TODO
         console.log("ajout sur le item id "+id+ " par "+author+ " du comment: "+comment);
         return new Promise(
