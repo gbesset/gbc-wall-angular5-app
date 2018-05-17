@@ -1,20 +1,27 @@
- <ng-masonry-grid 
-                    [masonryOptions]="{ transitionDuration: '0.8s', gutter: 5 }" 
-                    [useAnimation]="true"
-                    [useImagesLoaded]="true"
-                    [scrollAnimationOptions]="{ animationEffect: 'effect-3', minDuration : 0.4, maxDuration : 0.7 }">
+<div *ngIf="items.length > 0">
+	<ng-masonry-grid
+						[masonryOptions]="{ transitionDuration: '0.8s', gutter: 5 }"
+						[useAnimation]="true"
+						[useImagesLoaded]="true"
+						[scrollAnimationOptions]="{ animationEffect: 'effect-3', minDuration : 0.4, maxDuration : 0.7 }">
 
-		      <!-- Masonry Grid Item -->
-		      <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let it of items; let i = index;" class="myItemWall">
-		       		<!-- Grid Content  -->
-		        	<app-wall-list-item  [indexOfPost]="i" [item]="it"></app-wall-list-item>
-		      </ng-masonry-grid-item>
-</ng-masonry-grid>
+				  <!-- Masonry Grid Item -->
+				  <ng-masonry-grid-item id="{{'masonry-item-'+i}}" *ngFor="let it of items; let i = index;" class="myItemWall">
+						<!-- Grid Content  -->
+						<app-wall-list-item  [indexOfPost]="i" [item]="it"></app-wall-list-item>
+				  </ng-masonry-grid-item>
+	</ng-masonry-grid>
 
-<button *ngIf="!noMore" type="button" class="btn  btn-lg btn-block btn-secondary" (click)="onPageMore(page,$event)">Plus...</button>
- <div *ngIf="noMore">
-	 <p>Il n'y a plus d'item à récupérer.....</p>
- </div>
+	<button *ngIf="!noMore" type="button" class="btn  btn-lg btn-block btn-secondary" (click)="onPageMore(page,$event)">Plus...</button>
+	<div *ngIf="noMore">
+		<p>Il n'y a plus d'item à récupérer.....</p>
+	</div>
+
+</div>
+<div *ngIf="items.length ===0">
+	<p>Aucun résultat</p>
+</div>
+
 
 
 

@@ -20,6 +20,9 @@
         -->
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li class="nav-item" r>
+            <a class="nav-link" (click)="refresh()">Refresh</a>
+          </li>
           <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm" (ngSubmit)="onSubmitForm()">
             <li class="nav-item dropdown" dropdown>
               <a dropdownToggle  class="nav-link dropdown-toggle">Critère<span class="caret"></span></a>

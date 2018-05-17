@@ -162,17 +162,19 @@ export class WallDataService {
     searchAPI(page: number, searchElem: string){
         this._http.get(this.apiWall+'/search'+this.searchUrl+'/'+searchElem+'?page='+page).subscribe(
             (data) => {
-                console.log(data['content']);
-                this.wallItems = data['content'];
+                if(this.wallItems === undefined || (this.wallItems !== undefined && this.wallItems.length === 0)) {
+                    this.wallItems = data['content'];
+                }
+                else {
+                    this.wallItems = this.wallItems.concat(data['content']);
+                }
                 this.pagination.page = page;
                 this.pagination.totalPages = data['totalPages'];
-                alert("nb it" + this.wallItems.length+"page "+this.pagination.page+" sur "+this.pagination.totalPages)
 
                 // Fait emetre le subject à la fin de la manipulation pour que les components qui ont souscrits voient les changements
                 this.emitWallItemSubject();
             }
         );
-        console.log("netoyer le formulaire et rafrachir les comments");
     }
 
     signIn(email: string, pwd: string){

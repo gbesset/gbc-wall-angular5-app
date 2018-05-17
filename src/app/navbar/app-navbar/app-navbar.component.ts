@@ -27,16 +27,24 @@ export class AppNavbarComponent implements OnInit {
     }
 
     onSubmitForm(){
-        //this._wallService.clearItems();
+        this._wallService.clearItems();
 
         const formValue = this.searchForm.value;
         const searchElement = formValue['searchElement'];
-        console.log('recherche sur ' + searchElement);
+        console.log('AppNavbarComponent - onSubmitForm recherche sur: ' + searchElement);
+
 
         this._wallService.isModeSearch = true;
         this._wallService.searchElement = searchElement;
 
-        this._wallService.searchAPI(0, searchElement);
+
+        this._wallService.searchAPI(0, this._wallService.searchElement);
         this._wallService.emitWallItemSubject();
+    }
+
+    refresh(){
+        //TODO mise e place refresh
+        alert("TODO");
+        //this.router.navigate(["/same/route/path?refresh=1"]);
     }
 }
