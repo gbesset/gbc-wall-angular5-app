@@ -3,7 +3,7 @@
 
 <main role="main" class="container-fluid wall-container DEBUG">
 	
-	<app-wall-list [page]="page" [items]="items" [pages]="pages" (pageMore)="more($event)"></app-wall-list>
+	<app-wall-list [page]="page" [items]="items" [pages]="pages" (pageMore)="more($event)" [noMore]="noMore"></app-wall-list>
 
 	<div id="displayError" class="row" *ngIf="items === 'undefined' || (items!== 'undefined' && items.length == 0)">
 		<div class="col-4">
@@ -14,6 +14,5 @@
 		</div>
 	</div>
 
-	<div [innerHTML]="noMoreItem"></div>
 
 </main>

@@ -15,6 +15,7 @@ export class WallComponent implements OnInit, OnDestroy {
 
     page: number = 0;
     totalPages: number = 0;
+    noMore : boolean = false;
     paginationSubscription: Subscription;
 
     noMoreitems: string = '';
@@ -37,6 +38,7 @@ export class WallComponent implements OnInit, OnDestroy {
             (pagination: any) => {
                 this.page = pagination.page;
                 this.totalPages = pagination.totalPages;
+                this.noMore = pagination.noMore;
             },
             (error) => {
                 console.log('WallComponent - paginationSubscription error : ' + error.error.message);
@@ -62,16 +64,8 @@ export class WallComponent implements OnInit, OnDestroy {
 
 
     more(p:number){
-        if(p < this.totalPages){
-            this.page = p + 1;
-            this.getItems();
-        }
-        else{
-            this.noMoreitems = `<div>
-                            <p>Il n'y a plus d'item à récupérer.....</p>
-                          </div>
-                        `;
-        }
+        this._wallService.more();
+        this._wallService.emitWallItemSubject();
     }
 
 }

@@ -12,6 +12,7 @@ export class WallListComponent implements OnInit {
     @Input() page: number;
     @Input() items : Item[];
     @Input() pages: Array<number>;
+    @Input() noMore: boolean;
 
     @Output() pageMore: EventEmitter<number> = new EventEmitter<number>();
 

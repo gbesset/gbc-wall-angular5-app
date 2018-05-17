@@ -11,7 +11,10 @@
 		      </ng-masonry-grid-item>
 </ng-masonry-grid>
 
-<button type="button" class="btn  btn-lg btn-block btn-secondary" (click)="onPageMore(page,$event)">Plus...</button>
+<button *ngIf="!noMore" type="button" class="btn  btn-lg btn-block btn-secondary" (click)="onPageMore(page,$event)">Plus...</button>
+ <div *ngIf="noMore">
+	 <p>Il n'y a plus d'item à récupérer.....</p>
+ </div>
 
 
 

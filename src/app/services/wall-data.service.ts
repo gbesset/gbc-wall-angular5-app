@@ -30,7 +30,8 @@ export class WallDataService {
 
     private pagination = {
         page: 0,
-        totalPages: 0
+        totalPages: 0,
+        noMore: false
     };
     paginationSubject = new Subject<any>();
 
@@ -38,7 +39,8 @@ export class WallDataService {
     private currentItem: Item = new Item();
     currentItemSubject = new Subject<Item>();
 
-    isModeSearch = false;
+    isModeSearch :boolean = false;
+    searchElement: string = '';
     private searchUrl = '/description';
 
     constructor(private _http: HttpClient) { }
@@ -57,9 +59,11 @@ export class WallDataService {
 
     clearItems(){
         this.isModeSearch = false;
+        this.searchElement = '';
         this.wallItems = [];
         this.pagination.totalPages = 0;
         this.pagination.page = 0;
+        this.pagination.noMore = false;
     }
 
     setDefaultSearch(){
@@ -98,6 +102,21 @@ export class WallDataService {
 
 
     /****************************     Wall    ******************************/
+    more(){
+       if(this.pagination.page < this.pagination.totalPages - 1){
+               this.pagination.page = this.pagination.page + 1;
+                if(this.isModeSearch){
+                    this.searchAPI(this.pagination.page,this.searchElement);
+                }
+                else {
+                    this.getItemsAPI(this.pagination.page);
+                }
+            }
+            else{
+                this.pagination.noMore = true;
+            }
+        }
+
     getItemsAPI(page:number){
         console.log("wallDataService - getItems (page=" + page + ")");
 
@@ -147,6 +166,7 @@ export class WallDataService {
                 this.wallItems = data['content'];
                 this.pagination.page = page;
                 this.pagination.totalPages = data['totalPages'];
+                alert("nb it" + this.wallItems.length+"page "+this.pagination.page+" sur "+this.pagination.totalPages)
 
                 // Fait emetre le subject à la fin de la manipulation pour que les components qui ont souscrits voient les changements
                 this.emitWallItemSubject();
