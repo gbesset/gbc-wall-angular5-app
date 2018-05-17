@@ -13,6 +13,9 @@ import { of } from 'rxjs/observable/of';
 
 import { HOME_CAROUSEL } from '../home.carousel';
 import {Item} from '../contract/item';
+import {Comment} from '../contract/comment';
+
+import {Subscription} from 'rxjs/Subscription';
 
 
 @Injectable()
@@ -20,6 +23,7 @@ export class WallDataService {
 
     private apiWall : string = environment.apiURL.url + environment.apiURL.wall;
 
+    // Pour Wall et Header
     // Empêche l'accès direct au tableau pour controller les manipulations possibles
     private wallItems: Array<Item> = [];
     wallItemSubject = new Subject<any[]>();
@@ -30,6 +34,9 @@ export class WallDataService {
     };
     paginationSubject = new Subject<any>();
 
+    // Pour itemView
+    private currentItem: Item = new Item();
+    currentItemSubject = new Subject<Item>();
 
     private isModeSearch = false;
     private searchUrl = '/description';
@@ -41,6 +48,11 @@ export class WallDataService {
         // Observable Emet une copie(slice) du tableau
         this.wallItemSubject.next(this.wallItems.slice());
         this.paginationSubject.next(this.pagination);
+    }
+
+    emitCurrentItemSubject() {
+        // Observable Emet une copie(slice) de l'item
+        this.currentItemSubject.next(this.currentItem);
     }
 
 
@@ -106,13 +118,16 @@ export class WallDataService {
     }
 
     getItemIdAPI(id: number){
-       /*return new Promise(
-            (resolve, reject) => {
-                this._http.get(this.apiWall+'/item/'+id);
-                return new Item();
+        console.log("wallDataService - getItemIdAPI on id:" + id + ".");
+        this._http.get(this.apiWall+'/item/'+id).subscribe(
+            (data) => {
+                this.currentItem = data['item'];
+                this.emitCurrentItemSubject();
+            },
+            (error) => {
+                console.log("wallDataService - getItemIdAPI - Error :" + error.error.message);
             }
-        )*/
-        return this._http.get(this.apiWall+'/item/'+id);
+        );
     }
 
     getComments(page:number){
@@ -131,29 +146,19 @@ export class WallDataService {
         return this._http.get(this.apiWall+'/logout');
     }
 
-    addComment(id:number, author:string, comment:string){
-        //this._http.post(this.apiWall+/comment);
+    addCommentAPI(comment:Comment){
+        console.log("ajout sur le item id " + comment.itemId + " par "+ comment.author + " du comment: "+ comment.comment);
 
-        /*
-        Comment c = Comment{
-            "author": author,
-            "comment": comment
-        }*/
-
-        //this._http.post(this.apiWall+"/item/"+id+"/comment/add",c);
-
-        //TODO
-        console.log("ajout sur le item id "+id+ " par "+author+ " du comment: "+comment);
-        return new Promise(
-            (resolve, reject)=> {
-                setTimeout(
-                    () => {
-
-                        resolve(true);
-                    },2000
-                );
+        this._http.post(this.apiWall+"/item/" + comment.itemId + "/comment/add",comment).subscribe(
+            (commentAdded: Comment) => {
+                this.currentItem.comments.push(commentAdded);
+                this.emitCurrentItemSubject();
+            },
+            (error) => {
+                console.log("wallDataService - addCommentAPI - Error :" + error.error.message);
             }
         );
+
     }
 
 }

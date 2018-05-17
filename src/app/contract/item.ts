@@ -1,3 +1,5 @@
+import {Comment} from './comment';
+
 export class Item {
 
     id?: number;
@@ -8,10 +10,5 @@ export class Item {
     ratio?: number
     nbLike?: number;
     type: string;
-    comments: [
-        {
-            id: number;
-        }
-     ];
-
+    comments: Array<Comment>;
 }

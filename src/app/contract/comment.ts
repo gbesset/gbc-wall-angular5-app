@@ -1,8 +1,9 @@
 export class Comment{
-    id: number;
-    author: string;
-    comment: string;
+    id?: number;
     isApproved: boolean;
     createdAt: Date;
-    itemId: number;
+
+
+    constructor(public itemId: number, public author: string, public comment: string){}
+
 }

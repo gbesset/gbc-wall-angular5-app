@@ -1,6 +1,7 @@
 import {Component, OnInit, OnDestroy} from '@angular/core';
 import {WallDataService} from '../services/wall-data.service';
 import { Subscription } from 'rxjs/Subscription';
+import {Item} from '../contract/item';
 
 @Component({
     selector: 'app-wall',
@@ -9,7 +10,7 @@ import { Subscription } from 'rxjs/Subscription';
 })
 export class WallComponent implements OnInit, OnDestroy {
 
-    items: Array<any>;
+    items: Array<Item>;
     itemsSubscription: Subscription;
 
     page: number = 0;
@@ -27,7 +28,8 @@ export class WallComponent implements OnInit, OnDestroy {
                 this.items = items;
             },
             (error) => {
-                console.log("WallComponent - itemsSubscription error : " + error.error.message);
+                console.log('WallComponent - itemsSubscription error : ' + error.error.message);
+            }
         );
 
         this.paginationSubscription = this._wallService.paginationSubject.subscribe(
@@ -36,7 +38,7 @@ export class WallComponent implements OnInit, OnDestroy {
                 this.totalPages = pagination.totalPages;
             },
             (error) => {
-                console.log("WallComponent - paginationSubscription error : " + error.error.message);
+                console.log('WallComponent - paginationSubscription error : ' + error.error.message);
             }
         );
         // On récupère les items
