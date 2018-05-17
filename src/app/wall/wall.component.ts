@@ -22,6 +22,7 @@ export class WallComponent implements OnInit, OnDestroy {
     constructor(private _wallService: WallDataService) { }
 
     ngOnInit() {
+        this._wallService.clearItems();
         // On crée une souscription aux Items
         this.itemsSubscription = this._wallService.wallItemSubject.subscribe(
             (items: any[]) => {

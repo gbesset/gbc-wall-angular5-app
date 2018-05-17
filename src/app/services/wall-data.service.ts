@@ -38,7 +38,7 @@ export class WallDataService {
     private currentItem: Item = new Item();
     currentItemSubject = new Subject<Item>();
 
-    private isModeSearch = false;
+    isModeSearch = false;
     private searchUrl = '/description';
 
     constructor(private _http: HttpClient) { }
@@ -55,6 +55,12 @@ export class WallDataService {
         this.currentItemSubject.next(this.currentItem);
     }
 
+    clearItems(){
+        this.isModeSearch = false;
+        this.wallItems = [];
+        this.pagination.totalPages = 0;
+        this.pagination.page = 0;
+    }
 
     setDefaultSearch(){
         this.setDescriptionSearch();
@@ -134,8 +140,19 @@ export class WallDataService {
         return this._http.get(this.apiWall+'/comments?page='+page);
     }
 
-    search(page: number, searchElem: string){
-        return this._http.get(this.apiWall+'/search'+this.searchUrl+'/'+searchElem+'?page='+page);
+    searchAPI(page: number, searchElem: string){
+        this._http.get(this.apiWall+'/search'+this.searchUrl+'/'+searchElem+'?page='+page).subscribe(
+            (data) => {
+                console.log(data['content']);
+                this.wallItems = data['content'];
+                this.pagination.page = page;
+                this.pagination.totalPages = data['totalPages'];
+
+                // Fait emetre le subject à la fin de la manipulation pour que les components qui ont souscrits voient les changements
+                this.emitWallItemSubject();
+            }
+        );
+        console.log("netoyer le formulaire et rafrachir les comments");
     }
 
     signIn(email: string, pwd: string){

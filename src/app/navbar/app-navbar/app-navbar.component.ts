@@ -27,17 +27,14 @@ export class AppNavbarComponent implements OnInit {
     }
 
     onSubmitForm(){
+        //this._wallService.clearItems();
+
         const formValue = this.searchForm.value;
         const searchElement = formValue['searchElement'];
-        console.log("recherche sur "+searchElement);
+        console.log('recherche sur ' + searchElement);
 
-        this._wallService.search(0,searchElement).subscribe(
-            (data) => {
-                console.log(data['content']);
-                //je pense que c'est la qu'il faut maintenant utilser le subscribeObject....?!
-                //ou remonter la liste dans le service comme dans oc-blog.... et pas dans wall.component
-            }
-        );
-        console.log("netoyer le formulaire et rafrachir les comments");
+        this._wallService.isModeSearch = true;
+        this._wallService.searchAPI(0, searchElement);
+        this._wallService.emitWallItemSubject();
     }
 }
