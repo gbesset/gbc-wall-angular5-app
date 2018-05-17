@@ -1,11 +1,19 @@
  
 <app-navbar></app-navbar> 
 
-<main role="main" class="container-fluid wall-container">
+<main role="main" class="container-fluid wall-container DEBUG">
 	
 	<app-wall-list [page]="page" [items]="items" [pages]="pages" (pageMore)="more($event)"></app-wall-list>
-	
-	<div [innerHTML]="errorApi"></div>
+
+	<div id="displayError" class="row" *ngIf="items === 'undefined' || (items!== 'undefined' && items.length == 0)">
+		<div class="col-4">
+			<img src="../assets/images/resources/error-connection.gif" class="rounded float-left">
+		</div>
+		<div class="col-6">
+			<p class>Erreur de récupération des items sur le serveur.</p>
+		</div>
+	</div>
+
 	<div [innerHTML]="noMoreItem"></div>
 
 </main>

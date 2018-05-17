@@ -10,6 +10,7 @@ export class AuthService {
 
     constructor(private _wallService : WallDataService) { }
 
+    // Methode asynchrone en utilisant une Promise
     signIn(email: string, pwd: string){
         return new Promise(
             (resolve, reject) => {

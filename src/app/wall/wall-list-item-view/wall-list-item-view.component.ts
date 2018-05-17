@@ -40,10 +40,12 @@ export class WallListItemViewComponent implements OnInit {
         //et le setter au item de la page (cela evitera des bugs et erreurs....)
         const id = +this.route.snapshot.paramMap.get('id');
 
+        //TODO 25min49 routeur recuperer plutot l'emeent en fonction de son id dans le tableau de wallSerice !?!
         //normalement je pense quue je devriap as faire de subscribe mais des then......
         //NON?
         //+id pour caster en number
-        this._wallService.getItemId(+id).subscribe(
+        //this._wallService.getItemIdAPI(+id).then()
+        this._wallService.getItemIdAPI(+id).subscribe(
             (data) => {
                 this.item = data['item'];
                 this.comments = data['item']['comments'];

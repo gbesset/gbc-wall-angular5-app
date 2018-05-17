@@ -31,23 +31,23 @@ export class AdminDataService {
 
     /* Retrieve information */
     getItems(page:number){
-        return this._http.get(this.apiWall+'/items?page='+page)
+        return this._http.get(this.apiWall + '/items?page=' + page);
     }
 
     getStats(){
-        return this._http.get(this.apiWall+'/count')
+        return this._http.get(this.apiWall + '/count');
     }
 
     getComments(page: number){
-        return this._http.get(this.apiWall+'/comments?page='+page)
+        return this._http.get(this.apiWall + '/comments?page=' + page);
     }
 
     getItemId(id: number){
-        return this._http.get(this.apiWall+'/item/'+id)
+        return this._http.get(this.apiWall + '/item/' + id);
     }
 
     getCommentId(id: number){
-        return this._http.get(this.apiWall+'/comment/'+id)
+        return this._http.get(this.apiWall + '/comment/' + id);
     }
 
 

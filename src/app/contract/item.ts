@@ -8,4 +8,10 @@ export class Item {
     ratio?: number
     nbLike?: number;
     type: string;
+    comments: [
+        {
+            id: number;
+        }
+     ];
+
 }

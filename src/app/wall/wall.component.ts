@@ -1,58 +1,66 @@
-import { Component, OnInit } from '@angular/core';
-import { WallDataService } from '../services/wall-data.service';
+import {Component, OnInit, OnDestroy} from '@angular/core';
+import {WallDataService} from '../services/wall-data.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-wall',
     templateUrl: './wall.component.html',
     styleUrls: ['./wall.component.css']
 })
-export class WallComponent implements OnInit {
+export class WallComponent implements OnInit, OnDestroy {
 
-    private page: number=0;
-    private totalPages: number=0;
-    private items: Array<any>;
-    private pages: Array<number>;
+    items: Array<any>;
+    itemsSubscription: Subscription;
 
-    errorApi: string = '';
+    page: number = 0;
+    totalPages: number = 0;
+    paginationSubscription: Subscription;
+
     noMoreitems: string = '';
 
     constructor(private _wallService: WallDataService) { }
 
     ngOnInit() {
-        this.getItems();
-    }
-
-    getItems(){
-        this._wallService.getItems(this.page).subscribe(
-            (data) => {
-                if(this.items == undefined){
-                    this.items = data['content'];
-                }
-                else{
-                    this.items = this.items.concat(data['content']);
-                    //this.items.push.apply(this.items, data['content']);
-                }
-                this.totalPages = data['totalPages'];
-                this.pages = new Array(this.totalPages);
+        // On crée une souscription aux Items
+        this.itemsSubscription = this._wallService.wallItemSubject.subscribe(
+            (items: any[]) => {
+                this.items = items;
             },
             (error) => {
-                console.log(error.error.message);
-                this.errorApi=`<div id="errorApi" class="row">
-                          <div class="col-4">
-                            <img src="../assets/images/resources/error-connection.gif" class="rounded float-left">
-                          </div>
-                          <div class="col-6">
-                            <p class>Erreur de récupération des items sur le serveur.</p>
-                          </div>
-                        </div>`;
-            }
-
+                console.log("WallComponent - itemsSubscription error : " + error.error.message);
         );
+
+        this.paginationSubscription = this._wallService.paginationSubject.subscribe(
+            (pagination: any) => {
+                this.page = pagination.page;
+                this.totalPages = pagination.totalPages;
+            },
+            (error) => {
+                console.log("WallComponent - paginationSubscription error : " + error.error.message);
+            }
+        );
+        // On récupère les items
+        this.page = 0;
+        this.getItems();
+
+        // On fait emmetre les Items
+        this._wallService.emitWallItemSubject();
     }
+
+    ngOnDestroy() {
+        this.itemsSubscription.unsubscribe();
+        this.paginationSubscription.unsubscribe();
+    }
+
+    getItems() {
+        this._wallService.getItemsAPI(this.page);
+        this._wallService.emitWallItemSubject();
+    }
+
 
     more(p:number){
         if(p < this.totalPages){
-            this.page=p+1;
+            this.page = p + 1;
             this.getItems();
         }
         else{
