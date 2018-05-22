@@ -64,6 +64,7 @@ export class WallDataService {
         this.pagination.totalPages = 0;
         this.pagination.page = 0;
         this.pagination.noMore = false;
+        this.setDefaultSearch();
     }
 
     setDefaultSearch(){
@@ -160,8 +161,10 @@ export class WallDataService {
     }
 
     searchAPI(page: number, searchElem: string){
-        this._http.get(this.apiWall+'/search'+this.searchUrl+'/'+searchElem+'?page='+page).subscribe(
+        this._http.get(this.apiWall+'/search/item'+this.searchUrl+'/'+searchElem+'?page='+page).subscribe(
             (data) => {
+                console.log("Result JAVA: on("+this.searchUrl+")");
+                console.log(data)
                 if(this.wallItems === undefined || (this.wallItems !== undefined && this.wallItems.length === 0)) {
                     this.wallItems = data['content'];
                 }

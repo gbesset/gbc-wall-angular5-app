@@ -12,7 +12,7 @@ export class AppNavbarComponent implements OnInit {
 
     searchForm: FormGroup;
 
-    constructor(private formBuilder:FormBuilder, private _wallService: WallDataService) { }
+    constructor(private formBuilder: FormBuilder, private _wallService: WallDataService) { }
 
     ngOnInit() {
         this.initForms();
@@ -21,7 +21,8 @@ export class AppNavbarComponent implements OnInit {
     initForms(){
         this.searchForm = this.formBuilder.group(
             {
-                searchElement: ['', Validators.required]
+                searchElement: ['', Validators.required],
+                searchCriteria: ['item', Validators.required]
             }
         );
     }
@@ -31,6 +32,19 @@ export class AppNavbarComponent implements OnInit {
 
         const formValue = this.searchForm.value;
         const searchElement = formValue['searchElement'];
+        const searchCriteria = formValue['searchCriteria'];
+        switch(searchCriteria){
+            case 'item' :
+                this._wallService.setDescriptionSearch();
+            break;
+            case 'comment' :
+                this._wallService.setCommentSearch();
+            break;
+            case 'author' :
+                this._wallService.setAuthorSearch();
+            break;
+        }
+
         console.log('AppNavbarComponent - onSubmitForm recherche sur: ' + searchElement);
 
 

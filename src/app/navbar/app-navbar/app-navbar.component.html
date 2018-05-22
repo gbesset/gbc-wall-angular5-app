@@ -24,6 +24,12 @@
             <a class="nav-link" (click)="refresh()">Refresh</a>
           </li>
           <form class="form-inline my-2 my-lg-0" [formGroup]="searchForm" (ngSubmit)="onSubmitForm()">
+            <label for="searchCriteria">Critère</label>
+            <select id="searchCriteria" formControlName="searchCriteria">
+              <option value="item">Photos/Vidéos</option>
+              <option value="comment">Commentaires</option>
+              <option value="author">Auteur</option>
+            </select>
             <li class="nav-item dropdown" dropdown>
               <a dropdownToggle  class="nav-link dropdown-toggle">Critère<span class="caret"></span></a>
               <ul *dropdownMenu class="dropdown-menu" role="menu">
