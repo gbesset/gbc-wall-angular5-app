@@ -16,49 +16,59 @@ export class WallComponent implements OnInit, OnDestroy {
     page: number = 0;
     totalPages: number = 0;
     noMore : boolean = false;
-    paginationSubscription: Subscription;
+    sessionSubscription: Subscription;
 
     isError: boolean = false;
 
-    noMoreitems: string = '';
+    hasSession: boolean = false;
 
     constructor(private _wallService: WallDataService) { }
 
     ngOnInit() {
-        this._wallService.clearItems();
-        // On crée une souscription aux Items
-        this.itemsSubscription = this._wallService.wallItemSubject.subscribe(
-            (items: any[]) => {
-                this.items = items;
-            },
-            (error) => {
-                console.log('WallComponent - itemsSubscription error : ' + error.error.message);
-                this.isError = true;
-            }
-        );
+        if(this._wallService.session.hasSession){
+            this.  restoreSession();
+        }
+        else {
+            //Initialise le Wall avec les éléments de base
+            this._wallService.clearItems();
+            // On crée une souscription aux Items
+            this.itemsSubscription = this._wallService.wallItemSubject.subscribe(
+                (items: any[]) => {
+                    this.items = items;
+                },
+                (error) => {
+                    console.log('WallComponent - itemsSubscription error : ' + error.error.message);
+                    this.isError = true;
+                }
+            );
 
-        this.paginationSubscription = this._wallService.paginationSubject.subscribe(
-            (pagination: any) => {
-                this.page = pagination.page;
-                this.totalPages = pagination.totalPages;
-                this.noMore = pagination.noMore;
-            },
-            (error) => {
-                console.log('WallComponent - paginationSubscription error : ' + error.error.message);
-                this.isError = true;
-            }
-        );
-        // On récupère les items
-        this.page = 0;
-        this.getItems();
+            this.sessionSubscription = this._wallService.sessionSubject.subscribe(
+                (pagination: any) => {
+                    this.page = pagination.page;
+                    this.totalPages = pagination.totalPages;
+                    this.noMore = pagination.noMore;
+                },
+                (error) => {
+                    console.log('WallComponent - paginationSubscription error : ' + error.error.message);
+                    this.isError = true;
+                }
+            );
+            // On récupère les items
+            this.page = 0;
+            this.getItems();
 
-        // On fait emmetre les Items
-        this._wallService.emitWallItemSubject();
+            // On fait emmetre les Items
+            this._wallService.emitWallItemSubject();
+        }
+    }
+
+    restoreSession(){
+            //alert('restaurer avec page'+this.page);
     }
 
     ngOnDestroy() {
         this.itemsSubscription.unsubscribe();
-        this.paginationSubscription.unsubscribe();
+        this.sessionSubscription.unsubscribe();
     }
 
     getItems() {

@@ -25,28 +25,33 @@ export class WallDataService {
     private wallItems: Array<Item> = [];
     wallItemSubject = new Subject<any[]>();
 
-    private pagination = {
-        page: 0,
-        totalPages: 0,
-        noMore: false
+    session = {
+        hasSession: false,
+        pagination : {
+            page: 0,
+            totalPages: 0,
+            noMore: false
+        },
+        search : {
+            isModeSearch: false,
+            searchUrl : '/description',
+            searchElement: ''
+        }
     };
-    paginationSubject = new Subject<any>();
+
+    sessionSubject = new Subject<any>();
 
     // Pour itemView
     private currentItem: Item = new Item();
     currentItemSubject = new Subject<Item>();
 
-    isModeSearch :boolean = false;
-    searchElement: string = '';
-    private searchUrl = '/description';
 
     constructor(private _http: HttpClient) { }
-
 
     emitWallItemSubject() {
         // Observable Emet une copie(slice) du tableau
         this.wallItemSubject.next(this.wallItems.slice());
-        this.paginationSubject.next(this.pagination);
+        this.sessionSubject.next(this.session);
     }
 
     emitCurrentItemSubject() {
@@ -56,14 +61,14 @@ export class WallDataService {
 
     clearItems(){
         this.setDefaultSearch();
-        this.isModeSearch = false;
-        this.searchElement = '';
+        this.session.search.isModeSearch = false;
+        this.session.search.searchElement = '';
 
         this.wallItems = [];
 
-        this.pagination.totalPages = 0;
-        this.pagination.page = 0;
-        this.pagination.noMore = false;
+        this.session.pagination.totalPages = 0;
+        this.session.pagination.page = 0;
+        this.session.pagination.noMore = false;
 
     }
 
@@ -72,15 +77,15 @@ export class WallDataService {
     }
 
     setDescriptionSearch(){
-        this.searchUrl = '/description';
+        this.session.search.searchUrl = '/description';
     }
 
     setCommentSearch(){
-        this.searchUrl = '/comment';
+        this.session.search.searchUrl = '/comment';
     }
 
     setAuthorSearch(){
-        this.searchUrl = '/author';
+        this.session.search.searchUrl = '/author';
     }
 
 
@@ -104,17 +109,17 @@ export class WallDataService {
 
     /****************************     Wall    ******************************/
     more(){
-       if(this.pagination.page < this.pagination.totalPages - 1){
-               this.pagination.page = this.pagination.page + 1;
-                if(this.isModeSearch){
-                    this.searchAPI(this.pagination.page,this.searchElement);
+       if(this.session.pagination.page < this.session.pagination.totalPages - 1){
+               this.session.pagination.page = this.session.pagination.page + 1;
+                if(this.session.search.isModeSearch){
+                    this.searchAPI(this.session.pagination.page,this.session.search.searchElement);
                 }
                 else {
-                    this.getItemsAPI(this.pagination.page);
+                    this.getItemsAPI(this.session.pagination.page);
                 }
             }
             else{
-                this.pagination.noMore = true;
+                this.session.pagination.noMore = true;
             }
         }
 
@@ -130,8 +135,8 @@ export class WallDataService {
                     this.wallItems = this.wallItems.concat(data['content']);
                     //this.items.push.apply(this.items, data['content']);
                 }
-                this.pagination.page = page;
-                this.pagination.totalPages = data['totalPages'];
+                this.session.pagination.page = page;
+                this.session.pagination.totalPages = data['totalPages'];
 
                 // Fait emetre le subject à la fin de la manipulation pour que les components qui ont souscrits voient les changements
                 this.emitWallItemSubject();
@@ -163,9 +168,9 @@ export class WallDataService {
     }
 
     searchAPI(page: number, searchElem: string){
-        this._http.get(this.apiWall+'/search/item'+this.searchUrl+'/'+searchElem+'?page='+page).subscribe(
+        this._http.get(this.apiWall+'/search/item'+this.session.search.searchUrl+'/'+searchElem+'?page='+page).subscribe(
             (data) => {
-                console.log("Result JAVA: on("+this.searchUrl+")");
+                console.log("Result JAVA: on("+this.session.search.searchUrl+")");
                 console.log(data)
                 if(this.wallItems === undefined || (this.wallItems !== undefined && this.wallItems.length === 0)) {
                     this.wallItems = data['content'];
@@ -173,8 +178,8 @@ export class WallDataService {
                 else {
                     this.wallItems = this.wallItems.concat(data['content']);
                 }
-                this.pagination.page = page;
-                this.pagination.totalPages = data['totalPages'];
+                this.session.pagination.page = page;
+                this.session.pagination.totalPages = data['totalPages'];
 
                 // Fait emetre le subject à la fin de la manipulation pour que les components qui ont souscrits voient les changements
                 this.emitWallItemSubject();

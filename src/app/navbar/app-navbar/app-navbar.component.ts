@@ -48,11 +48,11 @@ export class AppNavbarComponent implements OnInit {
         console.log('AppNavbarComponent - onSubmitForm recherche sur: ' + searchElement);
 
 
-        this._wallService.isModeSearch = true;
-        this._wallService.searchElement = searchElement;
+        this._wallService.session.search.isModeSearch = true;
+        this._wallService.session.search.searchElement = searchElement;
 
 
-        this._wallService.searchAPI(0, this._wallService.searchElement);
+        this._wallService.searchAPI(0, this._wallService.session.search.searchElement);
         this._wallService.emitWallItemSubject();
     }
 
