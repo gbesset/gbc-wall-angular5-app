@@ -12,6 +12,16 @@
 ::ng-deep #displayError img{
 	max-width:400px;
 }
+
+::ng-deep #noResult p{
+	position:relative;
+	top:40%;
+}
+::ng-deep #noResult img{
+	max-width:400px;
+}
+
+
 .DEBUG{
 	#border: solid 2px red;
 }

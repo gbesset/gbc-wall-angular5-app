@@ -15,9 +15,6 @@ import { HOME_CAROUSEL } from '../home.carousel';
 import {Item} from '../contract/item';
 import {Comment} from '../contract/comment';
 
-import {Subscription} from 'rxjs/Subscription';
-
-
 @Injectable()
 export class WallDataService {
 
@@ -58,13 +55,16 @@ export class WallDataService {
     }
 
     clearItems(){
+        this.setDefaultSearch();
         this.isModeSearch = false;
         this.searchElement = '';
+
         this.wallItems = [];
+
         this.pagination.totalPages = 0;
         this.pagination.page = 0;
         this.pagination.noMore = false;
-        this.setDefaultSearch();
+
     }
 
     setDefaultSearch(){
@@ -137,7 +137,8 @@ export class WallDataService {
                 this.emitWallItemSubject();
             },
             (error) => {
-                console.log("wallDataService - getItems - Error :" + error.error.message);
+                console.log("wallDataService - getItems - HTTP("+error.status+") Error :" + error.message);
+                this.wallItemSubject.error(error);
             }
         );
 
@@ -152,6 +153,7 @@ export class WallDataService {
             },
             (error) => {
                 console.log("wallDataService - getItemIdAPI - Error :" + error.error.message);
+                this.currentItemSubject.error(error);
             }
         );
     }
@@ -176,6 +178,10 @@ export class WallDataService {
 
                 // Fait emetre le subject à la fin de la manipulation pour que les components qui ont souscrits voient les changements
                 this.emitWallItemSubject();
+            },
+            (error) => {
+                console.log("wallDataService - searchAPI - Error :" + error.error.message);
+                this.wallItemSubject.error(error);
             }
         );
     }

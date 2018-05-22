@@ -18,6 +18,8 @@ export class WallComponent implements OnInit, OnDestroy {
     noMore : boolean = false;
     paginationSubscription: Subscription;
 
+    isError: boolean = false;
+
     noMoreitems: string = '';
 
     constructor(private _wallService: WallDataService) { }
@@ -31,6 +33,7 @@ export class WallComponent implements OnInit, OnDestroy {
             },
             (error) => {
                 console.log('WallComponent - itemsSubscription error : ' + error.error.message);
+                this.isError = true;
             }
         );
 
@@ -42,6 +45,7 @@ export class WallComponent implements OnInit, OnDestroy {
             },
             (error) => {
                 console.log('WallComponent - paginationSubscription error : ' + error.error.message);
+                this.isError = true;
             }
         );
         // On récupère les items
