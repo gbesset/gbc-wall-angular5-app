@@ -3,13 +3,11 @@ import {Comment} from './comment';
 export class Item {
 
     id?: number;
-    file: string;
-    path: string;
-    description: string;
     createdAt: Date;
     updatedAt: Date;
     ratio?: number
     nbLike?: number;
-    type: string;
     comments: Array<Comment>;
+
+    constructor(public file: string, public description: string, public path: string, public type: string){}
 }

@@ -13,7 +13,8 @@ import { Item } from '../../../contract/item';
 })
 export class ItemEditComponent implements OnInit {
 
-    item: Item;
+    itemId: number;
+    isCreation: boolean;
 
     constructor(private route: ActivatedRoute,
                 private _adminService: AdminDataService,
@@ -22,16 +23,18 @@ export class ItemEditComponent implements OnInit {
 
     ngOnInit() {
         this.getItem();
-        if(typeof this.item == "undefined"){
-            this.item = new Item();
-        }
-
     }
 
     getItem(): void {
-        const id = +this.route.snapshot.paramMap.get('id');
-        this._adminService.getItemId(id)
-            .subscribe(item => this.item = <Item>item);
+        this.itemId = +this.route.snapshot.paramMap.get('id');
+
+        if(!isNaN(this.itemId)) {
+            this.isCreation = false;
+
+        }
+        else{
+            this.isCreation = true;
+        }
     }
 
     goBack(): void {

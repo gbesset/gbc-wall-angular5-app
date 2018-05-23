@@ -42,7 +42,7 @@ export class WallDataService {
     sessionSubject = new Subject<any>();
 
     // Pour itemView
-    private currentItem: Item = new Item();
+    private currentItem: Item = new Item("","","","");
     currentItemSubject = new Subject<Item>();
 
 
