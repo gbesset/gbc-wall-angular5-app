@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 import { AdminDataService } from '../../../services/admin-data.service';
 import { Comment } from '../../../contract/comment';
+import {Router} from '@angular/router';
+import {HttpHeaders} from '@angular/common/http';
 
 @Component({
     selector: 'app-comment-list',
@@ -41,6 +43,37 @@ export class CommentListComponent implements OnInit {
 
         this.page = p;
         this.getComments();
+    }
+
+
+
+    updateComment(c: Comment){
+        console.log("CommentListComponent - update comment id" + c.id);
+        this._adminService.updateCommentAPI(c).subscribe(
+            (data) => {
+                console.log(data);
+                console.log("Update du comment "+ c.id);
+
+                this.getComments();
+            },
+            (error) => {
+                console.log("CommentListComponent - updateComment - Error :" + error.error.message);
+            }
+        );
+    }
+
+    deleteComment(c: Comment){
+        console.log("CommentListComponent - delete comment id"+c.id);
+        this._adminService.deleteCommentAPI(c).subscribe(
+            (data) => {
+                console.log("Suppression du comment "+ c.id);
+
+                this.getComments();
+            },
+            (error) => {
+                console.log("CommentListComponent - deleteComment - Error :" + error.error.message);
+            }
+        );
     }
 
 }

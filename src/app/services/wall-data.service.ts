@@ -211,7 +211,6 @@ export class WallDataService {
                 console.log("wallDataService - addCommentAPI - Error :" + error.error.message);
             }
         );
-
     }
 
 }

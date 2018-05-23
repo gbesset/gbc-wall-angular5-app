@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { AdminDataService } from '../../../services/admin-data.service';
 import { Item } from '../../../contract/item';
+import {Comment} from '../../../contract/comment';
 
 @Component({
     selector: 'app-item-list',
@@ -41,6 +42,20 @@ export class ItemListComponent implements OnInit {
 
         this.page = p;
         this.getItems();
+    }
+
+    deleteItem(i: Item){
+        console.log("ItemListComponent - delete item id"+i.id);
+        this._adminService.deleteItemAPI(i).subscribe(
+            (data) => {
+                console.log("Suppression de l item "+ i.id);
+
+                this.getItems();
+            },
+            (error) => {
+                console.log("ItemListComponent - deleteItem - Error :" + error.error.message);
+            }
+        );
     }
 
 }

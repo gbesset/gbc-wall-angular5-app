@@ -7,6 +7,7 @@ export class Item {
     path: string;
     description: string;
     createdAt: Date;
+    updatedAt: Date;
     ratio?: number
     nbLike?: number;
     type: string;
