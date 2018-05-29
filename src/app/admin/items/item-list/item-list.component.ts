@@ -46,16 +46,33 @@ export class ItemListComponent implements OnInit {
 
     deleteItem(i: Item){
         console.log("ItemListComponent - delete item id"+i.id);
-        this._adminService.deleteItemAPI(i).subscribe(
-            (data) => {
-                console.log("Suppression de l item "+ i.id);
 
-                this.getItems();
-            },
-            (error) => {
-                console.log("ItemListComponent - deleteItem - Error :" + error.error.message);
+        //TODO en material
+        // TODO mettre une checkbox pour cocher le "supprimer les comments associés"
+        if(confirm("Suppression de l'item '"+i.description+"' ?")) {
+            if(i.comments.length > 0 ){
+                if(confirm("Attention !!!!!!  l'item possède "+i.comments.length+" commentaires associés. Tous les supprimer ?? ")) {
+                    //TODO supprimer tous les com's de l'item
+                    this._adminService.deleteCommentsOfItemAPI(i.id);
+                }
+                else{
+                    console.log("anuulation suppression car possède des commentaires associés.")
+                }
             }
-        );
+            this._adminService.deleteItemAPI(i).subscribe(
+                (data) => {
+                    console.log("Suppression de l' item " + i.id);
+
+                    this.getItems();
+                },
+                (error) => {
+                    console.log("ItemListComponent - deleteItem - Error :" + error.error.message);
+                }
+            );
+        }
+        else{
+            console.log("Annulation suppression....");
+        }
     }
 
 }

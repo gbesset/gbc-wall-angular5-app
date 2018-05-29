@@ -62,18 +62,24 @@ export class CommentListComponent implements OnInit {
         );
     }
 
-    deleteComment(c: Comment){
-        console.log("CommentListComponent - delete comment id"+c.id);
-        this._adminService.deleteCommentAPI(c).subscribe(
-            (data) => {
-                console.log("Suppression du comment "+ c.id);
+    deleteComment(c: Comment) {
+        console.log("CommentListComponent - delete comment id" + c.id);
 
-                this.getComments();
-            },
-            (error) => {
-                console.log("CommentListComponent - deleteComment - Error :" + error.error.message);
-            }
-        );
+        if(confirm("Suppression de l'item '"+c.comment+"' ?")) {
+            this._adminService.deleteCommentAPI(c).subscribe(
+                (data) => {
+                    console.log("Suppression du comment " + c.id);
+
+                    this.getComments();
+                },
+                (error) => {
+                    console.log("CommentListComponent - deleteComment - Error :" + error.error.message);
+                }
+            );
+        }
+    else{
+    console.log("Annulation suppression....");
+}
     }
 
 }
