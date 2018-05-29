@@ -29,11 +29,11 @@
 		    <tbody>
 		      <tr *ngFor="let comment of comments">
 		        <td>{{comment.id}}</td>
-		        <td>{{comment.createdAt | date:"dd/MM/yyyy hh:mm:ss" }}</td>
+		        <td>{{comment.createdAt | date:"dd/MM/yyyy H:mm:ss" }}</td>
 		        <td>{{comment.author}}</td>
 		        <td>{{comment.comment}}</td>
 		        <!--<td>{{comment.isApproved}}</td>-->
-				<td>{{comment.updatedAt | date:"dd/MM/yyyy hh:mm:ss" }}</td>
+				<td>{{comment.updatedAt | date:"dd/MM/yyyy H:mm:ss" }}</td>
 		        <td>{{comment.itemId}}</td>
 		        <!-- <td><a (click)="goEdit(comment)">Editer</a></td>-->
 		        <td><a routerLink="/admin/comment/edit/{{comment.id}}">Update</a></td>

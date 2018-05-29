@@ -4,9 +4,9 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import { Item } from '../../../contract/item';
 import {AdminDataService} from '../../../services/admin-data.service';
 import {Router} from '@angular/router';
-import {isUndefined} from 'util';
+
 import {environment} from '../../../../environments/environment';
-import {createHash} from 'crypto';
+
 
 
 
@@ -20,10 +20,14 @@ export class ItemFormComponent implements OnInit {
 
     @Input() itemId: number;
     @Input() isCreation: boolean;
+
     private path: string = environment.apiURL.path_img;
 
     private item: Item;
+    private itemCreatedAtDate;       //json:number  ici dans js:Date
     itemForm: FormGroup;
+    displayError = false;
+    errorMsg = '';
 
 
     fileIsUploading = false;
@@ -42,43 +46,51 @@ export class ItemFormComponent implements OnInit {
                 private router: Router) { }
 
     ngOnInit() {
+        //Initie un objet vide pour la création et l'update (récup des données sur le server)
+        this.item = new Item("", "", "", "PICTURE");
+
         this.getItem();
 
-        console.log('VERIFFFFF')
-        console.log(this.item)
-
+        this.initForm();
     }
 
     getItem(){
         if(this.isCreation){
-            this.item = new Item("", "", "", "PICTURE");
-            this.item.path =  this.path + "/" + new Date().getFullYear() + "/"
-            this.initForm();
+            this.item.type = "PICTURE";
+            this.item.path =  this.path + "/" + new Date().getFullYear() + "/";
         }
         else{
             this._adminService.getItemId(this.itemId).subscribe(
                 (item) => {
                     this.item = <Item>item['item'];
-                    this.initForm();
+                    this.itemForm.patchValue({
+                        file: this.item.file,
+                        description: this.item.description,
+                        createdAt: new Date(this.item.createdAt).toISOString().slice(0, 16),
+                        path: this.item.path
+                    });
                 },
                 (error) => {
                     console.log("Error de récupération de l'item id :"+this.itemId);
+                    this.errorMsg = error.error.message;
+                    this.displayError = true;
+                    setTimeout(() => {
+                        this.displayError = false;
+                        this.errorMsg = '';
+                    },5000);
                 }
             );
         }
 
     }
     initForm() {
-        const file =  this.item.file;
-        const description = this.isCreation ? '' : this.item.description;
         const path = this.item.path;
-        const createdAt = this.isCreation ? '' : this.item.createdAt;
 
         //file: new FormControl({file: file, disabled: true}, Validators.required),
         this.itemForm = this.formBuilder.group({
-            file: [file, Validators.required],
-            description: [description, Validators.required],
-            createdAt: [createdAt, Validators.required],
+            file: ['', Validators.required],
+            description: ['', Validators.required],
+            createdAt: ['', Validators.required],
             path: [path]
         }, {updateOn: 'blur'});
 
@@ -87,23 +99,42 @@ export class ItemFormComponent implements OnInit {
     }
 
     onUpload(){
-        this.item.file = "file-uploaded.jpg";
-        this.item.createdAt = new Date();
+        this.item.file = "file-uploaded" + Date.now().toString()+ ".jpg";
+        //this.item.createdAt = new Date().toISOString().slice(0, 16);
+        this.itemCreatedAtDate = new Date().toISOString().slice(0, 16);
         //setValue -> all value of FormGroup
         //patchValue -> only some value of FormGroup
         this.itemForm.patchValue({file: this.item.file});
-        this.itemForm.patchValue({createdAt: this.item.createdAt});
+        this.itemForm.patchValue({createdAt: this.itemCreatedAtDate});
     }
 
     onSaveItem() {
-        this.item.file;
-        this.item.description = this.itemForm.get('description').value;
-        this.item.path = this.itemForm.get('path').value;
-        this.item.createdAt = this.itemForm.get('createdAt').value;
+        if(this.itemForm.valid) {
+            this.item.description = this.itemForm.get('description').value;
+            this.itemCreatedAtDate = this.itemForm.get('createdAt').value;
 
-        //const type = this.itemForm.get('type').value
+            //const type = this.itemForm.get('type').value
 
-        this._adminService.updateOrSaveItemAPI(this.item);
+
+            //TRANSFORME LA DATE en milisecondes....
+            this.item.createdAt = new Date(this.itemCreatedAtDate).getTime();
+            this._adminService.updateOrSaveItemAPI(this.item).subscribe(
+                (itemAdded: Item) => {
+                    console.log("Ajout ou Mise a jour de l'item " + itemAdded.id + " OK.");
+                    console.log(itemAdded.createdAt)
+                    this.router.navigate(['/admin/items']);
+                },
+                (error) => {
+                    console.log("AdminDataService - updateOrSaveItemAPI - Error :" + error.error.message);
+                    this.errorMsg = error.error.message;
+                    this.displayError = true;
+                    setTimeout(() => {
+                       this.displayError = false;
+                       this.errorMsg = '';
+                    },5000);
+                }
+            );
+        }
     }
 
     get description(){

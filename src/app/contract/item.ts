@@ -3,7 +3,7 @@ import {Comment} from './comment';
 export class Item {
 
     id?: number;
-    createdAt: Date;
+    createdAt: number;
     updatedAt: Date;
     ratio?: number
     nbLike?: number;

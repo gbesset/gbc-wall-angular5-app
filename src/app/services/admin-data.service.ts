@@ -56,31 +56,17 @@ export class AdminDataService {
 
     /* Update Information */
     updateOrSaveItemAPI(item: Item){
-        console.log("ajout de l'item id [" + item.id + "] file "+ item.file + " description: "+ item.description);
+        console.log("ADMIN SERVICE : ajout de l'item id [" + item.id + "] file "+ item.file + " description: "+ item.description);
 
         console.log(item);
-        /*if(item.id !== undefined) {
-            this._http.post(this.apiAdminWall + "/item/add", item).subscribe(
-                (itemAdded: Item) => {
-                    alert("Item added id: "+itemAdded.id);
-                    //TODO rediriger......
-                },
-                (error) => {
-                    console.log("AdminDataService - updateOrSaveItemAPI - Error :" + error.error.message);
-                }
-            );
+        if(item.id === undefined) {
+            console.log("Post item id: null")
+            return this._http.post(this.apiAdminWall + "/item/add", item);
         }
         else{
-            this._http.put(this.apiAdminWall + "/item/update", item).subscribe(
-                (itemAdded: Item) => {
-                    alert('Item updated');
-                    //TODO rediriger
-                },
-                (error) => {
-                    console.log("AdminDataService - updateOrSaveItemAPI - Error :" + error.error.message);
-                }
-            );
-        }*/
+            console.log("Put on item id: "+ item.id )
+            return this._http.put(this.apiAdminWall + "/item/update", item);
+        }
     }
 
 
@@ -114,6 +100,7 @@ export class AdminDataService {
     }
 
 
-
-
+    deleteCommentsOfItemAPI(id: number | undefined) {
+        alert("TODO JAVA");
+    }
 }

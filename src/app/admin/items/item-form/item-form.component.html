@@ -4,6 +4,10 @@
 	  <br>
 	  (TODO)<button type="button" class="btn btn-primary" (click)="newItem(); itemPictureForm.reset(); itemVideoForm.reset();">RAZ</button>
 	  <br>
+	 <div class="alert-danger" *ngIf="displayError">
+		 <p>Erreur:</p>
+		 <p>{{ errorMsg }}</p>
+	 </div>
 
 	  <div>
 
@@ -11,7 +15,7 @@
 			  <tab heading="Photos" id="tabPicture" (select)="setPicture();">
 				  <!-- Formulaire disparait une fois valid et soumis -->
 				  <div [hidden]="submitted">
-
+					  <form [formGroup]="itemForm" (ngSubmit)="onSaveItem()">
 
 						  <div *ngIf="isItemCreation;then displayDropzone else displayImage">check item id</div>
 
@@ -26,58 +30,53 @@
 								  <div><button class="btn btn-info" (click)="onUpload()">Upload</button></div>
 							  </div>
 
-						  </div>
+							  <div class="col-6">
 
-					      <form [formGroup]="itemForm" (ngSubmit)="onSaveItem()">
-							  <div class="row">
-								  <div class="col-6">
-
-									  <div class="form-group">
-										  <label for="file">File</label>
-										  <input type="text" class="form-control" id="file" formControlName="file" readonly>
-									  </div>
-
-									  <div class="form-group">
-										  <label for="description">Description</label>
-										  <input type="text" class="form-control" id="description" formControlName="description">
-									  </div>
-									  <div *ngIf="description.touched && description.errors">
-										  <div class="alert alert-danger" *ngIf="description.errors.required">
-											  La description est obligatoire
-										  </div>
-									  </div>
-
-									  <div class="form-group">
-										<label for="createdAt">Date</label>
-										<input type="text" class="form-control" id="createdAt" formControlName="createdAt">
-									  </div>
-									  <div *ngIf="createdAt.touched && createdAt.errors">
-										  <div class="alert alert-danger" *ngIf="createdAt.errors.required">
-											  La Date de création est obligatoire
-										  </div>
-									  </div>
-
-									  <!--{{item.createdAt| date : format : timezone}}-->
-
-									  <div class="form-group">
-										  <label for="path">Chemin</label>
-										  <input type="text" class="form-control" id="path" formControlName="path" readonly>
-									  </div>
-
-									  <!--<div class="form-group">
-										<label for="power">Liste déroulante</label>
-										<select class="form-control" id="power" required>
-										  <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
-										</select>
-									  </div>-->
-
+								  <div class="form-group">
+									  <label for="file">File</label>
+									  <input type="text" class="form-control" id="file" formControlName="file" readonly>
 								  </div>
-							  </div>
 
-							  <div class="row justify-content-md-center">
-								  <button type="submit" class="btn btn-success" [disabled]="itemForm.invalid">Sauvegarder</button>
+								  <div class="form-group">
+									  <label for="description">Description</label>
+									  <input type="text" class="form-control" id="description" formControlName="description">
+								  </div>
+								  <div *ngIf="description.touched && description.errors">
+									  <div class="alert alert-danger" *ngIf="description.errors.required">
+										  La description est obligatoire
+									  </div>
+								  </div>
+
+								  <div class="form-group">
+									<label for="createdAt">Date</label>
+									<input type="datetime-local" class="form-control" id="createdAt" formControlName="createdAt" mode="datetime">
+								  </div>
+								  <div *ngIf="createdAt.touched && createdAt.errors">
+									  <div class="alert alert-danger" *ngIf="createdAt.errors.required">
+										  La Date de création est obligatoire
+									  </div>
+								  </div>
+
+								  <!--{{item.createdAt| date : format : timezone}}-->
+
+								  <div class="form-group">
+									  <label for="path">Chemin</label>
+									  <input type="text" class="form-control" id="path" formControlName="path" readonly>
+								  </div>
+
+								  <!--<div class="form-group">
+									<label for="power">Liste déroulante</label>
+									<select class="form-control" id="power" required>
+									  <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+									</select>
+								  </div>-->
 							  </div>
-					  	</form>
+						  </div>
+						   <div class="row justify-content-md-center">
+							   <button type="submit" class="btn btn-success" [disabled]="itemForm.invalid">Sauvegarder</button>
+							</div>
+						  	<div class="alert alert-danger" *ngIf="displayError">Erreur lors de la création de l'Item</div>
+					  </form>
 
 				  </div>
 			  </tab>
