@@ -29,6 +29,8 @@ img {
     height: auto;
     max-width: 100%;
     vertical-align: middle;
+    min-width: 100%;
+    min-height: 150px;
 }
 
 .myItem .date, .myItem .description, .myItem .nb-comments {
