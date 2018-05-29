@@ -2,13 +2,27 @@
 	margin-top:20px;
 }
 
-::ng-deep #errorApi{
+::ng-deep #displayError{
 }
 
-::ng-deep #errorApi p{
+::ng-deep #displayError p{
 	position:relative;;
 	top:40%;
 }
-::ng-deep #errorApi img{
+::ng-deep #displayError img{
 	max-width:400px;
 }
+
+::ng-deep #noResult p{
+	position:relative;
+	top:40%;
+}
+::ng-deep #noResult img{
+	max-width:400px;
+}
+
+
+.DEBUG{
+	#border: solid 2px red;
+}
+

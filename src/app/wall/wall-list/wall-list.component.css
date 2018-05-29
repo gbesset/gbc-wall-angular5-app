@@ -7,3 +7,35 @@
 .myItemWall{
 	width: 33% !important;
 }
+
+
+/* Desktop large
+------------------------- */
+@media (min-width: 1200px) {
+	.myItemWall{
+		width: 33% !important;
+	}
+}
+/* Desktop
+------------------------- */
+@media (max-width: 980px) {
+	.myItemWall{
+		width: 33% !important;
+	}
+}
+
+/* Tablet to desktop
+------------------------- */
+@media (min-width: 768px) and (max-width: 979px) {
+	.myItemWall{
+		width: 49.7% !important;
+	}
+}
+
+/* Tablet
+------------------------- */
+@media (max-width: 767px) {
+	.myItemWall{
+		width: 100% !important;
+	}
+ }

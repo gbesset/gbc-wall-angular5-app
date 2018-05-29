@@ -1,67 +1,86 @@
 <div class="container">
-    <h2>Ajout / Modification Item</h2>
+	  <h2>Ajout / Modification Item</h2>
 
-	<br>
-	<button type="button" class="btn btn-primary" (click)="newItem(); itemPictureForm.reset(); itemVideoForm.reset();">Nouvel Item</button>
-	<br>
+	  <br>
+	  (TODO)<button type="button" class="btn btn-primary" (click)="newItem(); itemPictureForm.reset(); itemVideoForm.reset();">RAZ</button>
+	  <br>
+	 <div class="alert-danger" *ngIf="displayError">
+		 <p>Erreur:</p>
+		 <p>{{ errorMsg }}</p>
+	 </div>
 
-<div>
-	
-  <tabset>
-    <tab heading="Photos" id="tabPicture" (select)="setPicture();">
-	    <!-- Formulaire disparait une fois valid et soumis -->
-		<div [hidden]="submitted">
-			<form (ngSubmit)="onSubmit()" #itemPictureForm="ngForm">
-		    	
-    			<div *ngIf="isItemCreation;then displayDropzone else displayImage">check item id</div>
+	  <div>
 
-    				<div class="row">
-				
-							<div *ngIf="item.id!==undefined" class="col-4">
-			    			 	<img src="http://via.placeholder.com/350x250"/>
-			    			</div>
-			    		
-							<div *ngIf="item.id===undefined" class="col-8">
-			    			 	<div id="dropzone" style="border-style: dashed;"><br><br></div>
-			    			</div>
-	
-			    		<div class="col-6">
-			    		
-					      <div class="form-group">
-					        <label for="description">Description</label>
-					        <input type="text" class="form-control" id="description" required [(ngModel)]="item.description" name="description" #descriptionPicture="ngModel" >
-					        <div [hidden]="descriptionPicture.valid || descriptionPicture.pristine" class="alert alert-danger">
-						  		La description est requise
+		  <tabset>
+			  <tab heading="Photos" id="tabPicture" (select)="setPicture();">
+				  <!-- Formulaire disparait une fois valid et soumis -->
+				  <div [hidden]="submitted">
+					  <form [formGroup]="itemForm" (ngSubmit)="onSaveItem()">
+
+						  <div *ngIf="isItemCreation;then displayDropzone else displayImage">check item id</div>
+
+						  <div class="row">
+
+							  <div *ngIf="!isCreation" class="col-4">
+								  <img src="http://via.placeholder.com/350x250"/>
+							  </div>
+
+							  <div *ngIf="isCreation" class="col-8">
+								  <div id="dropzone" style="border-style: dashed;"><br><br></div>
+								  <div><button class="btn btn-info" (click)="onUpload()">Upload</button></div>
+							  </div>
+
+							  <div class="col-6">
+
+								  <div class="form-group">
+									  <label for="file">File</label>
+									  <input type="text" class="form-control" id="file" formControlName="file" readonly>
+								  </div>
+
+								  <div class="form-group">
+									  <label for="description">Description</label>
+									  <input type="text" class="form-control" id="description" formControlName="description">
+								  </div>
+								  <div *ngIf="description.touched && description.errors">
+									  <div class="alert alert-danger" *ngIf="description.errors.required">
+										  La description est obligatoire
+									  </div>
+								  </div>
+
+								  <div class="form-group">
+									<label for="createdAt">Date</label>
+									<input type="datetime-local" class="form-control" id="createdAt" formControlName="createdAt" mode="datetime">
+								  </div>
+								  <div *ngIf="createdAt.touched && createdAt.errors">
+									  <div class="alert alert-danger" *ngIf="createdAt.errors.required">
+										  La Date de création est obligatoire
+									  </div>
+								  </div>
+
+								  <!--{{item.createdAt| date : format : timezone}}-->
+
+								  <div class="form-group">
+									  <label for="path">Chemin</label>
+									  <input type="text" class="form-control" id="path" formControlName="path" readonly>
+								  </div>
+
+								  <!--<div class="form-group">
+									<label for="power">Liste déroulante</label>
+									<select class="form-control" id="power" required>
+									  <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
+									</select>
+								  </div>-->
+							  </div>
+						  </div>
+						   <div class="row justify-content-md-center">
+							   <button type="submit" class="btn btn-success" [disabled]="itemForm.invalid">Sauvegarder</button>
 							</div>
-					      </div>
+						  	<div class="alert alert-danger" *ngIf="displayError">Erreur lors de la création de l'Item</div>
+					  </form>
 
-						  <div class="form-group">
-					        <label for="createdAt">Date</label>
-					        <input type="text" >{{item.createdAt| date : format : timezone}}
-						  </div>
-
-					      <div class="form-group">
-					        <label for="path">Chemin</label>
-					        <input type="text" class="form-control" id="path"  [(ngModel)]="item.path" name="path">
-					      </div>
-
-						  <div class="form-group">
-						    <label for="power">Liste déroulante</label>
-						    <select class="form-control" id="power" required>
-						      <option *ngFor="let pow of powers" [value]="pow">{{pow}}</option>
-						    </select>
-						  </div>
-
-					</div>
-				</div>
-			
-				<div class="row justify-content-md-center">
-						<button type="submit" class="btn btn-success" [disabled]="!itemPictureForm.form.valid">Sauvegarder</button>
-				</div>
-			 </form>
-		</div>
-	</tab>
-
+				  </div>
+			  </tab>
+<!--
 	<tab heading="Vidéos" id="tabVideo" (select)="setVideo();">
 		<div [hidden]="submitted">
 			<form (ngSubmit)="onSubmit()" #itemVideoForm="ngForm">
@@ -97,10 +116,17 @@
 				</div>
 			 </form>
 		</div>
-	</tab>
+	</tab>-->
 </tabset>
 
-{{diagnostic}}
+
+<!-- //DEBUG Affichage OBJET-->
+		  <p>------------------------------------<br/>
+			  DEBUG
+		  </p>
+		  <p>Item value: {{item | json }}</p>
+		  <p>Form value: {{itemForm.value | json }}</p>
+		  <p>Form status: {{itemForm.status | json }}</p>
 
 <!-- Si le est formulaire soumis, affiche des infos récapitulaives-->
 	<div [hidden]="!submitted">
@@ -113,10 +139,10 @@
 		    <div class="col-xs-3">Path: </div>
 		    <div class="col-xs-9 pull-left">{{ item.path }}</div>
 		  </div>
-		  <div class="row">
+		  <!--<div class="row">
 		    <div class="col-xs-3">Power: </div>
 		    <div class="col-xs-9 pull-left">{{ item.power }}</div>
-		  </div>
+		  </div>-->
 		  <br>
 		  <button class="btn btn-primary" (click)="submitted=false">Edit</button> 
 		  <a routerLink="/admin/items"><button class="btn btn-primary" (click)="submitted=false">Items</button></a>

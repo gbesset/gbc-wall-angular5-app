@@ -7,6 +7,7 @@ import { environment } from '../../../environments/environment';
 
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import {Subscription} from 'rxjs/Subscription';
 
 @Component({
     selector: 'app-wall-list-item-view',
@@ -17,9 +18,12 @@ export class WallListItemViewComponent implements OnInit {
 
     path: string = environment.Wall.imgPath;
 
-    private item: Item;
+    item: Item;
+    currentItemSubscription: Subscription;
+
     private comments: Array<Comment>;
-    private nbComment:number = 0;
+    private nbComment = 0;
+
     errorApi: string = '';
 
     constructor(private route: ActivatedRoute,
@@ -27,44 +31,35 @@ export class WallListItemViewComponent implements OnInit {
                 private location: Location) { }
 
     ngOnInit() {
-        this.getItemById();
-        if(typeof this.item == "undefined"){
-            console.log('error. TODO ?? plutot que ds le getItemById?')
-        }
-    }
 
-    getItemById(){
-        //Créer un item vide temporaire
-        this.item = new Item();
-        //Recuperer l'item depuis le serveur à partir de son id
-        //et le setter au item de la page (cela evitera des bugs et erreurs....)
-        const id = +this.route.snapshot.paramMap.get('id');
-
-        //normalement je pense quue je devriap as faire de subscribe mais des then......
-        //NON?
-        //+id pour caster en number
-        this._wallService.getItemId(+id).subscribe(
-            (data) => {
-                this.item = data['item'];
-                this.comments = data['item']['comments'];
-                this.nbComment = this.comments.length;
+        // On crée une souscription aux Items
+        this.currentItemSubscription = this._wallService.currentItemSubject.subscribe(
+            (item: Item) => {
+                this.item = item;
+                if(item.comments !== undefined) {
+                    this.comments = item.comments;
+                    this.nbComment = item.comments.length;
+                }
             },
             (error) => {
-                //Pas normal ce errorApi ... pas ici. on doit justee traiter error cf video OC
-                console.log(error.error.message);
-                this.errorApi=`<div id="errorApi" class="row">
-                          <div class="col-4">
-                            <img src="../assets/images/resources/error-connection.gif" class="rounded float-left">
-                          </div>
-                          <div class="col-6">
-                            <p class>Erreur de récupération de l'élément sur le serveur.</p>
-                          </div>
-                        </div>`;
+                console.log('WallListItemViewComponent - currentItemSubscription Error : ' + error.error.message);
             }
+         );
+            // On récupère l'Item
+            this.getItemById();
 
-        );
+            // On fait emmetre les Items
+            this._wallService.emitCurrentItemSubject();
     }
 
+    getItemById() {
+        // Recuperer l'item depuis le serveur à partir de son id
+        // et le setter au item de la page (cela evitera des bugs et erreurs....)
+        const id = +this.route.snapshot.paramMap.get('id');
+
+        this._wallService.getItemIdAPI(+id);
+        this._wallService.emitCurrentItemSubject();
+    }
 
     goBack(): void {
         this.location.back();

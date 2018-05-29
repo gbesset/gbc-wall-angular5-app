@@ -1,11 +1,27 @@
  
 <app-navbar></app-navbar> 
 
-<main role="main" class="container-fluid wall-container">
+<main role="main" class="container-fluid wall-container DEBUG">
 	
-	<app-wall-list [page]="page" [items]="items" [pages]="pages" (pageMore)="more($event)"></app-wall-list>
-	
-	<div [innerHTML]="errorApi"></div>
-	<div [innerHTML]="noMoreItem"></div>
+	<app-wall-list [page]="page" [items]="items" [pages]="pages" (pageMore)="more($event)" [noMore]="noMore"></app-wall-list>
+
+	<div id="noResult" class="row" *ngIf="!isError && items.length ===0">
+		<div class="col-4">
+			<img src="../assets/images/resources/search.jpg" class="rounded float-left">
+		</div>
+		<div class="col-6">
+			<p>Aucun résultat</p>
+		</div>
+	</div>
+
+	<div id="displayError" class="row" *ngIf="isError">
+		<div class="col-4">
+			<img src="../assets/images/resources/error-connection.gif" class="rounded float-left">
+		</div>
+		<div class="col-6">
+			<p>Erreur de récupération des items sur le serveur.</p>
+		</div>
+	</div>
+
 
 </main>

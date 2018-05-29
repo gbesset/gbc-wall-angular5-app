@@ -30,23 +30,22 @@
            Le commentaire est requis.
           </div>
         </div>
-
+<!--
         <div class="form-group">
           <label for="isApproved">Approuvé</label>
           <input type="text" class="form-control" id="isApproved"
           		 required
                  [(ngModel)]="comment.isApproved" name="isApproved"
                  #isApproved="ngModel">
-              <!-- error -->
+
     		   <div [hidden]="isApproved.valid || isApproved.pristine"
     		       class="card-panel red accent-1">
     		       Le status du commentaire est requis.
     		  </div>
         </div>
-
+-->
         <div class="form-group">
           <label for="createdAt">Date</label>
-          todo pipe? date:"dd/MM/yyyy hh:mm:ss"
           <input type="text" class="form-control" id="createdAt" 
               required
               [(ngModel)]="comment.createdAt " name="createdAt" #createdAt="ngModel">

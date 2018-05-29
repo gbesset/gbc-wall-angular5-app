@@ -12,7 +12,7 @@ export class AppNavbarComponent implements OnInit {
 
     searchForm: FormGroup;
 
-    constructor(private formBuilder:FormBuilder, private _wallService: WallDataService) { }
+    constructor(private formBuilder: FormBuilder, private _wallService: WallDataService) { }
 
     ngOnInit() {
         this.initForms();
@@ -21,23 +21,44 @@ export class AppNavbarComponent implements OnInit {
     initForms(){
         this.searchForm = this.formBuilder.group(
             {
-                searchElement: ['', Validators.required]
+                searchElement: ['', Validators.required],
+                searchCriteria: ['item', Validators.required]
             }
         );
     }
 
     onSubmitForm(){
+        this._wallService.clearItems();
+
         const formValue = this.searchForm.value;
         const searchElement = formValue['searchElement'];
-        console.log("recherche sur "+searchElement);
+        const searchCriteria = formValue['searchCriteria'];
+        switch(searchCriteria){
+            case 'item' :
+                this._wallService.setDescriptionSearch();
+            break;
+            case 'comment' :
+                this._wallService.setCommentSearch();
+            break;
+            case 'author' :
+                this._wallService.setAuthorSearch();
+            break;
+        }
 
-        this._wallService.search(0,searchElement).subscribe(
-            (data) => {
-                console.log(data['content']);
-                //je pense que c'est la qu'il faut maintenant utilser le subscribeObject....?!
-                //ou remonter la liste dans le service comme dans oc-blog.... et pas dans wall.component
-            }
-        );
-        console.log("netoyer le formulaire et rafrachir les comments");
+        console.log('AppNavbarComponent - onSubmitForm recherche sur: ' + searchElement);
+
+
+        this._wallService.session.search.isModeSearch = true;
+        this._wallService.session.search.searchElement = searchElement;
+
+
+        this._wallService.searchAPI(0, this._wallService.session.search.searchElement);
+        this._wallService.emitWallItemSubject();
+    }
+
+    refresh(){
+        //TODO mise e place refresh
+        alert("TODO");
+        //this.router.navigate(["/same/route/path?refresh=1"]);
     }
 }

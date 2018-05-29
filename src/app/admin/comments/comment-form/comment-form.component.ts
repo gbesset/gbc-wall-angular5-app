@@ -22,9 +22,17 @@ export class CommentFormComponent implements OnInit {
 
     // La méthode appelée lorsque le formulaire est soumis.
     onSubmit(): void {
-        console.log("Submit form !");
-        let link = ['/admin/comments']//);, this.comment.id];
-        this.router.navigate(link);
+        console.log("CommentFormComponent : Mise a jour du comment ");
+        console.log(this.comment)
+        this._adminService.updateCommentAPI(this.comment).subscribe(
+            (data) => {
+                console.log("Mise a jour du comment " + this.comment.id + " OK");
+                this.router.navigate(['/admin/comments']);
+            },
+            (error) => {
+                console.log("CommentFormComponent - Update - Error :" + error.error.message);
+            }
+        );
     }
 
 }

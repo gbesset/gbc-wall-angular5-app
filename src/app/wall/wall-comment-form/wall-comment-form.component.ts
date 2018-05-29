@@ -1,7 +1,10 @@
+///<reference path="../../services/wall-data.service.ts"/>
 import { Component, OnInit, Input } from '@angular/core';
 
 import { WallDataService } from '../../services/wall-data.service';
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+
+import {Comment} from '../../contract/comment';
 
 @Component({
     selector: 'app-wall-comment-form',
@@ -36,34 +39,12 @@ export class WallCommentFormComponent implements OnInit {
         const author = this.commentForm.get('author').value;
         const comment = this.commentForm.get('comment').value;
 
-        console.log(author+" a ajouté "+comment);
+        const newComment = new Comment(this.itemId, author, comment);
 
-        this._wallService.addComment(this.itemId,author,comment).then(
-            () =>{
-                console.log('rafraichir les comments ?');
-            },
-            (error) => {
-                this.errorMessage = error;
-            });
-        ;
+        console.log('WallCommentFormComponent - onSubmitForm ' + newComment.author + ' a ajouté ' + newComment.comment);
+
+        this._wallService.addCommentAPI(newComment);
+        this._wallService.emitCurrentItemSubject();
         this.initForms();
     }
-
-//Dans un service qui va appeler une api
-    /*getSingleBook(){
-      return new Promise(
-        (resolve, reject)=> {
-          this._wallService.uneFoncionQuiRenvoiPromise(1).then(
-                (data)=>{
-                  resolve(data.val());
-                },
-                (error)=>{
-                  reject(error);
-                }
-              );
-            }
-          );
-      }
-    */
-
 }
