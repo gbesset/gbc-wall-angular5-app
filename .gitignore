@@ -1,9 +1,13 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
+##### PROD
 _mesNotes.md
 src/assets/__img_wall/
 src/environments/environment.prod.ts
+src/assets/images/carousel/karen.guiom
 
+
+##### Différents fichiers
 # compiled output
 /dist
 /dist-server

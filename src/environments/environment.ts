@@ -17,6 +17,7 @@ export const environment = {
   	key: 'aSecretKey',
   	url: 'http://localhost:8080',
     wall: '/api/wall',
+    home: '/home',
     admin: '/api/admin',
     path_img: '/Users/gbesset/wks_java/gbcreation/__TEMP/static/img/wall'
   },

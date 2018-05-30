@@ -7,11 +7,11 @@
     	<header>
 	        <h1> {{siteTitle}} <span class="intro">{{siteDescription}}</span></h1>
 	    </header>
-   		
+
    		<article id="wallCarousel">
 			<carousel>
-		   	  <slide *ngFor = "let picture of carousel">
-		     	<img src="{{picture.path}}{{picture.img}}" alt="{{picture.img}}" style="display: block; width: 100%;">
+		   	  <slide *ngFor = "let picture of carousel.imgs">
+		     	<img src="{{carousel.path}}{{picture}}" alt="{{picture.img}}" style="display: block; width: 100%;">
 		     	<div class="carousel-caption d-none d-md-block">
 		     	</div>
 		  	  </slide>

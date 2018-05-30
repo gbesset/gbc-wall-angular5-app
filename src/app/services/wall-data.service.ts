@@ -19,6 +19,7 @@ import {Comment} from '../contract/comment';
 export class WallDataService {
 
     private apiWall : string = environment.apiURL.url + environment.apiURL.wall;
+    private apiHome : string = environment.apiURL.url + environment.apiURL.home;
 
     // Pour Wall et Header
     // Empêche l'accès direct au tableau pour controller les manipulations possibles
@@ -91,7 +92,7 @@ export class WallDataService {
 
     /****************************     HOME    ******************************/
     getCarousel(): Observable<any>{
-        return of(HOME_CAROUSEL);
+        return this._http.get(this.apiHome+'/carousel');
     }
 
     getLastPictures(){

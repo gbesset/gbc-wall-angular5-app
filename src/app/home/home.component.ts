@@ -5,6 +5,7 @@ import { WallDataService } from '../services/wall-data.service';
 
 import { Item } from '../contract/item';
 import { Comment } from '../contract/comment';
+import {Carousel} from '../contract/carousel';
 
 
 @Component({
@@ -17,7 +18,7 @@ export class HomeComponent implements OnInit {
     siteTitle: string = environment.home.title;
     siteDescription: string = environment.home.description;
 
-    carousel: any[];
+    carousel: Carousel = new Carousel();
 
     pictures: Item[];
     videos: Item[];
@@ -34,7 +35,14 @@ export class HomeComponent implements OnInit {
 
     getCarousel(): void{
         this._dataService.getCarousel().subscribe(
-            headerPict => this.carousel = headerPict
+            (json: Carousel) => {
+                this.carousel = json;
+            },
+            (error) =>{
+                console.log("Erreur de récupération du carousel");
+                this.carousel.path='assets/images/carousel/error/';
+                this.carousel.imgs=['header0.gif','header1.jpg'];
+            }
         );
     }
 
