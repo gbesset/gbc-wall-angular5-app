@@ -7,7 +7,7 @@ export const environment = {
   production: false,
   versions:{
     angular:'v 0.2',
-    java:'v 0.0.2'
+    java:'v 0.2'
   },
   home : {
   	title: 'Guillaume Besset',

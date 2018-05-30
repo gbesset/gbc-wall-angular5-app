@@ -12,7 +12,18 @@ Todo...
 
 
 ## Livraison
-Tag la version en fonction milestone
-ng build --prod --aot=false
-Livraison sur server Unix
-Modifier la version java et angular dans environment.ts et environent.prod.ts
+* GP: 
+   * Milestone à 100%
+   * Mise a jour Wiki avec une version V.x définissant fonctionnalités, date, ...
+   
+  
+* Livraison   
+    * Tag la version en fonction milestone
+    * Versionner les fichiers prod dans git perso
+    *   Builder pour prod:
+        * ng build --prod --aot=false
+        * mvn clean install  (mvn release: prepare et mvn release: perform a mettre en place)
+* Livraison sur server Unix
+* Modifier la version pour la prochaine itération
+    * java dans pom.xml
+    * angular dans environment.ts et environent.prod.ts 
