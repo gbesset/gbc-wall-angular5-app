@@ -20,9 +20,9 @@ export const environment = {
     home: '/home',
     admin: '/api/admin',
     resource: '/api/resources',
-    path_img: '/Users/gbesset/wks_java/gbcreation/__TEMP/static/img/wall'
+    src_img: '/api/resources/get'
   },
   Wall: {
-  	imgPath: 'assets/__img_wall'
+      imgPath: 'http://localhost:8080/api/resources/get'
   }
 };

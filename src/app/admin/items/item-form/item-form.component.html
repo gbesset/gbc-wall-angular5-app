@@ -22,9 +22,20 @@
 						  <div class="row">
 
 							  <div *ngIf="!isCreation" class="col-4">
-								  <img class="card-img-top img-rounded imgForm" src="{{rootImgPath}}{{item.path}}/{{item.file }}" alt="{{ item.description }}">
-								  <img class="rotate" src="assets/images/resources/left.png" (click)="rotateLeft(item)">
-								  <img class="rotate right" src="assets/images/resources/right.png" (click)="rotateRight(item)">
+								  <div class="img-overview">
+								  	<img class="card-img-top img-rounded imgForm" src="{{rootImgPath}}{{item.path}}?fileName={{item.file }}" alt="{{ item.description }}">
+									<div class="row img-actions">
+										<div class="col-4">
+											<img class="rotate" src="assets/images/resources/left.png" (click)="rotateLeft(item)" alt="Rotation Gauche">
+										</div>
+										<div class="col-4">
+											<a href="/wall/{{item.id}}"><img class="display-wall-img" src="assets/images/resources/voir.png" alt="Voir"></a>
+										</div>
+										<div class="col-4">
+								  			<img class="rotate right" src="assets/images/resources/right.png" (click)="rotateRight(item)" alt="Rotation Droite">
+										</div>
+								  	</div>
+								  </div>
 							  </div>
 
 							  <div *ngIf="isCreation" class="col-8">

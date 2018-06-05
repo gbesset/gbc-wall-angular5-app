@@ -1,6 +1,6 @@
 <article id="{{item.id}}" class="myItem">
 	<a href="/wall/{{item.id}}">
-		<img class="card-img-top img-fluid" src="{{rootImgPath}}{{item.path}}/{{item.file }}" alt="{{ item.description }}">
+		<img class="card-img-top img-fluid" src="{{rootImgPath}}{{item.path}}?fileName={{item.file }}" alt="{{ item.description }}">
 	</a>
 	<span class="date">{{item.createdAt | date:"dd/MM/yyyy" }}</span>
 	<span class="description">{{item.description}}</span>
