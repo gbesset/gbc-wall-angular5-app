@@ -25,7 +25,7 @@ export class AdminDataService {
 
     private apiWall : string = environment.apiURL.url + environment.apiURL.wall;
     private apiAdminWall : string = environment.apiURL.url + environment.apiURL.admin;
-
+    private apiAdminResource : string = environment.apiURL.url + environment.apiURL.resource;
 
     constructor(private _http: HttpClient, private _router : Router) {
 
@@ -90,6 +90,15 @@ export class AdminDataService {
 
     }
 
+    deleteItemImageAPI(i: Item){
+        console.log("AdminDataService - delete item id" + i.id);
+
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+        return this._http.get(this.apiAdminResource+"/delete?id=" + i.id, {headers: headers});
+
+    }
+
     deleteItemAPI(i: Item){
         console.log("AdminDataService - delete item id" + i.id);
 
@@ -99,6 +108,28 @@ export class AdminDataService {
 
     }
 
+    uploadFileAPI(file: File, path){
+        const data: FormData = new FormData();
+        data.append("file", file);
+        if(path === undefined){
+            //pour evolution upload....
+            //return this._http.post(this.apiAdminResource + "/post", data, { reportProgress: true, observe: 'events' });
+            return this._http.post(this.apiAdminResource + "/post", data);
+        }
+        else {
+            return this._http.post(this.apiAdminResource + "/post?path=" + path, data);
+        }
+
+    }
+
+    rotateImagePI(i: Item, angle: string){
+        console.log("AdminDataService - rotate image id" + i.id);
+
+        let headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+        return this._http.get(this.apiAdminResource+"/rotate?id=" + i.id+"&angle="+angle, {headers: headers});
+
+    }
 
     deleteCommentsOfItemAPI(id: number | undefined) {
         alert("TODO JAVA");

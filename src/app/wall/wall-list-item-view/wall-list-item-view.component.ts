@@ -16,7 +16,7 @@ import {Subscription} from 'rxjs/Subscription';
 })
 export class WallListItemViewComponent implements OnInit {
 
-    path: string = environment.Wall.imgPath;
+    rootImgPath: string = environment.Wall.imgPath;
 
     item: Item;
     currentItemSubscription: Subscription;

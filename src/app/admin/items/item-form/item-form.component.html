@@ -2,7 +2,7 @@
 	  <h2>Ajout / Modification Item</h2>
 
 	  <br>
-	  (TODO)<button type="button" class="btn btn-primary" (click)="newItem(); itemPictureForm.reset(); itemVideoForm.reset();">RAZ</button>
+	  <!--(TODO)<button type="button" class="btn btn-primary" (click)="newItem(); itemPictureForm.reset(); itemVideoForm.reset();">RAZ</button>-->
 	  <br>
 	 <div class="alert-danger" *ngIf="displayError">
 		 <p>Erreur:</p>
@@ -22,12 +22,18 @@
 						  <div class="row">
 
 							  <div *ngIf="!isCreation" class="col-4">
-								  <img src="http://via.placeholder.com/350x250"/>
+								  <img class="card-img-top img-rounded imgForm" src="{{rootImgPath}}{{item.path}}/{{item.file }}" alt="{{ item.description }}">
+								  <img class="rotate" src="assets/images/resources/left.png" (click)="rotateLeft(item)">
+								  <img class="rotate right" src="assets/images/resources/right.png" (click)="rotateRight(item)">
 							  </div>
 
 							  <div *ngIf="isCreation" class="col-8">
 								  <div id="dropzone" style="border-style: dashed;"><br><br></div>
-								  <div><button class="btn btn-info" (click)="onUpload()">Upload</button></div>
+								  <input type="file" (change)="detectFiles($event)" class="form-control" accept="image/*">
+								  <p class="text-success" *ngIf="isfileUploaded">Photo chargée !</p>
+
+								  <!-- TODO en petit.... -->
+								  <!-- <img style="max-width:400px;" *ngIf="book.photo" [src]="book.photo">-->
 							  </div>
 
 							  <div class="col-6">
@@ -54,7 +60,7 @@
 								  <div *ngIf="createdAt.touched && createdAt.errors">
 									  <div class="alert alert-danger" *ngIf="createdAt.errors.required">
 										  La Date de création est obligatoire
-									  </div>
+									  </div>x
 								  </div>
 
 								  <!--{{item.createdAt| date : format : timezone}}-->
@@ -73,7 +79,7 @@
 							  </div>
 						  </div>
 						   <div class="row justify-content-md-center">
-							   <button type="submit" class="btn btn-success" [disabled]="itemForm.invalid">Sauvegarder</button>
+							   <button type="submit" class="btn btn-success" [disabled]="itemForm.invalid || fileIsUploading">Sauvegarder</button>
 							</div>
 						  	<div class="alert alert-danger" *ngIf="displayError">Erreur lors de la création de l'Item</div>
 					  </form>

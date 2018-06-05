@@ -4,7 +4,7 @@
 	<div class="row">
 		<div class="col-lg-9 col-md-12 pictureBar">
 			<div class="card" >
-			   <img class="card-img-top img-rounded" src="{{ path }}/{{item.file }}" alt="{{ item.description }}">	
+			   <img class="card-img-top img-rounded" src="{{rootImgPath}}{{item.path}}/{{item.file }}" alt="{{ item.description }}">
 			  <div class="card-body">
 			  		<button (click)="goBack()" class="center">Retour</button>
 			    	<span class="card-text">Le {{item.createdAt | date:"dd/MM/yyyy" }}: {{item.description}}</span>

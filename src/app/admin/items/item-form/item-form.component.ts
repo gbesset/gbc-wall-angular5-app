@@ -21,7 +21,9 @@ export class ItemFormComponent implements OnInit {
     @Input() itemId: number;
     @Input() isCreation: boolean;
 
-    private path: string = environment.apiURL.path_img;
+    isProduction: boolean = environment.production;
+
+    rootImgPath: string = environment.Wall.imgPath;
 
     private item: Item;
     private itemCreatedAtDate;       //json:number  ici dans js:Date
@@ -31,7 +33,6 @@ export class ItemFormComponent implements OnInit {
 
 
     fileIsUploading = false;
-    fileUrl: string;
     fileUploaded = false;
 
     itemType = {
@@ -57,7 +58,12 @@ export class ItemFormComponent implements OnInit {
     getItem(){
         if(this.isCreation){
             this.item.type = "PICTURE";
-            this.item.path =  this.path + "/" + new Date().getFullYear() + "/";
+            if(this.isProduction) {
+                this.item.path = "/" + new Date().getFullYear();
+            }
+            else{
+                this.item.path = "/DEV";;
+            }
         }
         else{
             this._adminService.getItemId(this.itemId).subscribe(
@@ -98,18 +104,53 @@ export class ItemFormComponent implements OnInit {
 
     }
 
-    onUpload(){
-        this.item.file = "file-uploaded" + Date.now().toString()+ ".jpg";
-        //this.item.createdAt = new Date().toISOString().slice(0, 16);
-        this.itemCreatedAtDate = new Date().toISOString().slice(0, 16);
-        //setValue -> all value of FormGroup
-        //patchValue -> only some value of FormGroup
-        this.itemForm.patchValue({file: this.item.file});
-        this.itemForm.patchValue({createdAt: this.itemCreatedAtDate});
+    onUploadFile(file: File){
+        this.fileIsUploading = true;
+        this._adminService.uploadFileAPI(file, this.item.path).subscribe(
+            (json) =>{
+                this.item.file = json['file'];
+                const dt = parseInt(json['createdAt'])
+                this.itemCreatedAtDate = new Date(dt).toISOString().slice(0,16);
+/*
+                console.log(new Date(dt).toLocaleString())
+                console.log(new Date(dt).toISOString())
+                console.log(new Date(dt).toISOString().slice(0,16))
+                console.log(new Date(dt).toLocaleDateString())
+                console.log(new Date(dt).toJSON())
+                console.log(new Date(dt).toUTCString())
+                console.log(new Date(dt).toString())
+                console.log(new Date(dt).toTimeString())
+                var options = {weekday: "narrow", year: "numeric", month: "numeric", day: "numeric", hour:"numeric", minute:"numeric", second:"numeric"};
+                console.log(new Date(dt).toLocaleString("fr-FR", options))
+*/
+                //setValue -> all value of FormGroup
+                //patchValue -> only some value of FormGroup
+                this.itemForm.patchValue({file: this.item.file});
+                this.itemForm.patchValue({createdAt: this.itemCreatedAtDate});
+
+                this.fileIsUploading = false;
+                this.fileUploaded = true;
+            },
+            (error) => {
+                console.log("AdminDataService - onUploadFile : Erreur lors de l'upload de l'image..." + error.error.message)
+                this.displayError = true;
+                this.errorMsg = error.error.message;
+                setTimeout(() => {
+                    this.displayError = false;
+                    this.errorMsg = '';
+                },5000);
+            }
+        )
+    }
+
+    detectFiles(event) {
+        if(event.target.files && event.target.files.length > 0) {
+            this.onUploadFile(event.target.files[0]);
+        }
     }
 
     onSaveItem() {
-        if(this.itemForm.valid) {
+        if( ((this.isCreation && this.fileUploaded) || !this.isCreation)  && this.itemForm.valid) {
             this.item.description = this.itemForm.get('description').value;
             this.itemCreatedAtDate = this.itemForm.get('createdAt').value;
 
@@ -136,6 +177,40 @@ export class ItemFormComponent implements OnInit {
             );
         }
     }
+
+    rotateLeft(i: Item){
+        this._adminService.rotateImagePI(i,"LEFT").subscribe(
+            (msg) => {
+                console.log("Image pivotee");
+            },
+            (error) => {
+                console.log("AdminDataService - updateOrSaveItemAPI - Error :" + error.error.message);
+                this.errorMsg = error.error.message;
+                this.displayError = true;
+                setTimeout(() => {
+                    this.displayError = false;
+                    this.errorMsg = '';
+                },5000);
+            }
+        );
+    }
+    rotateRight(i: Item){
+        this._adminService.rotateImagePI(i,"RIGHT").subscribe(
+            (msg) => {
+                console.log("Image pivotee");
+            },
+            (error) => {
+                console.log("AdminDataService - updateOrSaveItemAPI - Error :" + error.error.message);
+                this.errorMsg = error.error.message;
+                this.displayError = true;
+                setTimeout(() => {
+                    this.displayError = false;
+                    this.errorMsg = '';
+                },5000);
+            }
+        );
+    }
+
 
     get description(){
         return this.itemForm.get("description");

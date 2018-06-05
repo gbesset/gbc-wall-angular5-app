@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
 export class WallListItemComponent implements OnInit {
 
 
-    path: string = environment.Wall.imgPath;
+    rootImgPath: string = environment.Wall.imgPath;
 
     @Input()  item : Item;
     @Input() indexOfPost: number;

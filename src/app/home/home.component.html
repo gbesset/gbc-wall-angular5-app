@@ -35,7 +35,7 @@
               <h3 class="card-title">Photos</h3>
               <h6 class="card-subtitle mb-2 text-muted">Derniers clichés</h6>
               <ul class="rss" *ngFor="let p of pictures">
-                  <li><span class="item"><a href="">{{p.description}}</a></span></li>
+                  <li><span class="item"><a href="/wall/{{p.id}}">{{p.description}}</a></span></li>
               </ul>
           </div>
       </article>
@@ -45,7 +45,7 @@
               <h3 class="card-title">Videos</h3>
                  <h6 class="card-subtitle mb-2 text-muted">Derniers montages</h6>
                  <ul class="rss" *ngFor="let v of videos">
-                      <li><span class="item"><a href="">{{v.description}}</a></span></li>
+                      <li><span class="item"><a href="/wall/{{v.id}}">{{v.description}}</a></span></li>
                 </ul>
           </div>
       </article>
@@ -55,7 +55,7 @@
               <h3 class="card-title">Commentaires</h3>
                 <h6 class="card-subtitle mb-2 text-muted">Derniers commentaires</h6>
                 <ul class="rss" *ngFor="let c of comments">
-                    <li><span class="author">{{c.author}}</span>: <span class="item"><a href="">{{c.comment}}</a></span></li>
+                    <li><span class="author">{{c.author}}</span>: <span class="item"><a href="/wall/{{c.itemId}}">{{c.comment}}</a></span></li>itemID[{{c.itemId}}]
               </ul>
           </div>
       </article>

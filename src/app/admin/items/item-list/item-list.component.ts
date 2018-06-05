@@ -59,6 +59,15 @@ export class ItemListComponent implements OnInit {
                     console.log("anuulation suppression car possède des commentaires associés.")
                 }
             }
+            this._adminService.deleteItemImageAPI(i).subscribe(
+                (data) => {
+                    console.log("Suppression de l' image de l'item " + i.id + " OK");
+                },
+                (error) => {
+                    console.log("ItemListComponent - deleteItemImage - Error :" + error.error.message);
+                }
+            );
+
             this._adminService.deleteItemAPI(i).subscribe(
                 (data) => {
                     console.log("Suppression de l' item " + i.id);
