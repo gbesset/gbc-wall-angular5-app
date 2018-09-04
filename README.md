@@ -19,10 +19,14 @@ Todo...
   
 * Livraison   
     * Tag la version en fonction milestone
+    * Si besoin versionner les fichiers conf vps (nginx,...?)
     * Versionner les fichiers prod dans git perso
     *   Builder pour prod:
         * ng build --prod --aot=false
         * mvn clean install  (mvn release: prepare et mvn release: perform a mettre en place)
+    * Builder Démo
+        * ng build --environment=demo --target=production --aot=false
+        
 * Livraison sur server Unix
 * Modifier la version pour la prochaine itération
     * java dans pom.xml

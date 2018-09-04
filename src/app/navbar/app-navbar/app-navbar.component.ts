@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WallDataService } from '../../services/wall-data.service';
+import { environment } from '../../../environments/environment';
 
 import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 
@@ -10,6 +11,7 @@ import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
 })
 export class AppNavbarComponent implements OnInit {
 
+    siteTitle: string = environment.home.title;
     searchForm: FormGroup;
 
     constructor(private formBuilder: FormBuilder, private _wallService: WallDataService) { }

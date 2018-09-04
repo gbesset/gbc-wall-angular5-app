@@ -193,7 +193,7 @@ export class WallDataService {
     }
 
     signIn(email: string, pwd: string){
-        return this._http.post(this.apiWall+'/login', email);
+        return this._http.post(this.apiWall+'/login', {"login":email, "password":pwd});
     }
 
     signOut(){
